@@ -1,0 +1,154 @@
+/* Defines colors for the various color palettes. */
+/* The first number is the set index, the second number defines the 'lightness'. */
+/* I.E. --clr-00-0 is the darkest color (color 0) of the first palette (palette 00). */
+/* --clr-03-3 is the lightest color (color 3) of the 4th palette (palette 03). */
+/* Depending on the palette, 'darkest' and 'lightest' can be arbitrary. */
+
+:root {
+  --clr-00-0: #000000;
+  --clr-00-1: #727272;
+  --clr-00-2: #b8b8b8;
+  --clr-00-3: #f8f8f8;
+
+  --clr-01-0: #000000;
+  --clr-01-1: #9d93f6;
+  --clr-01-2: #e88888;
+  --clr-01-3: #f8f8aa;
+
+  --clr-02-0: #000000;
+  --clr-02-1: #f83300;
+  --clr-02-2: #00f800;
+  --clr-02-3: #f8f8f8;
+
+  --clr-03-0: #000000;
+  --clr-03-1: #804000;
+  --clr-03-2: #e89850;
+  --clr-03-3: #f8f8f8;
+
+  --clr-04-0: #000000;
+  --clr-04-1: #0033ff;
+  --clr-04-2: #78a8f8;
+  --clr-04-3: #f8f8f8;
+
+  --clr-05-0: #000000;
+  --clr-05-1: #f83300;
+  --clr-05-2: #f0ff00;
+  --clr-05-3: #f8f8f8;
+
+  --clr-06-0: #000000;
+  --clr-06-1: #0033ff;
+  --clr-06-2: #00f800;
+  --clr-06-3: #f8f8f8;
+
+  --clr-07-0: #000000;
+  --clr-07-1: #a82727;
+  --clr-07-2: #e88888;
+  --clr-07-3: #f8f8f8;
+
+  --clr-08-0: #000000;
+  --clr-08-1: #4633a0;
+  --clr-08-2: #9d93f6;
+  --clr-08-3: #f8f8f8;
+
+  --clr-09-0: #000000;
+  --clr-09-1: #804000;
+  --clr-09-2: #f0ff00;
+  --clr-09-3: #f8f8f8;
+
+  --clr-10-0: #000000;
+  --clr-10-1: #947b4a;
+  --clr-10-2: #c5ac94;
+  --clr-10-3: #f8e8e0;
+
+  --clr-11-0: #fffbff;
+  --clr-11-1: #f0ff00;
+  --clr-11-2: #00a2a1;
+  --clr-11-3: #000000;
+
+  
+}
+
+[data-theme="0"] {
+  --clr-current-0: var(--clr-00-0);
+  --clr-current-1: var(--clr-00-1);
+  --clr-current-2: var(--clr-00-2);
+  --clr-current-3: var(--clr-00-3);
+}
+
+[data-theme="1"] {
+  --clr-current-0: var(--clr-01-0);
+  --clr-current-1: var(--clr-01-1);
+  --clr-current-2: var(--clr-01-2);
+  --clr-current-3: var(--clr-01-3);
+}
+
+[data-theme="2"] {
+  --clr-current-0: var(--clr-02-0);
+  --clr-current-1: var(--clr-02-1);
+  --clr-current-2: var(--clr-02-2);
+  --clr-current-3: var(--clr-02-3);
+}
+
+[data-theme="3"] {
+  --clr-current-0: var(--clr-03-0);
+  --clr-current-1: var(--clr-03-1);
+  --clr-current-2: var(--clr-03-2);
+  --clr-current-3: var(--clr-03-3);
+}
+
+[data-theme="4"] {
+  --clr-current-0: var(--clr-04-0);
+  --clr-current-1: var(--clr-04-1);
+  --clr-current-2: var(--clr-04-2);
+  --clr-current-3: var(--clr-04-3);
+}
+
+[data-theme="5"] {
+  --clr-current-0: var(--clr-05-0);
+  --clr-current-1: var(--clr-05-1);
+  --clr-current-2: var(--clr-05-2);
+  --clr-current-3: var(--clr-05-3);
+}
+
+[data-theme="6"] {
+  --clr-current-0: var(--clr-06-0);
+  --clr-current-1: var(--clr-06-1);
+  --clr-current-2: var(--clr-06-2);
+  --clr-current-3: var(--clr-06-3);
+}
+
+[data-theme="7"] {
+  --clr-current-0: var(--clr-07-0);
+  --clr-current-1: var(--clr-07-1);
+  --clr-current-2: var(--clr-07-2);
+  --clr-current-3: var(--clr-07-3);
+}
+
+[data-theme="8"] {
+  --clr-current-0: var(--clr-08-0);
+  --clr-current-1: var(--clr-08-1);
+  --clr-current-2: var(--clr-08-2);
+  --clr-current-3: var(--clr-08-3);
+}
+
+[data-theme="9"] {
+  --clr-current-0: var(--clr-09-0);
+  --clr-current-1: var(--clr-09-1);
+  --clr-current-2: var(--clr-09-2);
+  --clr-current-3: var(--clr-09-3);
+}
+
+[data-theme="10"] {
+  --clr-current-0: var(--clr-10-0);
+  --clr-current-1: var(--clr-10-1);
+  --clr-current-2: var(--clr-10-2);
+  --clr-current-3: var(--clr-10-3);
+}
+
+[data-theme="11"] {
+  --clr-current-0: var(--clr-11-0);
+  --clr-current-1: var(--clr-11-1);
+  --clr-current-2: var(--clr-11-2);
+  --clr-current-3: var(--clr-11-3);
+}
+

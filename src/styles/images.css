@@ -1,0 +1,64 @@
+:root {
+  --img-00-tree: url('/src/assets/images/tree/00.png');
+  --img-01-tree: url('/src/assets/images/tree/01.png');
+  --img-02-tree: url('/src/assets/images/tree/02.png');
+  --img-03-tree: url('/src/assets/images/tree/03.png');
+  --img-04-tree: url('/src/assets/images/tree/04.png');
+  --img-05-tree: url('/src/assets/images/tree/05.png');
+  --img-06-tree: url('/src/assets/images/tree/06.png');
+  --img-07-tree: url('/src/assets/images/tree/07.png');
+  --img-08-tree: url('/src/assets/images/tree/08.png');
+  --img-09-tree: url('/src/assets/images/tree/09.png');
+  --img-10-tree: url('/src/assets/images/tree/10.png');
+  --img-11-tree: url('/src/assets/images/tree/11.png');
+  
+}
+
+[data-theme="0"] {
+  --img-current-tree: var(--img-00-tree);
+}
+
+[data-theme="1"] {
+  --img-current-tree: var(--img-01-tree);
+}
+
+[data-theme="2"] {
+  --img-current-tree: var(--img-02-tree);
+}
+
+[data-theme="3"] {
+  --img-current-tree: var(--img-03-tree);
+}
+
+[data-theme="4"] {
+  --img-current-tree: var(--img-04-tree);
+}
+
+[data-theme="5"] {
+  --img-current-tree: var(--img-05-tree);
+}
+
+[data-theme="6"] {
+  --img-current-tree: var(--img-06-tree);
+}
+
+[data-theme="7"] {
+  --img-current-tree: var(--img-07-tree);
+}
+
+[data-theme="8"] {
+  --img-current-tree: var(--img-08-tree);
+}
+
+[data-theme="9"] {
+  --img-current-tree: var(--img-09-tree);
+}
+
+[data-theme="10"] {
+  --img-current-tree: var(--img-10-tree);
+}
+
+[data-theme="11"] {
+  --img-current-tree: var(--img-11-tree);
+}
+

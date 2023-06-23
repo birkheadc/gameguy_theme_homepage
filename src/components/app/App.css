@@ -1,0 +1,42 @@
+div#react-root {
+  position: relative;
+}
+
+div#background {
+  height: 100%;
+  width: 100svw;
+
+  background-color: var(--clr-current-3);
+  background-image: var(--img-current-tree);
+  background-repeat: round;
+
+  position: absolute;
+  z-index: -1;
+}
+
+div.full {
+  min-height: 100svh;
+
+  display: flex;
+  justify-content: center;
+  padding: 128px;
+}
+
+main {
+  color: var(--clr-current-1);
+
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+
+  padding: 1em;
+  background-color: var(--clr-current-3);
+  border: var(--border-pri);
+}
+
+main h1 {
+  font-size: 3em;
+  text-align: center;
+
+  text-transform: uppercase;
+}
