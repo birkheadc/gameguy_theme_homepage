@@ -4,6 +4,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import LandingPage from '../pages/landing/LandingPage';
 import ProjectsPage from '../pages/projects/ProjectsPage';
 import Background from '../background/Background';
+import ThemeSelector from '../themeSelector/ThemeSelector';
+import NavBar from '../nav/navBar/NavBar';
 
 interface AppProps {
 
@@ -15,20 +17,23 @@ interface AppProps {
  */
 function App(props: AppProps): JSX.Element | null {
 
-  const [theme, setTheme] = React.useState<number>(0);
+  const [showNav, setShowNav] = React.useState<boolean>(false);
+  const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme.toString());
-  }, [ theme ]);
+  const toggleNav =() => {
+    setShowNav(show => !show);
+  }
 
-  const changeTheme = (theme: number) => {
-    setTheme(theme);
+  const toggleThemeSelector = () => {
+    setShowThemeSelector(show => !show);
   }
 
   return (
     <>
       <Background />
+      <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
       <div className='full'>
+        <ThemeSelector isVisible={showThemeSelector} />
         <BrowserRouter>
           <main>
             <Routes>

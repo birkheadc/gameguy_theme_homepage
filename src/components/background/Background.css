@@ -1,0 +1,11 @@
+div#background {
+  height: 100%;
+  width: 100svw;
+
+  background-color: var(--clr-current-3);
+  background-image: var(--img-current-tree);
+  background-repeat: round;
+
+  position: absolute;
+  z-index: -1;
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import './ThemeSelector.css';
 
 interface ThemeSelectorProps {
-  changeTheme: (theme: number) => void
+  isVisible: boolean
 }
 /**
  * 
@@ -11,8 +11,14 @@ interface ThemeSelectorProps {
  */
 function ThemeSelector(props: ThemeSelectorProps): JSX.Element | null {
 
+  const [theme, setTheme] = React.useState<number>(0);
+
+  React.useEffect(function setDocumentTheme() {
+    document.documentElement.setAttribute('data-theme', theme.toString());
+  }, [ theme ]);
+
   return (
-    <div className='theme-selector-wrapper'>
+    <div className='theme-selector-wrapper' style={getStyleForWrapper(props.isVisible)}>
       <div>
         <h2>Game Guy</h2>
         <p>Choose a color theme.</p>
@@ -21,7 +27,7 @@ function ThemeSelector(props: ThemeSelectorProps): JSX.Element | null {
         {
           Array.from(Array(12).keys()).map(
             index =>
-            <button key={index} onClick={() => {props.changeTheme(index)}} style={getStyleForIndex(index)}></button>
+            <button key={index} onClick={() => {setTheme(index)}} style={getStyleForIndex(index)}></button>
           )
         }
       </div>
@@ -37,5 +43,12 @@ function getStyleForIndex(index: number): React.CSSProperties {
   const right = `var(--clr-${index.toString().padStart(2, '0')}-2)`;
   return {
     backgroundImage: `linear-gradient(to top, ${left}, ${right})`
+  }
+}
+
+function getStyleForWrapper(isVisible: boolean): React.CSSProperties {
+  return {
+    opacity: isVisible ? 1 : 0,
+    pointerEvents: isVisible ? 'all' : 'none'
   }
 }

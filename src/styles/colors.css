@@ -64,8 +64,10 @@
   --clr-11-1: #f0ff00;
   --clr-11-2: #00a2a1;
   --clr-11-3: #000000;
+}
 
-  
+html {
+  color: var(--clr-current-1);
 }
 
 [data-theme="0"] {

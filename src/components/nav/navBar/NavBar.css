@@ -1,0 +1,30 @@
+div#nav-bar {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+div#nav-bar>button {
+  border: solid 2px var(--clr-current-0);
+  border-radius: 25%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+div#nav-bar>button:hover, div#nav-bar>button:focus {
+  transform: scale(1.2);
+}
+
+button#toggle-nav-button {
+    
+}
+
+button#toggle-theme-selector-button {
+  background: linear-gradient(to bottom, var(--clr-01-1) 0%, var(--clr-02-2) 50%, var(--clr-05-1) 100%);
+}
