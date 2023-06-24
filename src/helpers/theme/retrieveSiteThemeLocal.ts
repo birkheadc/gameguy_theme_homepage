@@ -1,4 +1,3 @@
 export default function retrieveSiteThemeLocal(): number {
-  // Todo
-  return 3;
+  return parseInt(window.localStorage.getItem('theme') ?? '0');
 }

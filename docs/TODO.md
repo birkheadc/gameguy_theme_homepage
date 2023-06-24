@@ -15,4 +15,3 @@
   - Build content
 
   - Somehow wait for all fonts and images to load before displaying page
-  - Implement add and retrieval of theme to local storage

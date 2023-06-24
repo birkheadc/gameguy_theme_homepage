@@ -9,7 +9,7 @@ div#nav-bar {
 
 div#nav-bar>button {
   border: solid 1px var(--clr-current-0);
-  border-radius: 10%;
+  border-radius: 5px;
   width: 50px;
   height: 50px;
   
@@ -20,6 +20,9 @@ div#nav-bar>button {
   align-items: center;
 
   overflow: hidden;
+
+  padding: 5px;
+  background-color: var(--clr-current-3);
 }
 
 div#nav-bar>button>* {
@@ -38,5 +41,6 @@ button#toggle-nav-button {
 button#toggle-theme-selector-button>span {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   background: linear-gradient(to bottom, var(--clr-current-1) 0%, var(--clr-current-3) 50%, var(--clr-current-2) 100%);
 }
