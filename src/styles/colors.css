@@ -5,10 +5,10 @@
 /* Depending on the palette, 'darkest' and 'lightest' can be arbitrary. */
 
 :root {
-  --clr-00-0: #000000;
-  --clr-00-1: #727272;
-  --clr-00-2: #b8b8b8;
-  --clr-00-3: #f8f8f8;
+  --clr-00-0: #0f380f;
+  --clr-00-1: #306230;
+  --clr-00-2: #8bac0f;
+  --clr-00-3: #b4d138;
 
   --clr-01-0: #000000;
   --clr-01-1: #9d93f6;
@@ -64,6 +64,11 @@
   --clr-11-1: #f0ff00;
   --clr-11-2: #00a2a1;
   --clr-11-3: #000000;
+
+  --clr-12-0: #000000;
+  --clr-12-1: #727272;
+  --clr-12-2: #b8b8b8;
+  --clr-12-3: #f8f8f8;
 }
 
 html {
@@ -152,5 +157,12 @@ html {
   --clr-current-1: var(--clr-11-1);
   --clr-current-2: var(--clr-11-2);
   --clr-current-3: var(--clr-11-3);
+}
+
+[data-theme="12"] {
+  --clr-current-0: var(--clr-12-0);
+  --clr-current-1: var(--clr-12-1);
+  --clr-current-2: var(--clr-12-2);
+  --clr-current-3: var(--clr-12-3);
 }
 

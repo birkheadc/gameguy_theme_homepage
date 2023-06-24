@@ -1,5 +1,5 @@
-div.theme-selector-wrapper {
-  position:absolute;
+.theme-selector-wrapper {
+  position:fixed;
   background-color: var(--clr-current-3);
   width: min(50%, 500px);
   height: min(50%, 500px);

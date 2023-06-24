@@ -1,5 +1,5 @@
 div#nav-bar {
-  position: absolute;
+  position: fixed;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -8,23 +8,35 @@ div#nav-bar {
 }
 
 div#nav-bar>button {
-  border: solid 2px var(--clr-current-0);
-  border-radius: 25%;
+  border: solid 1px var(--clr-current-0);
+  border-radius: 10%;
   width: 50px;
   height: 50px;
-  text-align: center;
-
+  
   cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
 }
 
-div#nav-bar>button:hover, div#nav-bar>button:focus {
-  transform: scale(1.2);
+div#nav-bar>button>* {
+  transition: transform 300ms;
+}
+
+div#nav-bar>button:hover>*, div#nav-bar>button:focus>* {
+  transform: scale(1.8);
 }
 
 button#toggle-nav-button {
-    
+  background-color: var(--clr-current-3);
+  color: var(--clr-current-1);
 }
 
-button#toggle-theme-selector-button {
-  background: linear-gradient(to bottom, var(--clr-01-1) 0%, var(--clr-02-2) 50%, var(--clr-05-1) 100%);
+button#toggle-theme-selector-button>span {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--clr-current-1) 0%, var(--clr-current-3) 50%, var(--clr-current-2) 100%);
 }

@@ -1,8 +1,11 @@
 import * as React from 'react';
 import './ThemeSelector.css';
+import ReactModal from 'react-modal';
+import helpers from '../../helpers';
 
 interface ThemeSelectorProps {
-  isVisible: boolean
+  isOpen: boolean,
+  requestClose: () => void
 }
 /**
  * 
@@ -11,44 +14,55 @@ interface ThemeSelectorProps {
  */
 function ThemeSelector(props: ThemeSelectorProps): JSX.Element | null {
 
-  const [theme, setTheme] = React.useState<number>(0);
+  const [theme, setTheme] = React.useState<number | null>(null);
+
+  React.useEffect(function getDocumentThemeOnMount() {
+    const theme = helpers.theme.retrieveSiteThemeLocal();
+    setTheme(theme);
+  }, []);
 
   React.useEffect(function setDocumentTheme() {
-    document.documentElement.setAttribute('data-theme', theme.toString());
+    if (theme == null) return;
+    helpers.theme.setSiteTheme(theme);
   }, [ theme ]);
 
+  const handleClick = (theme: number) => {
+    setTheme(theme);
+    props.requestClose();
+  }
+
+  const handleHover = (theme: number) => {
+    setTheme(theme);
+  }
+
   return (
-    <div className='theme-selector-wrapper' style={getStyleForWrapper(props.isVisible)}>
-      <div>
-        <h2>Game Guy</h2>
-        <p>Choose a color theme.</p>
-      </div>
-      <div className='theme-buttons-wrapper'>
-        {
-          Array.from(Array(12).keys()).map(
-            index =>
-            <button key={index} onClick={() => {setTheme(index)}} style={getStyleForIndex(index)}></button>
-          )
-        }
-      </div>
-    </div>
+      <ReactModal className={'theme-selector-wrapper'} isOpen={props.isOpen} onRequestClose={props.requestClose}>
+        <div>
+          <h2>Game Guy</h2>
+          <p>Choose a color theme.</p>
+        </div>
+        <div className='theme-buttons-wrapper'>
+          {
+            Array.from(Array(NUM_THEMES).keys()).map(
+              index =>
+              <button key={index} onClick={() => {handleClick(index)}} onPointerEnter={() => {handleHover(index)}} style={getStyleForIndex(index)}></button>
+            )
+          }
+        </div>
+      </ReactModal>
   );
 }
 
 export default ThemeSelector;
 
 // Helpers
+
+const NUM_THEMES = 13;
+
 function getStyleForIndex(index: number): React.CSSProperties {
   const left = `var(--clr-${index.toString().padStart(2, '0')}-1)`;
   const right = `var(--clr-${index.toString().padStart(2, '0')}-2)`;
   return {
     backgroundImage: `linear-gradient(to top, ${left}, ${right})`
-  }
-}
-
-function getStyleForWrapper(isVisible: boolean): React.CSSProperties {
-  return {
-    opacity: isVisible ? 1 : 0,
-    pointerEvents: isVisible ? 'all' : 'none'
   }
 }

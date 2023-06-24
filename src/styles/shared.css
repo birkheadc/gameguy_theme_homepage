@@ -1,0 +1,14 @@
+.hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-header {
+  margin: 0 auto 1em auto;
+}
+
+.page-block {
+  margin: 0 auto;
+  width: fit-content;
+}

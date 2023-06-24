@@ -13,3 +13,5 @@
     - A 'gameguy' window should slide into view, and user should be able to move with WASD or arrows, or click on a destintion.
     - Clicking on destination will prompt the character to quickly navigate himself (A*?) to the thing.
   - Build content
+
+  - Somehow wait for all fonts and images to load before displaying page

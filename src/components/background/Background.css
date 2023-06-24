@@ -1,6 +1,6 @@
 div#background {
   height: 100%;
-  width: 100svw;
+  width: 100%;
 
   background-color: var(--clr-current-3);
   background-image: var(--img-current-tree);
