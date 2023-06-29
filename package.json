@@ -23,6 +23,7 @@
     "@types/react-modal": "^3.16.0",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
+    "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.3",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "style-loader": "^3.3.3",
@@ -33,7 +34,9 @@
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "react": "^18.2.0",
+    "react-collapsible": "^2.10.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.13.0"

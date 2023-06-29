@@ -1,0 +1,36 @@
+div.project-card-wrapper {
+  border: var(--border-pri);
+  width: 600px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+div.project-card-wrapper a {
+  text-decoration: underline;
+}
+
+div.project-card-wrapper h2 {
+  font-family: var(--font-h);
+  font-size: 1.3em;
+  text-decoration: underline;
+}
+
+span.project-card-description {
+  font-size: 0.9em;
+}
+
+div.more-info-wrapper {
+  border: var(--border-sec);
+}
+
+span.more-info-content {
+  padding: 30px;
+  display: inline-block;
+  border-top: var(--border-sec);
+  white-space:pre-wrap;
+}

@@ -1,13 +1,12 @@
 :root {
   --font-pri: 'VT323', monospace;
-  --font-h: 'Fira Sans', sans-serif;
+  --font-h: 'Bungee', sans-serif;
 }
 
 html {
-  font-family: var(--font-pri);
-  font-size: 1.5rem;
+  
 }
 
 h1, h2 {
-  font-family: var(--font-h);
+  
 }

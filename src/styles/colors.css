@@ -71,10 +71,6 @@
   --clr-12-3: #f8f8f8;
 }
 
-html {
-  color: var(--clr-current-1);
-}
-
 [data-theme="0"] {
   --clr-current-0: var(--clr-00-0);
   --clr-current-1: var(--clr-00-1);

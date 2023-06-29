@@ -1,0 +1,23 @@
+.collapsible-trigger {
+  user-select: none;
+  color: var(--clr-current-1);
+  background-color: var(--clr-current-3);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.collapsible-trigger:hover, .collapsible-trigger:focus {
+  background-color: var(--clr-current-1);
+  color: var(--clr-current-3);
+}
+
+.collapsible-trigger>span {
+  width: 1.5em;
+}
+
+.collapsible-trigger-title {
+  font-family: var(--font-h);
+}

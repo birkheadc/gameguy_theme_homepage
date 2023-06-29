@@ -1,3 +1,4 @@
 :root {
   --border-pri: double 5px var(--clr-current-1);
+  --border-sec: solid 2px var(--clr-current-1);
 }

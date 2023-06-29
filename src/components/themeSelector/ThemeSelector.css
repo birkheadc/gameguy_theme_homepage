@@ -11,6 +11,8 @@
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
+
+  z-index: 2;
 }
 
 div.theme-selector-wrapper>div {

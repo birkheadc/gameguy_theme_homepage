@@ -1,0 +1,25 @@
+div.technologies-display-wrapper {
+  font-size: 0.8em;
+  padding: 5px;
+  width: 100%;
+  background-color: var(--clr-current-2);
+}
+
+div.technologies-display-wrapper>ul {
+  width: min(100%, 300px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 5px;
+}
+
+div.technologies-display-wrapper li {
+  border: var(--border-sec);
+  padding: 5px;
+  white-space: nowrap;
+  background-color: var(--clr-current-3);
+}

@@ -5,6 +5,7 @@ div#nav-bar {
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 40px;
+  pointer-events: none;
 }
 
 div#nav-bar>button {
@@ -12,6 +13,7 @@ div#nav-bar>button {
   border-radius: 5px;
   width: 50px;
   height: 50px;
+  pointer-events: all;
   
   cursor: pointer;
 

@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-// const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
@@ -43,8 +43,8 @@ module.exports = {
       favicon: './src/assets/favicon.ico'
     }),
     new NodePolyfillPlugin(),
-    // new Dotenv({
-    //   systemvars: true
-    // })
+    new Dotenv({
+      systemvars: true
+    })
   ]
 }
