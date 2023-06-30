@@ -1,8 +1,10 @@
 import * as React from 'react';
 import './ProjectImage.css'
+import helpers from '../../../../../helpers';
+import ProcessedImage from '../../../../shared/processedImage/ProcessedImage';
 
 interface IProjectImageProps {
-  folder: string,
+  projectId: string,
   images: string[]
 }
 
@@ -12,12 +14,13 @@ interface IProjectImageProps {
 */
 export default function ProjectImage(props: IProjectImageProps): JSX.Element | null {
 
-  const url = process.env.PROJECTS_URL;
-
   return (
     <div className='project-image-wrapper'>
-      <div className='tint'></div>
-      {props.images.length > 0 && <img className='project-card-image' src={`${url}/static/images/${props.folder}${props.images[0]}`}></img>}
+      {props.images.length > 0 && <ProcessedImage className='project-card-canvas' imageSrc={`${URL}/static/images/${props.projectId}${props.images[0]}`} />}
     </div>
   );
 }
+
+// Helpers
+
+const URL = process.env.PROJECTS_URL;

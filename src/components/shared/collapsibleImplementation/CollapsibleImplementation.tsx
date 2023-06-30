@@ -6,7 +6,8 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 interface CollapsibleImplementationProps {
   triggerTitle: string,
-  children: React.ReactNode
+  children: React.ReactNode,
+  scrollToElementId: string
 }
 
 /**
@@ -19,9 +20,32 @@ function CollapsibleImplementation(props: CollapsibleImplementationProps): JSX.E
 
   const [isOpen, setOpen] = React.useState<boolean>(false);
 
+  React.useEffect(function addListenerToCollapseEventOnMount() {
+    const eventListener = () => setOpen(false);
+    window.addEventListener('onrotate', eventListener)
+    return (() => {
+      window.removeEventListener('onrotate', eventListener);
+    });
+  }, []);
+
+  const handleOpening = () => {
+    setOpen(true);
+    window.dispatchEvent(new Event('onopenmoreinfo'));
+  }
+
+  const handleClosing = () => {
+    setOpen(false);
+  }
+
+  const handleOpen = () => {
+    console.log('Scroll to element of id: ', props.scrollToElementId);
+    const element = document.querySelector(`#${props.scrollToElementId}`);
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  }
+
   function renderTrigger(): JSX.Element {
     return (
-      <div aria-label='Toggle Automatic Slicer' className={'collapsible-trigger ' + (isOpen ? 'collapsible-trigger-open' : '')}>
+      <div aria-label='More Info' className={'collapsible-trigger ' + (isOpen ? 'collapsible-trigger-open' : '')}>
         <h3 className='collapsible-trigger-title'>{props.triggerTitle}</h3>
         <span>{ isOpen ? <ChevronUpIcon className='icon' /> : <ChevronDownIcon className='icon' /> }</span>
       </div>
@@ -30,12 +54,14 @@ function CollapsibleImplementation(props: CollapsibleImplementationProps): JSX.E
 
   return (
     <Collapsible
-      onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
-      transitionTime={100}
-      trigger={renderTrigger()}>
-        {props.children}
-      </Collapsible>
+    open={isOpen}
+    onOpening={handleOpening}
+    onClosing={handleClosing}
+    onOpen={handleOpen}
+    transitionTime={100}
+    trigger={renderTrigger()}>
+      {props.children}
+    </Collapsible>
   );
 }
 

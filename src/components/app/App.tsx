@@ -55,7 +55,7 @@ function App(props: AppProps): JSX.Element | null {
           <main>
             <Routes>
               <Route path='/projects' element={<ProjectsPage />} />
-              <Route path='/' element={<LandingPage />} />
+              <Route path='/' element={<LandingPage openNav={toggleNav} />} />
               <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
             </Routes>
           </main>

@@ -3,22 +3,29 @@ div.technologies-display-wrapper {
   padding: 5px;
   width: 100%;
   background-color: var(--clr-current-2);
+  border: var(--border-sec);
+  border-width: 2px 0 0 0;
+}
+
+div.technologies-display-wrapper h4 {
+  text-align: center;
+  padding: 0.5em;
 }
 
 div.technologies-display-wrapper>ul {
-  width: min(100%, 300px);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: 10px;
-  row-gap: 5px;
+  gap: 5px
 }
 
 div.technologies-display-wrapper li {
-  border: var(--border-sec);
+  flex: 1 0 17%;
+  text-align: center;
   padding: 5px;
   white-space: nowrap;
   background-color: var(--clr-current-3);

@@ -1,10 +1,9 @@
 div.project-card-wrapper {
-  border: var(--border-pri);
-  width: 600px;
-  height: fit-content;
+  width: var(--size-page-block);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 20px;
@@ -20,12 +19,25 @@ div.project-card-wrapper h2 {
   text-decoration: underline;
 }
 
+div.project-card-header {
+  width: 100%;
+}
+
 span.project-card-description {
   font-size: 0.9em;
 }
 
 div.more-info-wrapper {
   border: var(--border-sec);
+}
+
+span.project-card-links {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding-top: 10px;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 span.more-info-content {

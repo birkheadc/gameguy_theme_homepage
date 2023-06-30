@@ -3,3 +3,44 @@ div.welcome-header {
   height: 80px;
   background: var(--img-current-welcome);
 }
+
+div.welcome-message {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  height: 100%;
+  gap: 30px;
+}
+
+div.welcome-message-body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+div.welcome-message p {
+  max-width: max(40vw, 300px);
+}
+
+canvas.welcome-page-canvas {
+  width: max(30vw, 300px);
+  margin: 0 auto;
+}
+
+button.welcome-page-start-button {
+  width: fit-content;
+  border: var(--border-sec);
+  padding: 0.3em 0.5em;
+  margin: 0 auto;
+  font-size: 1.5em;
+  font-family: var(--font-h);
+  background-color: var(--clr-current-1);
+  color: var(--clr-current-3);
+}
+
+button.welcome-page-start-button:hover, button.welcome-page-start-button:focus {
+  background-color: var(--clr-current-2);
+  color: var(--clr-current-1);
+}

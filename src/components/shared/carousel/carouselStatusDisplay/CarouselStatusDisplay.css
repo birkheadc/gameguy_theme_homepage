@@ -1,0 +1,49 @@
+div.carousel-status-display-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+div.carousel-select-buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-carousel-button-gap);
+  position: relative;
+}
+
+button.carousel-select-button {
+  border-radius: 50%;
+  border: solid 1px var(--clr-current-1);
+  background-color: var(--clr-current-3);
+  height: var(--size-carousel-button);
+  width: var(--size-carousel-button);
+  cursor: pointer;
+}
+
+/* button.carousel-select-button.inactive {
+  background-color: var(--clr-current-3);
+} */
+
+/* button.carousel-select-button.active {
+  background-color: var(--clr-current-1);
+} */
+
+div.carousel-select-position-marker {
+  background-color: var(--clr-current-1);
+  border-radius: 50%;
+  height: var(--size-carousel-button);
+  width: var(--size-carousel-button);
+  position: absolute;
+  left: 0;
+  transition: var(--transition-carousel);
+}
+
+button.carousel-lock-button {
+  height: var(--size-carousel-button);
+  width: var(--size-carousel-button);
+  cursor: pointer;
+}

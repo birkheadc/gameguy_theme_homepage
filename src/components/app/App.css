@@ -7,7 +7,7 @@ div.full {
 
   display: flex;
   justify-content: center;
-  padding: 128px;
+  padding: var(--size-border);
 }
 
 main {
@@ -15,7 +15,6 @@ main {
   display:flex;
   flex-direction: column;
 
-  padding: 1em;
   background-color: var(--clr-current-3);
   border: var(--border-pri);
 }

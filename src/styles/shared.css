@@ -8,12 +8,20 @@ a {
   color: var(--clr-current-0);
 }
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-h);
 }
 
 a:hover, a:focus {
   color: var(--clr-current-2);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.disclaimer {
+  font-size: 0.8em;
 }
 
 .flexrow {
@@ -26,10 +34,21 @@ a:hover, a:focus {
   gap: 2em;
 }
 
+.center {
+  margin: 0 auto;
+  width: fit-content;
+}
+
 .hidden {
   position: absolute;
   opacity: 0;
   pointer-events: none;
+}
+
+.page-wrapper {
+  min-height: calc(100vh - 138px);
+  display: flex;
+  flex-direction: column;
 }
 
 .page-header {
@@ -38,5 +57,8 @@ a:hover, a:focus {
 
 .page-block {
   margin: 0 auto;
-  width: fit-content;
+  width: var(--size-page-block);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }

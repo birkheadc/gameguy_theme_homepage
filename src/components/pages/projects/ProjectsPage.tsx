@@ -3,6 +3,7 @@ import './ProjectsPage.css';
 import api from '../../../api';
 import { IProject } from '../../../types/project';
 import ProjectCard from './projectCard/ProjectCard';
+import Carousel from '../../shared/carousel/Carousel';
 
 interface ProjectsPageProps {
 
@@ -24,14 +25,16 @@ function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
   }, []);
 
   return (
-    <div className='projects-page-wrapper'>
+    <div className='projects-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
       <div aria-hidden='true' className='projects-header page-header' role='img' title='Projects'></div>
       <div className='page-block'>
-        {projects.map(
-          project =>
-          <ProjectCard key={project.id} project={project} />
-        )}
+        <Carousel rotateIntervalInMs={5000} >
+          {projects.map(
+            project =>
+            <ProjectCard key={project.id} project={project} />
+          )}
+        </Carousel>
       </div>
     </div>
   );

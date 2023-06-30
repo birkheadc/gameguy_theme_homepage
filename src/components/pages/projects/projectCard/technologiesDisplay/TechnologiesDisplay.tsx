@@ -15,6 +15,7 @@ export default function TechnologiesDisplay(props: ITechnologiesDisplayProps): J
 
   return (
     <div className='technologies-display-wrapper'>
+      <h4>Technologies</h4>
       <ul>
         {technologies.map(
           technology =>
@@ -24,3 +25,7 @@ export default function TechnologiesDisplay(props: ITechnologiesDisplayProps): J
     </div>
   );
 }
+
+// Helpers
+
+const NUM_PER_ROW: number = 4;

@@ -1,18 +1,16 @@
 div.project-image-wrapper {
-  display: grid;
-  grid-template: 1fr / 1fr;
-  place-items: center;
-
-  width: fit-content;
+  height: 300px;
+  width: 100%;
+  margin: 0 auto;
+  flex-grow: 1;
+  border: double 5px var(--clr-current-1);
+  padding: 10px;
 }
 
-img.project-card-image {
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-  
-  max-height: 300px;
+canvas.project-card-canvas {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
   object-fit: contain;
-  border: var(--border-sec);
-
   z-index: 0;
 }
