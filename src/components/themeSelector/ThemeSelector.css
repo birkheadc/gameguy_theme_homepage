@@ -1,8 +1,8 @@
 .theme-selector-wrapper {
   position:fixed;
   background-color: var(--clr-current-3);
-  width: min(50%, 500px);
-  height: min(50%, 500px);
+  width: min(80%, 600px);
+  height: min(80%, 600px);
   margin: auto;
   inset: 0;
 
@@ -44,12 +44,12 @@ div.theme-buttons-wrapper {
 }
 
 div.theme-buttons-wrapper>button {
-  height: 20px;
+  height: 50px;
   flex: 1;
   cursor: pointer;
   pointer-events: all;
 }
 
 div.theme-buttons-wrapper>button:hover, div.theme-buttons-wrapper>button:focus {
-  transform: scale(1.2);
+  height: 100px;
 }

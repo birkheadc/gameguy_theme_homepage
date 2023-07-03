@@ -3,7 +3,6 @@ div.project-image-wrapper {
   width: 100%;
   margin: 0 auto;
   flex-grow: 1;
-  border: double 5px var(--clr-current-1);
   padding: 10px;
 }
 

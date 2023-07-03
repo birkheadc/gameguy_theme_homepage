@@ -1,7 +1,9 @@
 import * as React from 'react';
 import './NavGame.css';
 import ReactModal from 'react-modal';
-import { NavLink } from 'react-router-dom';
+import Grid from './grid/Grid';
+import defaultGrid from './defaultGrid';
+import Player from './player/Player';
 
 interface NavGameProps {
   isOpen: boolean,
@@ -15,10 +17,8 @@ interface NavGameProps {
 function NavGame(props: NavGameProps): JSX.Element | null {
   return (
     <ReactModal className='nav-game-wrapper' isOpen={props.isOpen} onRequestClose={props.requestClose}>
-      <ul className='nav-links'>
-        <li><NavLink to='/'>Welcome</NavLink></li>
-        <li><NavLink to='/projects'>Projects</NavLink></li>
-      </ul>
+      <Player grid={defaultGrid.grid} />
+      <Grid grid={defaultGrid.grid} />
     </ReactModal>
   );
 }

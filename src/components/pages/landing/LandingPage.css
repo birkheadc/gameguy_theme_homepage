@@ -1,9 +1,3 @@
-div.welcome-header {
-  width: 180px;
-  height: 80px;
-  background: var(--img-current-welcome);
-}
-
 div.welcome-message {
   margin: 0 auto;
   display: flex;
@@ -32,7 +26,7 @@ canvas.welcome-page-canvas {
 button.welcome-page-start-button {
   width: fit-content;
   border: var(--border-sec);
-  padding: 0.3em 0.5em;
+  padding: 0em 0.5em;
   margin: 0 auto;
   font-size: 1.5em;
   font-family: var(--font-h);

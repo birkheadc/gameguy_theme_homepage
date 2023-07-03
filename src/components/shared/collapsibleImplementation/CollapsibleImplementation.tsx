@@ -38,7 +38,6 @@ function CollapsibleImplementation(props: CollapsibleImplementationProps): JSX.E
   }
 
   const handleOpen = () => {
-    console.log('Scroll to element of id: ', props.scrollToElementId);
     const element = document.querySelector(`#${props.scrollToElementId}`);
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   }

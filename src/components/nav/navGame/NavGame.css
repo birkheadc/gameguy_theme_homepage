@@ -1,8 +1,8 @@
 .nav-game-wrapper {
   position:fixed;
   background-color: var(--clr-current-3);
-  width: min(50%, 500px);
-  height: min(50%, 500px);
+  width: min(80%, 800px);
+  height:min(80%, 600px);
   margin: auto;
   inset: 0;
 

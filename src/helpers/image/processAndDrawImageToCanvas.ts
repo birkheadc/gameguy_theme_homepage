@@ -1,12 +1,27 @@
+import { IFrame } from "../../types/frame";
 import hexToRgb from "./hexToRgb";
 
-export default async function processAndDrawImageToCanvas(image: HTMLImageElement, canvas: HTMLCanvasElement, colors: string[]): Promise<void> {
+export default async function processAndDrawImageToCanvas(image: HTMLImageElement, canvas: HTMLCanvasElement, colors: string[], frame?: IFrame ): Promise<void> {
+  
+  // Abandon if frame option is present but frame is out of bounds
+  if (frame != null && frame.frame >= frame.total) return;
+
   const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
   if (context == null) return;
 
-  canvas.width = image.width;
-  canvas.height = image.height;
-  context.drawImage(image, 0, 0);
+
+  if (frame) {
+    canvas.width = image.width / frame.total
+    canvas.height = image.height;
+
+    context.drawImage(image, canvas.width * frame.frame, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+  } else {
+    canvas.width = image.width;
+    canvas.height = image.height;
+    context.drawImage(image, 0, 0);
+  }
+
+  
 
   const imageData: ImageData = context.getImageData(0, 0, canvas.width, canvas.height);
   const data: Uint8ClampedArray = imageData.data;
