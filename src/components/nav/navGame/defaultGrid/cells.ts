@@ -8,9 +8,10 @@ const getCells = (): ICell[] => {
 
   for (let x = 0; x < NUM_ROWS; x++) {
     for (let y = 0; y < NUM_COLS; y++) {
+      const isTraversable: boolean = !((x === 0) || (y === 0) || (x === NUM_ROWS - 1) || (y === NUM_COLS - 1));
       const cell: ICell = {
         position: { x, y },
-        isTraversable: true
+        isTraversable
       }
       cells.push(cell);
     }

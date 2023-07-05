@@ -149,5 +149,21 @@ const CELL_SIZE = parseInt(getComputedStyle(document.documentElement).getPropert
 const PLAYER_SPEED = 5;
 
 function canMoveInDirection(currentPosition: IVector2, direction: Direction, grid: IGrid): boolean {
-  return true;
+  const currentCell = { x: currentPosition.x / CELL_SIZE, y: currentPosition.y / CELL_SIZE };
+  const targetCell = {...currentCell};
+  switch (direction) {
+    case Direction.UP:
+      targetCell.y -= 1;
+      break;
+    case Direction.RIGHT:
+      targetCell.x += 1;
+      break;
+    case Direction.DOWN:
+      targetCell.y += 1;
+      break;
+    case Direction.LEFT:
+      targetCell.x -= 1;
+      break;
+  }
+  return grid.cells.find(c => c.position.x === targetCell.x && c.position.y === targetCell.y)?.isTraversable ?? false;
 }

@@ -13,7 +13,7 @@ interface ICellProps {
 export default function Cell(props: ICellProps): JSX.Element | null {
   return (
     <div className='cell-wrapper' style={getCellStyle(props.cell)}>
-      
+      {props.cell.isTraversable ? 'T': 'F'}
     </div>
   );
 }
