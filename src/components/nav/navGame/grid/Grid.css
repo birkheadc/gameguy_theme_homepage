@@ -1,7 +1,20 @@
 div.grid-wrapper {
   height: 100%;
   width: 100%;
-  display: grid;
 
+  overflow: hidden;
+  background-color: aquamarine;
+
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.grid-inner-wrapper {
+  display: grid;
   grid-template: auto / auto;
 }

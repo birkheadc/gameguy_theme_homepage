@@ -69,6 +69,12 @@
   --clr-12-1: #727272;
   --clr-12-2: #b8b8b8;
   --clr-12-3: #f8f8f8;
+
+  --clr-logo-0: #B80A41;
+  --clr-logo-1: #4E4BA8;
+  --clr-logo-2: #6EB122;
+  --clr-logo-3: #DAAC06;
+  --clr-logo-4: #00938A;
 }
 
 [data-theme="0"] {

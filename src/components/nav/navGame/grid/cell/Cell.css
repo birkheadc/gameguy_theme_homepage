@@ -1,3 +1,5 @@
 div.cell-wrapper {
-  border: var(--border-sec);
+  border: solid 1px red;
+  width: var(--size-nav-cell);
+  height: var(--size-nav-cell);
 }

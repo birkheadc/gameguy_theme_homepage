@@ -53,3 +53,23 @@ div.theme-buttons-wrapper>button {
 div.theme-buttons-wrapper>button:hover, div.theme-buttons-wrapper>button:focus {
   height: 100px;
 }
+
+span.color-0 {
+  color: var(--clr-logo-0);
+}
+
+span.color-1 {
+  color: var(--clr-logo-1);
+}
+
+span.color-2 {
+  color: var(--clr-logo-2);
+}
+
+span.color-3 {
+  color: var(--clr-logo-3);
+}
+
+span.color-4 {
+  color: var(--clr-logo-4);
+}

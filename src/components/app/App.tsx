@@ -8,6 +8,7 @@ import ThemeSelector from '../themeSelector/ThemeSelector';
 import NavBar from '../nav/navBar/NavBar';
 import NavGame from '../nav/navGame/NavGame';
 import { useLocation } from 'react-router-dom';
+import defaultGrid from '../nav/navGame/defaultGrid';
 
 interface AppProps {
 
@@ -49,7 +50,7 @@ function App(props: AppProps): JSX.Element | null {
       <Background />
       <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
       <ThemeSelector isOpen={showThemeSelector} requestClose={toggleThemeSelector} />
-      <NavGame isOpen={showNav} requestClose={toggleNav} />
+      <NavGame isOpen={showNav} requestClose={toggleNav} grid={defaultGrid.grid} />
       
       <div className='full'>
           <main>

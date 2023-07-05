@@ -1,8 +1,8 @@
 import { ICell } from "./cell";
+import { IVector2 } from "./vectory2";
 
 export interface IGrid {
-  cellSize: { x: number, y: number },
-  gridSize: { x: number, y: number },
+  gridSize: IVector2,
   cells: ICell[],
-  playerStartCell: { x: number, y: number }
+  playerStartCell: IVector2
 }

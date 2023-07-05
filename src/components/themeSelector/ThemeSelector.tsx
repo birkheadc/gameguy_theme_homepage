@@ -39,7 +39,7 @@ function ThemeSelector(props: ThemeSelectorProps): JSX.Element | null {
       <ReactModal className={'theme-selector-wrapper'} isOpen={props.isOpen} onRequestClose={props.requestClose}>
         <div>
           <h2>Game Guy</h2>
-          <p>Choose a color theme.</p>
+          <p>Choose a <span className='color-0'>c</span><span className='color-1'>o</span><span className='color-2'>l</span><span className='color-3'>o</span><span className='color-4'>r</span> theme.</p>
         </div>
         <div className='theme-buttons-wrapper'>
           {

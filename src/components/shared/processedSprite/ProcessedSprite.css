@@ -1,0 +1,14 @@
+div.processed-sprite-wrapper {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+div.processed-sprite-inner-wrapper {
+  height: 100%;
+}
+
+canvas.processed-sprite-canvas {
+  height: 100%;
+}
