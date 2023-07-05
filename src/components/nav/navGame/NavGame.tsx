@@ -6,7 +6,6 @@ import Player from './player/Player';
 import { IVector2 } from '../../../types/vectory2';
 import { IGrid } from '../../../types/grid';
 import { Direction } from '../../../types/direction';
-import { IAnimationState } from '../../../types/animationState';
 
 interface NavGameProps {
   isOpen: boolean,
