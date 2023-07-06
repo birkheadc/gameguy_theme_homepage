@@ -22,6 +22,12 @@ export default function Grid(props: IGridProps): JSX.Element | null {
           cell =>
           <Cell key={`cell-${cell.position.x}-${cell.position.y}`} cell={cell} />
         )}
+        {props.grid.signs.map(
+          sign =>
+          <div className='grid-sign-wrapper' key={`grid-sign-${sign.text}`} style={calculateSignWrapperStyle(sign.position)}>
+            <span className='grid-sign'>{sign.text}</span>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -35,4 +41,11 @@ function calculateInnerWrapperStyle(currentPosition: IVector2): React.CSSPropert
   return {
     transform: transform
   };
+}
+
+function calculateSignWrapperStyle(position: IVector2): React.CSSProperties {
+  return {
+    gridColumnStart: `${position.x + 1}`,
+    gridRowStart: `${position.y + 1}`
+  }
 }

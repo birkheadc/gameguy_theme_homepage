@@ -1,9 +1,10 @@
 div.project-image-wrapper {
   height: 300px;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   flex-grow: 1;
   padding: 10px;
+  box-shadow: 5px 5px 10px var(--clr-current-1);
 }
 
 canvas.project-card-canvas {

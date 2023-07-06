@@ -14,9 +14,16 @@ interface ICellProps {
 * @returns {JSX.Element | null}
 */
 export default function Cell(props: ICellProps): JSX.Element | null {
+
+  const [imageSrc, setImageSrc] = React.useState<string>('');
+
+  React.useEffect(() => {
+    if (props.cell.sprite != null) setImageSrc(cellSprites.getImage(props.cell.sprite));
+  }, [ props.cell.sprite ]);
+
   return (
     <div className='cell-wrapper' style={getCellStyle(props.cell)}>
-      {props.cell.sprite && <ProcessedImage className={'full-size-canvas'} imageSrc={cellSprites.getImage(props.cell.sprite)} shaderMode={ImageProcessShaderMode.DARK}/>}
+      {props.cell.sprite && <ProcessedImage className={'full-size-canvas'} imageSrc={imageSrc} shaderMode={ImageProcessShaderMode.DARK}/>}
     </div>
   );
 }
@@ -24,6 +31,6 @@ export default function Cell(props: ICellProps): JSX.Element | null {
 function getCellStyle(cell: ICell): React.CSSProperties {
   return {
     gridColumnStart: `${cell.position.x + 1}`,
-    gridRowStart: `${cell.position.y + 1}`
+    gridRowStart: `${cell.position.y + 1}`,
   }
 }

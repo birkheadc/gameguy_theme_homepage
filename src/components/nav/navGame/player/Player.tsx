@@ -24,7 +24,6 @@ export default function Player(props: IPlayerProps): JSX.Element | null {
   }, [ props.isMoving, props.direction ]);
 
   React.useEffect(() => {
-    console.log('ANIMATION CHANGED');
   }, [ animationName ]);
 
   function getSprite(): JSX.Element | null {

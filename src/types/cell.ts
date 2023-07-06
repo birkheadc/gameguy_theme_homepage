@@ -5,5 +5,6 @@ export interface ICell {
   position: IVector2,
   isTraversable: boolean,
   sprite: CellSprite | undefined,
-  interactText: string | null
+  interactText: string | null,
+  navigate: string | null
 }

@@ -19,3 +19,15 @@ div.grid-inner-wrapper {
   display: grid;
   grid-template: auto / auto;
 }
+
+div.grid-sign-wrapper {
+  width: var(--size-nav-cell);
+  height: var(--size-nav-cell);
+}
+
+span.grid-sign {
+  background-color: var(--clr-current-3);
+  border: var(--border-sec);
+  padding: 0.2em 0.4em;
+  white-space: nowrap;
+}

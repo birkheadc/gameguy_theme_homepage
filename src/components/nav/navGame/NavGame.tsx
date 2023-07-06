@@ -8,6 +8,7 @@ import { IGrid } from '../../../types/grid';
 import { Direction } from '../../../types/direction';
 import NavGameHud from './navGameHud/NavGameHud';
 import { ICell } from '../../../types/cell';
+import { useNavigate } from 'react-router-dom';
 
 interface NavGameProps {
   isOpen: boolean,
@@ -27,6 +28,12 @@ function NavGame(props: NavGameProps): JSX.Element | null {
   const [downKeys, setDownKeys] = React.useState<Set<string>>(new Set<string>());
   const [spaceDown, setSpaceDown] = React.useState<boolean>(false);
   const [popupText, setPopupText] = React.useState<string | null>(null);
+
+  const navigate = useNavigate();
+
+  React.useEffect(function setDirectionDownOnOpen() {
+    setDirection(Direction.DOWN);
+  }, [ props.isOpen ]);
 
   React.useEffect(function createIntervalToMoveTowardTargetPosition() {
     let time: number = new Date().getTime();
@@ -91,6 +98,15 @@ function NavGame(props: NavGameProps): JSX.Element | null {
       setDownKeys(new Set<string>());
     })
   }, [ props.isOpen ]);
+
+  React.useEffect(function checkIfCellIsNavigate() {
+    if (currentPosition.x === targetPosition.x && currentPosition.y === targetPosition.y) {
+      const cell = getCurrentCell(currentPosition, props.grid);
+      if (cell && cell.navigate != null) {
+        navigate(cell.navigate);
+      }
+    }
+  }, [ currentPosition, targetPosition ]);
 
   React.useEffect(function calculateTargetPosition() {
     if (popupText != null) return;
@@ -171,24 +187,28 @@ function getDirectionFromKey(key: string): Direction | null {
 const CELL_SIZE = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size-nav-cell') || '0');
 const PLAYER_SPEED = 5;
 
+function getCurrentCell(currentPosition: IVector2, grid: IGrid): ICell | undefined {
+  return grid.cells.find(c => c.position.x === currentPosition.x / CELL_SIZE && c.position.y === currentPosition.y / CELL_SIZE);
+}
+
 function getCellInFrontOfPlayer(currentPosition: IVector2, direction: Direction, grid: IGrid): ICell | undefined {
-  const currentCell = { x: currentPosition.x / CELL_SIZE, y: currentPosition.y / CELL_SIZE };
-  const targetCell = {...currentCell};
+  const currentCellPosition = { x: currentPosition.x / CELL_SIZE, y: currentPosition.y / CELL_SIZE };
+  const targetCellPosition = {...currentCellPosition};
   switch (direction) {
     case Direction.UP:
-      targetCell.y -= 1;
+      targetCellPosition.y -= 1;
       break;
     case Direction.RIGHT:
-      targetCell.x += 1;
+      targetCellPosition.x += 1;
       break;
     case Direction.DOWN:
-      targetCell.y += 1;
+      targetCellPosition.y += 1;
       break;
     case Direction.LEFT:
-      targetCell.x -= 1;
+      targetCellPosition.x -= 1;
       break;
   }
-  return grid.cells.find(c => c.position.x === targetCell.x && c.position.y === targetCell.y);
+  return grid.cells.find(c => c.position.x === targetCellPosition.x && c.position.y === targetCellPosition.y);
 }
 
 function canMoveInDirection(currentPosition: IVector2, direction: Direction, grid: IGrid): boolean {
