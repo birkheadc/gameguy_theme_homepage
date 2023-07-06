@@ -7,5 +7,4 @@
     - Clicking on destination will prompt the character to quickly navigate himself (A*?) to the thing.
   - Build content
   - Somehow wait for all fonts and images to load before displaying page
-  - When opening the collapsible, scroll down to it as well
-  - Refactor background trees and header images to be just a greyscale image that uses the new ProcessedImage component, or at least the same functions.
+  - Refactor background trees to be just a greyscale image that uses the new ProcessedImage component, or at least the same functions.

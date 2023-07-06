@@ -5,6 +5,11 @@ html {
   line-height: 1;
 }
 
+sup {
+  vertical-align: super;
+  font-size: 0.8em;
+}
+
 a {
   color: var(--clr-current-0);
 }

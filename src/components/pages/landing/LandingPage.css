@@ -19,14 +19,14 @@ div.welcome-message p {
 }
 
 canvas.welcome-page-canvas {
-  width: max(30vw, 300px);
+  height: max(15vh, 200px);
   margin: 0 auto;
 }
 
 button.welcome-page-start-button {
   width: fit-content;
   border: var(--border-sec);
-  padding: 0em 0.5em;
+  padding: 0.4em 0.6em;
   margin: 0 auto;
   font-size: 1.5em;
   font-family: var(--font-h);

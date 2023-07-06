@@ -1,10 +1,12 @@
 import * as React from 'react';
 import './ProcessedImage.css';
 import helpers from '../../../helpers';
+import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
 
 interface ProcessedImageProps {
   className: string,
   imageSrc: string,
+  shaderMode: ImageProcessShaderMode
 }
 /**
  * 
@@ -26,14 +28,14 @@ function ProcessedImage(props: ProcessedImageProps): JSX.Element | null {
   React.useEffect(() => {
     (async function processAndDrawNewImageToCanvas() {
       if (image == null || canvasRef.current == null) return;
-      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors());
+      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.shaderMode);
     })();
   }, [ image, canvasRef ]);
 
   React.useEffect(function setEventListenerToReprocessImageOnThemeChange() {
     const listener = () => {
       if (image == null || canvasRef.current == null) return;
-      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors());
+      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.shaderMode);
     }
     window.addEventListener('onchangetheme', listener);
     return (() => {

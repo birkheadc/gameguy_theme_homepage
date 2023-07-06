@@ -1,5 +1,14 @@
 div.cell-wrapper {
-  border: solid 1px red;
   width: var(--size-nav-cell);
   height: var(--size-nav-cell);
+
+  font-size: 0.4em;
+
+  background-color: var(--clr-current-3);
+  box-shadow: 1px 1px var(--clr-current-3);
+}
+
+canvas.full-size-canvas {
+  width: 100%;
+  height: 100%;
 }

@@ -1,7 +1,8 @@
 import { IFrame } from "../../types/frame";
+import { ImageProcessShaderMode } from "../../types/imageProcessShaderMode";
 import hexToRgb from "./hexToRgb";
 
-export default async function processAndDrawImageToCanvas(image: HTMLImageElement, canvas: HTMLCanvasElement, colors: string[]): Promise<void> {
+export default async function processAndDrawImageToCanvas(image: HTMLImageElement, canvas: HTMLCanvasElement, colors: string[], shaderMode: ImageProcessShaderMode): Promise<void> {
   
   const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
   if (context == null) return;
@@ -31,7 +32,18 @@ export default async function processAndDrawImageToCanvas(image: HTMLImageElemen
 
     const average = (r + g + b) / 3;
     const tierCutoff = 255 / rgbColors.length;
-    let tier = Math.round(average / tierCutoff);
+    let tier;
+    switch (shaderMode) {
+      case ImageProcessShaderMode.LIGHT:
+        tier = Math.ceil(average / tierCutoff);
+        break;
+      case ImageProcessShaderMode.NORMAL:
+        tier = Math.round(average / tierCutoff);
+        break;
+      case ImageProcessShaderMode.DARK:
+        tier = Math.floor(average / tierCutoff)
+        break;
+    }
     let ditherDirection: number = 0;
     if (dither) {
       if ((average - (tier * tierCutoff)) > (tierCutoff * 0.3)) {

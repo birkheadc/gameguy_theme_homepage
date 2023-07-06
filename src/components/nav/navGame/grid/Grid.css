@@ -3,7 +3,6 @@ div.grid-wrapper {
   width: 100%;
 
   overflow: hidden;
-  background-color: aquamarine;
 
   grid-row: 1 / 1;
   grid-column: 1 / 1;
@@ -12,6 +11,8 @@ div.grid-wrapper {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+  background-color: var(--clr-current-3);
 }
 
 div.grid-inner-wrapper {
