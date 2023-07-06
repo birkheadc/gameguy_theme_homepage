@@ -6,6 +6,8 @@ import Player from './player/Player';
 import { IVector2 } from '../../../types/vectory2';
 import { IGrid } from '../../../types/grid';
 import { Direction } from '../../../types/direction';
+import NavGameHud from './navGameHud/NavGameHud';
+import { ICell } from '../../../types/cell';
 
 interface NavGameProps {
   isOpen: boolean,
@@ -23,6 +25,8 @@ function NavGame(props: NavGameProps): JSX.Element | null {
   const [isMoving, setMoving] = React.useState<boolean>(false);
   const [direction, setDirection] = React.useState<Direction>(Direction.DOWN);
   const [downKeys, setDownKeys] = React.useState<Set<string>>(new Set<string>());
+  const [spaceDown, setSpaceDown] = React.useState<boolean>(false);
+  const [popupText, setPopupText] = React.useState<string | null>(null);
 
   React.useEffect(function createIntervalToMoveTowardTargetPosition() {
     let time: number = new Date().getTime();
@@ -49,6 +53,11 @@ function NavGame(props: NavGameProps): JSX.Element | null {
 
   React.useEffect(function addKeyListeners() {
     const keydownListener = (event: KeyboardEvent) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        setSpaceDown(true);
+        return;
+      }
       const direction = getDirectionFromKey(event.key);
       if (direction == null) return;
       event.preventDefault();
@@ -56,6 +65,11 @@ function NavGame(props: NavGameProps): JSX.Element | null {
     }
 
     const keyupListener = (event: KeyboardEvent) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        setSpaceDown(false);
+        return;
+      }
       const direction = getDirectionFromKey(event.key);
       if (direction == null) return;
       event.preventDefault();
@@ -79,6 +93,7 @@ function NavGame(props: NavGameProps): JSX.Element | null {
   }, [ props.isOpen ]);
 
   React.useEffect(function calculateTargetPosition() {
+    if (popupText != null) return;
     if (currentPosition.x === targetPosition.x && currentPosition.y === targetPosition.y) {
       if (downKeys.size < 1) {
         setMoving(false);
@@ -111,12 +126,21 @@ function NavGame(props: NavGameProps): JSX.Element | null {
           break;
       }
     }
-  }, [ downKeys, isMoving, currentPosition, targetPosition ]);
+  }, [ downKeys, isMoving, currentPosition, targetPosition, popupText ]);
+
+  React.useEffect(function interactWhenSpaceDown() {
+    if (isMoving) return;
+    if (spaceDown === false) return;
+    const targetCell = getCellInFrontOfPlayer(currentPosition, direction, props.grid);
+    if (targetCell == null) return;
+    setPopupText(t => t == null ? targetCell.interactText : null);
+  }, [ spaceDown, currentPosition, direction, props.grid ]);
 
   return (
     <ReactModal className='nav-game-wrapper' isOpen={props.isOpen} onRequestClose={props.requestClose}>
       <Player isMoving={isMoving} direction={direction} />
       <Grid currentPosition={currentPosition} grid={props.grid} />
+      <NavGameHud popupText={popupText} />
     </ReactModal>
   );
 }
@@ -147,7 +171,7 @@ function getDirectionFromKey(key: string): Direction | null {
 const CELL_SIZE = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size-nav-cell') || '0');
 const PLAYER_SPEED = 5;
 
-function canMoveInDirection(currentPosition: IVector2, direction: Direction, grid: IGrid): boolean {
+function getCellInFrontOfPlayer(currentPosition: IVector2, direction: Direction, grid: IGrid): ICell | undefined {
   const currentCell = { x: currentPosition.x / CELL_SIZE, y: currentPosition.y / CELL_SIZE };
   const targetCell = {...currentCell};
   switch (direction) {
@@ -164,5 +188,11 @@ function canMoveInDirection(currentPosition: IVector2, direction: Direction, gri
       targetCell.x -= 1;
       break;
   }
-  return grid.cells.find(c => c.position.x === targetCell.x && c.position.y === targetCell.y)?.isTraversable ?? false;
+  return grid.cells.find(c => c.position.x === targetCell.x && c.position.y === targetCell.y);
+}
+
+function canMoveInDirection(currentPosition: IVector2, direction: Direction, grid: IGrid): boolean {
+  const targetCell = getCellInFrontOfPlayer(currentPosition, direction, grid);
+  if (targetCell == null) return false;
+  return targetCell.isTraversable;
 }

@@ -1,0 +1,24 @@
+div.text-popup-wrapper {
+  height: 100%;
+  width: 100%;
+
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+div.text-popup-inner-wrapper {
+  z-index: 4;
+  border: var(--border-pri);
+  width: 90%;
+  height: min(4em, 40%);
+  background-color: var(--clr-current-3);
+  margin: 1rem;
+  padding: 0.5em;
+  font-size: 1.5em;
+  overflow: hidden;
+}

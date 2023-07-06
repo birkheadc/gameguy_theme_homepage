@@ -1,0 +1,11 @@
+div.nav-game-hud-wrapper {
+  height: 100%;
+  width: 100%;
+
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+}

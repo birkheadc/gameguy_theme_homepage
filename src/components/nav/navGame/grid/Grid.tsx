@@ -6,7 +6,7 @@ import { IVector2 } from '../../../../types/vectory2';
 
 interface IGridProps {
   grid: IGrid,
-  currentPosition: IVector2
+  currentPosition: IVector2,
 }
 
 /**
