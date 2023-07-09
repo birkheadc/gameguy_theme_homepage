@@ -1,12 +1,11 @@
 import { ICell } from "./cell";
+import { IDoor } from "./door";
+import { ISign } from "./sign";
 import { IVector2 } from "./vectory2";
 
 export interface IGrid {
   gridSize: IVector2,
   cells: ICell[],
-  playerStartCell: IVector2,
-  signs: {
-    text: string,
-    position: IVector2
-  }[]
+  signs: ISign[],
+  doors: IDoor[]
 }

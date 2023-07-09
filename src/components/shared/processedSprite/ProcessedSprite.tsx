@@ -4,10 +4,12 @@ import helpers from '../../../helpers';
 import { IFrame } from '../../../types/frame';
 import { ISpriteAnimation } from '../../../types/spriteAnimation';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
+import { IVector2 } from '../../../types/vectory2';
 
 interface IProcessedSpriteProps {
   imageSrc: string,
-  animation: ISpriteAnimation
+  animation: ISpriteAnimation,
+  pixelateLevel: number
 }
 
 /**
@@ -31,14 +33,14 @@ export default function ProcessedSprite(props: IProcessedSpriteProps): JSX.Eleme
   React.useEffect(() => {
     (async function processAndDrawNewImageToCanvas() {
       if (image == null || canvasRef.current == null) return;
-      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), ImageProcessShaderMode.DARK);
+      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, ImageProcessShaderMode.DARK);
     })();
   }, [ image, canvasRef ]);
 
   React.useEffect(function setEventListenerToReprocessImageOnThemeChange() {
     const listener = () => {
       if (image == null || canvasRef.current == null) return;
-      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), ImageProcessShaderMode.DARK);
+      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, ImageProcessShaderMode.DARK);
     }
     window.addEventListener('onchangetheme', listener);
     return (() => {

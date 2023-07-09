@@ -29,8 +29,8 @@ function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
 
   return (
     <div className='projects-page-wrapper page-wrapper'>
-      <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' imageSrc={headerImage} shaderMode={ImageProcessShaderMode.DARK} />
+      <h1 className='hidden'>Projects</h1>sd
+      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.DARK} />
       <div className='page-block'>
         <Carousel rotateIntervalInMs={5000} >
           {projects.map(

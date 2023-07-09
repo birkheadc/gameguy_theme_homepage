@@ -21,8 +21,8 @@ interface NavGameProps {
  * @returns {JSX.Element | null}
  */
 function NavGame(props: NavGameProps): JSX.Element | null {
-  const [currentPosition, setCurrentPosition] = React.useState<IVector2>({ x: props.grid.playerStartCell.x * CELL_SIZE, y: props.grid.playerStartCell.y * CELL_SIZE});
-  const [targetPosition, setTargetPosition] = React.useState<IVector2>({ x: props.grid.playerStartCell.x * CELL_SIZE, y: props.grid.playerStartCell.y * CELL_SIZE});
+  const [currentPosition, setCurrentPosition] = React.useState<IVector2>({ x: 0 * CELL_SIZE, y: 0 * CELL_SIZE});
+  const [targetPosition, setTargetPosition] = React.useState<IVector2>({ x: 0 * CELL_SIZE, y: 0 * CELL_SIZE});
   const [isMoving, setMoving] = React.useState<boolean>(false);
   const [direction, setDirection] = React.useState<Direction>(Direction.DOWN);
   const [downKeys, setDownKeys] = React.useState<Set<string>>(new Set<string>());
@@ -98,15 +98,6 @@ function NavGame(props: NavGameProps): JSX.Element | null {
       setDownKeys(new Set<string>());
     })
   }, [ props.isOpen ]);
-
-  React.useEffect(function checkIfCellIsNavigate() {
-    if (currentPosition.x === targetPosition.x && currentPosition.y === targetPosition.y) {
-      const cell = getCurrentCell(currentPosition, props.grid);
-      if (cell && cell.navigate != null) {
-        navigate(cell.navigate);
-      }
-    }
-  }, [ currentPosition, targetPosition ]);
 
   React.useEffect(function calculateTargetPosition() {
     if (popupText != null) return;

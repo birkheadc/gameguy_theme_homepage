@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './ProjectImage.css'
-import helpers from '../../../../../helpers';
 import ProcessedImage from '../../../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../../../types/imageProcessShaderMode';
 
@@ -17,7 +16,7 @@ export default function ProjectImage(props: IProjectImageProps): JSX.Element | n
 
   return (
     <div className='project-image-wrapper'>
-      {props.images.length > 0 && <ProcessedImage className='project-card-canvas' imageSrc={`${URL}/static/images/${props.projectId}${props.images[0]}`} shaderMode={ImageProcessShaderMode.DARK} />}
+      {props.images.length > 0 && <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={`${URL}/static/images/${props.projectId}${props.images[0]}`} shaderMode={ImageProcessShaderMode.DARK} />}
     </div>
   );
 }

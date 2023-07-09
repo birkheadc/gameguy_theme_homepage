@@ -29,7 +29,7 @@ export default function Player(props: IPlayerProps): JSX.Element | null {
   function getSprite(): JSX.Element | null {
     const animation = ANIMATIONS.find(a => a.name === animationName);
     if (animation == null) return null;
-    return <ProcessedSprite imageSrc={playerSprite} animation={animation} />;
+    return <ProcessedSprite pixelateLevel={1.5} imageSrc={playerSprite} animation={animation} />;
   }
 
   return (

@@ -58,8 +58,8 @@ a:hover, a:focus {
 }
 
 .page-header {
-  width: min(50%, 300px);
-  margin: 1em auto;
+  width: min(80%, 600px);
+  margin: 0 auto;
 }
 
 .page-block {
