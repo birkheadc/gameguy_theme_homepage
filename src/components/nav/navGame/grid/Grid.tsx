@@ -30,12 +30,6 @@ export default function Grid(props: IGridProps): JSX.Element | null {
     <div className='grid-wrapper' id='grid-wrapper'>
       <div className='grid-inner-wrapper' style={calculateInnerWrapperStyle(props.currentPosition, props.grid)}>
         <ProcessedImage className={'grid-canvas'} imageSrc={gridImage} shaderMode={ImageProcessShaderMode.DARK} pixelateLevel={1} />
-        {props.grid.signs.map(
-          sign =>
-          <div className='grid-sign-wrapper' key={`grid-sign-${sign.text}`} style={calculateSignWrapperStyle(sign.position)}>
-            <span className='grid-sign'>{sign.text}</span>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -88,6 +88,6 @@ const CELL_SIZE = parseInt(getComputedStyle(document.documentElement).getPropert
 
 function getWrapperStyle(frame: number): React.CSSProperties {
   return {
-    transform: `translate(${(frame) * CELL_SIZE * -1}px, 0px)`
+    transform: `translate(${(frame) * (CELL_SIZE + 1) * -1}px, 0px)`
   }
 }
