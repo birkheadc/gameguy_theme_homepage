@@ -13,9 +13,8 @@ export default function ControlsExplanation(props: IControlsExplanationProps): J
   return (
     <div className='controls-explanation-wrapper'>
       <div className='controls-explanation-inner-wrapper'>
-        <span>Move: WASD</span>
-        <span>Interact: Space</span>
-        <span>Mobile: Not Implemented :(</span>
+        <span>Move: WASD | Click</span>
+        <span>Interact: Space | Click</span>
       </div>
     </div>
   );

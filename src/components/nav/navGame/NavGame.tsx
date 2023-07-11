@@ -165,10 +165,15 @@ function NavGame(props: NavGameProps): JSX.Element | null {
     setPopupText(t => t == null ? targetCell.interactText : null);
   }, [ spaceDown, currentPosition, direction, props.grid ]);
 
+  const handleGridClick = (location: IVector2 | null) => {
+    if (location == null) return;
+    setTargetPosition({ x: location.x * CELL_SIZE, y: location.y * CELL_SIZE });
+  }
+
   return (
     <ReactModal className='nav-game-wrapper' isOpen={props.isOpen} onRequestClose={props.requestClose}>
       <Player isMoving={isMoving} direction={direction} />
-      <Grid currentPosition={currentPosition} grid={props.grid} />
+      <Grid currentPosition={currentPosition} grid={props.grid} handleClick={handleGridClick}/>
       <NavGameHud popupText={popupText} />
     </ReactModal>
   );
@@ -202,7 +207,6 @@ const PLAYER_SPEED = 5;
 
 function getCurrentCell(currentPosition: IVector2, grid: IGrid): ICell | undefined {
   return getCellAtPosition(currentPosition, grid);
-  // return grid.cells.find(c => c.position.x === currentPosition.x / CELL_SIZE && c.position.y === currentPosition.y / CELL_SIZE);
 }
 
 function getCellInFrontOfPlayer(currentPosition: IVector2, direction: Direction, grid: IGrid): ICell | undefined {
@@ -223,7 +227,6 @@ function getCellInFrontOfPlayer(currentPosition: IVector2, direction: Direction,
       break;
   }
   return getCellAtPosition(targetCellPosition, grid);
-  // return grid.cells.find(c => c.position.x === targetCellPosition.x && c.position.y === targetCellPosition.y);
 }
 
 function canMoveInDirection(currentPosition: IVector2, direction: Direction, grid: IGrid): boolean {
