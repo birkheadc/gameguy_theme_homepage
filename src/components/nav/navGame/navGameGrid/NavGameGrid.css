@@ -1,0 +1,21 @@
+div.nav-game-grid-wrapper {
+  height: 100%;
+  width: 100%;
+
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: var(--clr-current-3);
+}
+
+canvas.nav-game-grid-canvas {
+  width: 100%;
+  height: 100%;
+}

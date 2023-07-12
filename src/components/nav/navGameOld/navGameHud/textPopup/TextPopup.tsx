@@ -10,11 +10,13 @@ interface ITextPopupProps {
 * @returns {JSX.Element | null}
 */
 export default function TextPopup(props: ITextPopupProps): JSX.Element | null {
-
-  if (props.message == null) return null;
   return (
     <div className='text-popup-wrapper'>
-      {props.message}
+      {props.message &&
+        <div className='text-popup-inner-wrapper'>
+          {props.message}
+        </div>
+      }
     </div>
   );
 }
