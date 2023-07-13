@@ -7,7 +7,7 @@ import Background from '../background/Background';
 import ThemeSelector from '../themeSelector/ThemeSelector';
 import NavBar from '../nav/navBar/NavBar';
 import { useLocation } from 'react-router-dom';
-import defaultGrid from '../nav/navGameOld/defaultGrid';
+import defaultGrid from '../nav/navGame/defaultGrid';
 import NavGame from '../nav/navGame/NavGame';
 
 interface AppProps {
