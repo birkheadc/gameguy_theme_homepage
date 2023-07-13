@@ -5,7 +5,8 @@ div.nav-game-hud-wrapper {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
 
-  display: grid;
-  grid-template: 1fr / 1fr;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 }

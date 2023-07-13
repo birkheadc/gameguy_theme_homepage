@@ -12,10 +12,8 @@ interface IControlsExplanationProps {
 export default function ControlsExplanation(props: IControlsExplanationProps): JSX.Element | null {
   return (
     <div className='controls-explanation-wrapper'>
-      <div className='controls-explanation-inner-wrapper'>
-        <span>Move: WASD | Click</span>
-        <span>Interact: Space | Click</span>
-      </div>
+      <span>Move: WASD | Click</span>
+      <span>Interact: Space | Click</span>
     </div>
   );
 }

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import './App.css';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import LandingPage from '../pages/landing/LandingPage';
 import ProjectsPage from '../pages/projects/ProjectsPage';
 import Background from '../background/Background';
 import ThemeSelector from '../themeSelector/ThemeSelector';
 import NavBar from '../nav/navBar/NavBar';
-import NavGame from '../nav/navGame/NavGame';
 import { useLocation } from 'react-router-dom';
 import defaultGrid from '../nav/navGame/defaultGrid';
+import NavGame from '../nav/navGame/NavGame';
 
 interface AppProps {
 
@@ -51,7 +51,7 @@ function App(props: AppProps): JSX.Element | null {
       <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
       <ThemeSelector isOpen={showThemeSelector} requestClose={toggleThemeSelector} />
       <NavGame isOpen={showNav} requestClose={toggleNav} grid={defaultGrid.grid} />
-      
+
       <div className='full'>
           <main>
             <Routes>

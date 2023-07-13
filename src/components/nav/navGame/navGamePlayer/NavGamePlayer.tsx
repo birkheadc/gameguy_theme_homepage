@@ -1,11 +1,11 @@
 import * as React from 'react';
-import './Player.css'
+import './NavGamePlayer.css'
+import { ISpriteAnimation } from '../../../../types/spriteAnimation';
+import { Direction } from '../../../../types/direction';
 import ProcessedSprite from '../../../shared/processedSprite/ProcessedSprite';
 import playerSprite from '../../../../assets/images/player/player.png';
-import { Direction } from '../../../../types/direction';
-import { ISpriteAnimation } from '../../../../types/spriteAnimation';
 
-interface IPlayerProps {
+interface INavGamePlayerProps {
   isMoving: boolean,
   direction: Direction
 }
@@ -14,8 +14,7 @@ interface IPlayerProps {
 *
 * @returns {JSX.Element | null}
 */
-export default function Player(props: IPlayerProps): JSX.Element | null {
-
+export default function NavGamePlayer(props: INavGamePlayerProps): JSX.Element | null {
   const [ animationName, setAnimationName ] = React.useState<string>('idle_down');
 
   React.useEffect(function setAnimationBasedOnProps() {

@@ -1,5 +1,4 @@
 import { ICell } from "../../../../types/cell";
-import { IVector2 } from "../../../../types/vectory2";
 
 const treeCell: ICell = {
   isTraversable: false,
@@ -23,7 +22,7 @@ const blockedCell: ICell = {
 
 const doorCell: ICell = {
   isTraversable: true,
-  interactText: "Leads inside the building. Maybe I should step inside?"
+  interactText: null
 }
 
 const cells: ICell[][] = [
