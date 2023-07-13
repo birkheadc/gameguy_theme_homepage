@@ -10,7 +10,7 @@ export interface INavGameMovementController {
 export class NavGameMovementController implements INavGameMovementController {
 
   keys: string[];
-  downKeys: Set<string>
+  downKeys: Set<string>;
 
   constructor() {
     this.keys = [ 'w', 'd', 's', 'a', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft' ];

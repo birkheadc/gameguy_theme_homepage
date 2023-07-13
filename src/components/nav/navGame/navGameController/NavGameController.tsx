@@ -7,9 +7,10 @@ import NavGameHud from '../navGameHud/NavGameHud';
 import { NavGameMovementController } from '../../../../types/navGameController/navGameController';
 import { Direction } from '../../../../types/direction';
 import { IVector2 } from '../../../../types/vectory2';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ICell } from '../../../../types/cell';
 import helpers from '../../../../helpers';
+import { IDoor } from '../../../../types/door';
 
 interface INavGameControllerProps {
   grid: IGrid
@@ -24,6 +25,9 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   // The direction the user is currently attempting to move via the keyboard.
   const [controllerDirection, setControllerDirection] = React.useState<Direction | null>(null);
 
+  // The direction the player is facing.
+  const [facingDirection, setFacingDirection] = React.useState<Direction>(Direction.DOWN);
+
   // The current position of the player in pixels in relation to the top left corner of the grid.
   const [truePosition, setTruePosition] = React.useState<IVector2>({ x: 0, y: 0 });
 
@@ -31,11 +35,20 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   // If empty, the player should be standing still.
   const [path, setPath] = React.useState<IVector2[]>([]);
 
+  // The text to display in the hud, or null if none to be played.
+  const [popupText, setPopupText] = React.useState<string | null>(null);
+
+  // Determines whether the player should play a moving animation or idle animation.
+  const [isMoving, setMoving] = React.useState<boolean>(false);
+
   const location = useLocation();
+  const navigate = useNavigate();
+
+  React.useEffect(function clearControllerOnMount() {
+    controller.clearKeysDown();
+  }, []);
 
   React.useEffect(function addKeyboardListeners() {
-
-    controller.clearKeysDown();
 
     const keydownListener = (event: KeyboardEvent) => {
       if (controller.registerKeyDown(event.key)) {
@@ -51,31 +64,47 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
       }
     };
 
+    const spaceListener = (event: KeyboardEvent) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+        interactWithCellInFront();
+      }
+    }
+
     window.addEventListener('keydown', keydownListener);
     window.addEventListener('keyup', keyupListener);
+    window.addEventListener('keydown', spaceListener);
     return (() => {
       window.removeEventListener('keydown', keydownListener);
       window.removeEventListener('keyup', keyupListener);
-      controller.clearKeysDown();
+      window.removeEventListener('keydown', spaceListener);
     });
-  }, []);
+  }, [ truePosition, facingDirection, props.grid]);
 
   React.useEffect(function calculateInitialPosition() {
-    const door = props.grid.doors.find(door => door.location === location.pathname);
-    setTruePosition({ x: (door?.position.x ?? 0) * CELL_SIZE, y: (door?.position.y ?? 0) * CELL_SIZE });
+    const door = getDoorAtLocation(location.pathname, props.grid);
+    setTruePosition({ x: (door?.position.x ?? 0) * CELL_SIZE, y: ((door?.position.y ?? 0) + 1) * CELL_SIZE });
   }, [ location, props.grid ]);
 
   React.useEffect(function calculatePathFromDirection() {
     if (controllerDirection == null) return;
-    if (path.length > 0) return;
-    const newPath = [];
-    const targetPosition = calculatePositionInDirection(truePosition, controllerDirection)
-    const targetCell = getCellAtPosition(targetPosition, props.grid);
-    if (targetCell && targetCell.isTraversable === true) {
-      newPath.push(targetPosition);
-      setPath(newPath);
-    }
-  }, [ controllerDirection, path, truePosition ]);
+    if (popupText != null) return;
+    setFacingDirection(fd => {
+      if (isMoving) return fd;
+      return controllerDirection;
+    });
+    setPath(path => {
+      if (path.length > 0) return path;
+      const targetPosition = calculatePositionInDirection(truePosition, controllerDirection)
+      const targetCell = getCellAtPosition(targetPosition, props.grid);
+      if (targetCell && targetCell.isTraversable === true) {
+        const newPath: IVector2[] = [];
+        newPath.push(targetPosition);
+        return newPath;
+      }
+      return path;
+    });
+  }, [ controllerDirection, truePosition, popupText, path ]);
 
   React.useEffect(function addListenerToMoveTowardsFirstPositionOnPath() {
     if (path.length < 1) return;
@@ -87,6 +116,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
       const distance = (PLAYER_SPEED * CELL_SIZE) / (1000 / delta);
       setTruePosition((position) => {
         const targetDirection = calculateDirectionToPosition(position, path[0]);
+        setFacingDirection(targetDirection);
         switch (targetDirection) {
           case Direction.UP:
             return {...position, y: Math.max(position.y - distance, path[0].y) };
@@ -105,6 +135,12 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     })
   }, [ path ]);
 
+  React.useEffect(function navigateWhenReachDoorCell() {
+    const door: IDoor | undefined = getDoorAtPosition(truePosition, props.grid);
+    if (door == null) return;
+    navigate(door.location);
+  }, [ truePosition, props.grid ]);
+
   React.useEffect(function updatePathWhenPositionReachesFirstElement() {
     setPath(path => {
       if (path.length < 1) return path;
@@ -117,16 +153,57 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     });
   }, [ truePosition ])
 
+  React.useEffect(function updateIsMoving() {
+    if (popupText != null) {
+      setMoving(false);
+      return;
+    }
+    if (path.length > 0) {
+      setMoving(true);
+    } else {
+      if (controllerDirection == null) {
+        setMoving(false);
+      } else {
+        const nextCell = getCellAtPosition(calculatePositionInDirection(truePosition, controllerDirection), props.grid);
+        setMoving(nextCell != null && nextCell.isTraversable === true);
+      }
+    }
+  }, [ path, controllerDirection, props.grid, truePosition, popupText ]);
+
   const handleGridClick = (clickLocation: IVector2 | null) => {
+    if (popupText != null) {
+      setPopupText(null);
+      return;
+    }
     if (clickLocation == null) return;
-    setPath((path) => path.length > 0 ? path : calculatePathBetweenPositions(truePosition, clickLocation, props.grid));
+    const cell = getCellAtPosition(clickLocation, props.grid);
+    if (cell && arePositionsNeighboringOrSame(truePosition, clickLocation)) {
+      setFacingDirection(calculateDirectionToPosition({ x: Math.floor(truePosition.x / CELL_SIZE), y: Math.floor(truePosition.y / CELL_SIZE)}, { x: Math.floor(clickLocation.x / CELL_SIZE), y: Math.floor(clickLocation.y / CELL_SIZE)}));
+      setPopupText(cell.interactText);
+    }
+    let moveLocation: IVector2 | null = clickLocation;
+    if (getCellAtPosition(clickLocation, props.grid)?.isTraversable === false) {
+      if (cell && arePositionsNeighboringOrSame(truePosition, clickLocation)) {
+        return;
+      }
+      moveLocation = getTraversableNeighboringPosition(clickLocation, props.grid);
+    }
+    setPath((path) => (path.length > 0 || moveLocation == null) ? path : calculatePathBetweenPositions(truePosition, moveLocation, props.grid));
+  }
+
+  const interactWithCellInFront = () => {
+    setPopupText(text => {
+      if (text != null) return null;
+      const cell = getCellAtPosition(calculatePositionInDirection(truePosition, facingDirection), props.grid);
+      return cell?.interactText ?? null;
+    });
   }
 
   return (
     <div className='nav-game-wrapper'>
-      <NavGamePlayer />
+      <NavGamePlayer isMoving={isMoving} direction={facingDirection} />
       <NavGameGrid handleClick={handleGridClick} truePosition={truePosition} grid={props.grid} />
-      <NavGameHud popupText={null} />
+      <NavGameHud popupText={popupText} />
     </div>
   );
 }
@@ -174,4 +251,50 @@ function getCellAtPosition(position: IVector2, grid: IGrid): ICell | null {
   } catch {
     return null;
   }
+}
+
+function getTraversableNeighboringPosition(cell: IVector2, grid: IGrid): IVector2 | null {
+  const downPosition = calculatePositionInDirection(cell, Direction.DOWN)
+  if (getCellAtPosition(downPosition, grid)?.isTraversable === true) return downPosition;
+
+  const rightPosition = calculatePositionInDirection(cell, Direction.RIGHT);
+  if (getCellAtPosition(rightPosition, grid)?.isTraversable === true) return rightPosition;
+  
+  const leftPosition = calculatePositionInDirection(cell, Direction.LEFT);
+  if (getCellAtPosition(leftPosition, grid)?.isTraversable === true) return leftPosition;
+
+  const upPosition = calculatePositionInDirection(cell, Direction.UP);
+  if (getCellAtPosition(upPosition, grid)?.isTraversable === true) return upPosition;
+
+  return null;
+}
+
+function arePositionsNeighboringOrSame(a: IVector2, b: IVector2): boolean {
+  const cellA = { x: Math.floor(a.x / CELL_SIZE), y: Math.floor(a.y / CELL_SIZE) };
+  const cellB = { x: Math.floor(b.x / CELL_SIZE), y: Math.floor(b.y / CELL_SIZE) };
+
+  if (cellA.x === cellB.x && cellA.y === cellB.y) {
+    return true
+  };
+
+  if (cellA.x === cellB.x) {
+    const solution = Math.abs(cellA.y - cellB.y) <= 1;
+    return solution;
+  }
+  
+  if (cellA.y === cellB.y) {
+    const solution = Math.abs(cellA.x - cellB.x) <= 1;
+    return solution;
+  }
+
+  return false;
+}
+
+function getDoorAtPosition(position: IVector2, grid: IGrid): IDoor | undefined {
+  const door = grid.doors.find(d => d.position.x === (position.x / CELL_SIZE) && d.position.y === (position.y / CELL_SIZE));
+  return door;
+}
+
+function getDoorAtLocation(location: string, grid: IGrid): IDoor | undefined {
+  return grid.doors.find(d => d.location === location);
 }

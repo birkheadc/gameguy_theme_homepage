@@ -2,6 +2,8 @@ import { ICell } from "../../types/cell";
 import { IVector2 } from "../../types/vectory2";
 
 export default function findPath(from: IVector2, to: IVector2, gridCells: ICell[][]): IVector2[] {
+  // Return empty array if already at destination.
+  if (from.x === to.x && from.y === to.y) return [];
   // Return empty array if parameters are invalid.
   if (gridCells.length < 1 || gridCells[0].length < 1) return []; 
   if (from.x >= gridCells.length || from.y >= gridCells[0].length || to.x >= gridCells.length || to.y >= gridCells[0].length) return [];
@@ -27,8 +29,6 @@ export default function findPath(from: IVector2, to: IVector2, gridCells: ICell[
     if (q == null) return [];
 
     const qG = cells[q.x][q.y];
-    const qH = calculateH(q, to);
-    const qF = qG + qH;
     
     const successors = generateSuccessors(q, cells.length - 1, cells[0].length - 1);
     for (let i = 0; i < successors.length; i++) {
