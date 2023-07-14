@@ -10,11 +10,13 @@ export default function processCanvas(canvas: HTMLCanvasElement, colors: string[
   const data: Uint8ClampedArray = imageData.data;
 
   const rgbColors = colors.map(color => hexToRgb(color));
-  // DitherUp toggles whenever applying a 'dither-pixel', to roughly estimate checkerboard dithering
+  // DitherUp toggles true/false whenever applying a 'dither-pixel', to roughly estimate checkerboard dithering
   let dither: boolean = true;
   let rowLength = 0;
 
   for (let i = 0; i < data.length; i += 4) {
+    // In order to get a checkerboard effect, if the image width is even, each row must be offset.
+    // If the image width is odd, this will happen naturally.
     if (imageData.width % 2 == 0 && rowLength >= imageData.width) {
       rowLength = 0;
       dither = !dither;

@@ -1,11 +1,5 @@
 # Todo
-  - Create assets. Need to mimic retro assets.
-    - Buildings for nav.
-    - Animated character sprite for nav.
-  - Build the nav
-    - A 'gameguy' window should slide into view, and user should be able to move with WASD or arrows, or click on a destintion.
-    - Clicking on destination will prompt the character to quickly navigate himself (A*?) to the thing.
-    - Player should face a direction on the first tap of button before moving there.
-  - Build content
   - Somehow wait for all fonts and images to load before displaying page
-  - Refactor background trees to be just a greyscale image that uses the new ProcessedImage component, or at least the same functions.
+  - Build more content
+  - Change open-nav / open-theme-selector buttons
+  - change Visit / Source buttons in projects page, should be more of a call-to-action
