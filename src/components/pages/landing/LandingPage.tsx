@@ -21,13 +21,13 @@ function LandingPage(props: LandingPageProps): JSX.Element | null {
       <div className='page-block'>
         <div className='welcome-message'>
           <div className='welcome-message-body'>
-            <p>Hello there! Welcome to the world of RéACT! My name is <span className='underline'>COLBY BIRKHEAD!</span> People call me the RéACT PROF!<sup>*</sup></p>
+            <p>Hello there! Welcome to the world of CODéMON! My name is <span className='underline'>COLBY BIRKHEAD!</span> People call me the CODéMON PROF!<sup>*</sup></p>
             {/* <canvas className='welcome-page-canvas' ref={canvasRef}></canvas> */}
             <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
-            <p>VISITOR! Your very own RéACT legend is about to unfold! A world of dreams and adventures with RéACT awaits! Let's go!</p>
+            <p>VISITOR! Your very own CODéMON legend is about to unfold! A world of dreams and adventures with CODéMON awaits! Let's go!</p>
             <button className='welcome-page-start-button' onClick={props.openNav}>Start</button>
           </div>
-          <p className='disclaimer'><sup>*</sup> No one actually calls me the React Prof.</p>
+          <p className='disclaimer'><sup>*</sup> No one actually calls me the Codemon Prof, or the anything Prof for that matter.</p>
         </div>
       </div>
     </div>

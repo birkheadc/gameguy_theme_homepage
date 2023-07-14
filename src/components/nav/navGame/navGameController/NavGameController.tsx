@@ -29,7 +29,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   const [facingDirection, setFacingDirection] = React.useState<Direction>(Direction.DOWN);
 
   // The current position of the player in pixels in relation to the top left corner of the grid.
-  const [truePosition, setTruePosition] = React.useState<IVector2>({ x: 0, y: 0 });
+  const [truePosition, setTruePosition] = React.useState<IVector2>(props.grid.defaultCell);
 
   // The current calculated path the player will attempt to walk to reach it's goal position.
   // If empty, the player should be standing still.

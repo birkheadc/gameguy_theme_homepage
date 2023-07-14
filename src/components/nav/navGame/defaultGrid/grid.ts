@@ -18,7 +18,8 @@ const doors: IDoor[] = [
 const grid: IGrid = {
   gridSize,
   cells,
-  doors
+  doors,
+  defaultCell: { x: 1, y: 1}
 }
 
 export default grid;
