@@ -9,6 +9,10 @@ import NavBar from '../nav/navBar/NavBar';
 import { useLocation } from 'react-router-dom';
 import defaultGrid from '../nav/navGame/defaultGrid';
 import NavGame from '../nav/navGame/NavGame';
+import WelcomePage from '../pages/welcome/WelcomePage';
+import { IProject } from '../../types/project/project';
+import preload from './preload';
+import { IProjectWithImages } from '../../types/project/projectWithImages';
 
 interface AppProps {
 
@@ -20,6 +24,8 @@ interface AppProps {
  */
 function App(props: AppProps): JSX.Element | null {
 
+  const [projects, setProjects] = React.useState<IProjectWithImages[]>([]);
+
   const [showNav, setShowNav] = React.useState<boolean>(false);
   const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(false);
   const location = useLocation();
@@ -28,6 +34,12 @@ function App(props: AppProps): JSX.Element | null {
     setShowNav(false);
     setShowThemeSelector(false);
   }, [ location ]);
+
+  React.useEffect(function preloadAssetsOnMount() {
+    preload.projects.loadProjects(setProjects);
+  }, []);
+
+  React.useEffect(() => { console.log('Projects: ', projects) }, [ projects ]);
 
   const toggleNav = () => {
     // Remove focus from the button after pressing it.
@@ -55,8 +67,9 @@ function App(props: AppProps): JSX.Element | null {
       <div className='full'>
           <main>
             <Routes>
-              <Route path='/projects' element={<ProjectsPage />} />
-              <Route path='/' element={<LandingPage openNav={toggleNav} />} />
+              <Route path='/welcome' element={<WelcomePage openNav={toggleNav} />} />
+              <Route path='/projects' element={<ProjectsPage projects={projects} />} />
+              <Route path='/' element={<LandingPage />} />
               <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
             </Routes>
           </main>

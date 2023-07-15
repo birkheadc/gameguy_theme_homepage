@@ -1,5 +1,5 @@
 import { ApiResult, IApiResult } from "../../../types/apiResult";
-import { IProject } from "../../../types/project";
+import { IProject } from "../../../types/project/project";
 
 export default async function getAll(): Promise<IApiResult<IProject[]>> {
   const url = process.env.PROJECTS_URL + '/api/projects';

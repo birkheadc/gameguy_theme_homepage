@@ -6,7 +6,7 @@ import { IVector2 } from '../../../types/vectory2';
 
 interface ProcessedImageProps {
   className: string,
-  imageSrc: string,
+  imageSrc: string | HTMLImageElement,
   shaderMode: ImageProcessShaderMode,
   pixelateLevel: number
 }
@@ -21,10 +21,14 @@ function ProcessedImage(props: ProcessedImageProps): JSX.Element | null {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
   React.useEffect(function setImageOnMount() {
-    const image = new Image();
-    image.src = props.imageSrc;
-    image.crossOrigin = 'anonymous';
-    image.onload = () => setImage(image);
+    if (props.imageSrc instanceof HTMLImageElement) {
+      setImage(props.imageSrc);
+    } else {
+      const image = new Image();
+      image.src = props.imageSrc;
+      image.crossOrigin = 'anonymous';
+      image.onload = () => setImage(image);
+    }
   }, [ props.imageSrc ]);
 
   React.useEffect(() => {
