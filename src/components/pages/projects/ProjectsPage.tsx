@@ -29,14 +29,16 @@ function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
   return (
     <div className='projects-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.DARK} />
+      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
-        <Carousel rotateIntervalInMs={5000} >
-          {props.projects.map(
-            project =>
-            <ProjectCard key={project.project.id} project={project} />
-          )}
-        </Carousel>
+        <div className='project-page-carousel-wrapper'>
+          <Carousel isControllable={true} rotateIntervalInMs={5000} >
+            {props.projects.map(
+              project =>
+              <ProjectCard key={project.project.id} project={project} />
+            )}
+          </Carousel>
+        </div>
       </div>
     </div>
   );

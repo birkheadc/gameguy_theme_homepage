@@ -4,7 +4,7 @@ import { IProjectWithImages } from "../../../../types/project/projectWithImages"
 
 const URL = process.env.PROJECTS_URL;
 
-async function loadProjects(callback: (projects: IProjectWithImages[]) => void) {
+function loadProjects(callback: (projects: IProjectWithImages[]) => void) {
   api.projects.getAll()
     .then(result => {
       const projectsWithImages: IProjectWithImages[] = [];

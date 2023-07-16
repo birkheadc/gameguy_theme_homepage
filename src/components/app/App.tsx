@@ -25,6 +25,7 @@ interface AppProps {
 function App(props: AppProps): JSX.Element | null {
 
   const [projects, setProjects] = React.useState<IProjectWithImages[]>([]);
+  const [devicons, setDevicons] = React.useState<HTMLImageElement[]>([]);
 
   const [showNav, setShowNav] = React.useState<boolean>(false);
   const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(false);
@@ -37,6 +38,7 @@ function App(props: AppProps): JSX.Element | null {
 
   React.useEffect(function preloadAssetsOnMount() {
     preload.projects.loadProjects(setProjects);
+    preload.devicons.loadDevicons(setDevicons);
   }, []);
 
   React.useEffect(() => { console.log('Projects: ', projects) }, [ projects ]);
@@ -67,7 +69,7 @@ function App(props: AppProps): JSX.Element | null {
       <div className='full'>
           <main>
             <Routes>
-              <Route path='/welcome' element={<WelcomePage openNav={toggleNav} />} />
+              <Route path='/welcome' element={<WelcomePage devicons={devicons} openNav={toggleNav} />} />
               <Route path='/projects' element={<ProjectsPage projects={projects} />} />
               <Route path='/' element={<LandingPage />} />
               <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />

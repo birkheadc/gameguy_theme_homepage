@@ -4,8 +4,11 @@ import myPhoto from '../../../assets/images/pictures/me02.png';
 import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import headerImage from '../../../assets/images/headers/welcome.png';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
+import Carousel from '../../shared/carousel/Carousel';
+import DevIconsSlider from './devIconsSlider/DevIconsSlider';
 
 interface IWelcomePageProps {
+  devicons: HTMLImageElement[],
   openNav: () => void
 }
 
@@ -22,7 +25,10 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
         <div className='welcome-message'>
           <div className='welcome-message-body'>
             <p>Hello there! Welcome to the world of CODéMON! My name is <span className='underline'>COLBY BIRKHEAD!</span> People call me the CODéMON PROF!<sup>*</sup></p>
-            <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
+            <div className='welcome-page-images' >
+              <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
+              <DevIconsSlider devicons={props.devicons}/>
+            </div>
             <p>VISITOR! Your very own CODéMON legend is about to unfold! A world of dreams and adventures with CODéMON awaits! Let's go!</p>
             <button className='welcome-page-start-button' onClick={props.openNav}>Start</button>
           </div>
