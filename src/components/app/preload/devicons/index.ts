@@ -1,55 +1,82 @@
-
-
-// const IMAGE_SOURCES: string[] = [
-
-// ];
+import angularjs from '../../../../assets/images/devicons/angularjs-plain.png';
+import babel from '../../../../assets/images/devicons/babel-original.png';
+import bash from '../../../../assets/images/devicons/bash-original.png';
+import blender from '../../../../assets/images/devicons/blender-original.png';
+import csharp from '../../../../assets/images/devicons/csharp-plain.png';
+import css3 from '../../../../assets/images/devicons/css3-plain.png';
+import docker from '../../../../assets/images/devicons/docker-original.png';
+import dotnetcore from '../../../../assets/images/devicons/dotnetcore-original.png';
+import git from '../../../../assets/images/devicons/git-original.png';
+import html5 from '../../../../assets/images/devicons/html5-plain.png';
+import java from '../../../../assets/images/devicons/java-original.png';
+import javascript from '../../../../assets/images/devicons/javascript-plain.png';
+import jest from '../../../../assets/images/devicons/jest-plain.png';
+import linux from '../../../../assets/images/devicons/linux-original.png';
+import mongodb from '../../../../assets/images/devicons/mongodb-original.png';
+import mysql from '../../../../assets/images/devicons/mysql-original.png';
+import nginx from '../../../../assets/images/devicons/nginx-original.png';
+import nodejs from '../../../../assets/images/devicons/nodejs-original.png';
+import npm from '../../../../assets/images/devicons/npm-original-wordmark.png';
+import postgres from '../../../../assets/images/devicons/postgresql-plain.png';
+import python from '../../../../assets/images/devicons/python-original.png';
+import rails from '../../../../assets/images/devicons/rails-plain.png';
+import react from '../../../../assets/images/devicons/react-original.png';
+import ruby from '../../../../assets/images/devicons/ruby-original.png';
+import spring from '../../../../assets/images/devicons/spring-original.png';
+import sqlite from '../../../../assets/images/devicons/sqlite-plain.png';
+import ssh from '../../../../assets/images/devicons/ssh-original.png';
+import typescript from '../../../../assets/images/devicons/typescript-plain.png';
+import unity from '../../../../assets/images/devicons/unity-original.png';
+import unreal from '../../../../assets/images/devicons/unrealengine-original.png';
+import webpack from '../../../../assets/images/devicons/webpack-original.png';
+import wordpress from '../../../../assets/images/devicons/wordpress-plain.png';
 
 const IMAGE_SOURCES: string[] = [
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/babel/babel-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ssh/ssh-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg'
+  angularjs,
+  babel,
+  bash,
+  blender,
+  csharp,
+  css3,
+  docker,
+  dotnetcore,
+  git,
+  html5,
+  java,
+  javascript,
+  jest,
+  linux,
+  mongodb,
+  mysql,
+  nginx,
+  nodejs,
+  npm,
+  postgres,
+  python,
+  rails,
+  react,
+  ruby,
+  spring,
+  sqlite,
+  ssh,
+  typescript,
+  unity,
+  unreal,
+  webpack,
+  wordpress
 ];
 
 function loadDevicons(callback: (images: HTMLImageElement[]) => void) {
   const images: HTMLImageElement[] = [];
   IMAGE_SOURCES.forEach(src => {
-    const image = new Image();
+    const image: HTMLImageElement = new Image();
     image.src = src;
     image.crossOrigin = 'anonymous';
     image.onload = () => {
+      console.log({width: image.width, height: image.height});
       images.push(image);
       if (images.length >= IMAGE_SOURCES.length) {
-        console.log(images);
-        callback(shuffleArray(images));
+        callback(images);
       }
     }
   });
@@ -57,15 +84,4 @@ function loadDevicons(callback: (images: HTMLImageElement[]) => void) {
 
 export default {
   loadDevicons
-}
-
-function shuffleArray<T>(array: T[]): T[] {
-  const newArray = [...array];
-
-  for (let i = newArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-  }
-
-  return newArray;
 }

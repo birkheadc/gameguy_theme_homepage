@@ -34,10 +34,27 @@ div.more-info-wrapper {
 span.project-card-links {
   display: flex;
   flex-direction: row;
-  gap: 2em;
-  padding-top: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 5em;
+  padding: 20px;
   width: fit-content;
   margin: 0 auto;
+  background-color: var(--clr-current-2);
+  border: var(--border-sec);
+  border-top: none;
+  width: 100%;
+  font-size: 1.1em;
+  font-family: var(--font-h);
+}
+
+span.project-card-links>a {
+  user-select: none;
+  /* text-decoration: none; */
+}
+
+span.project-card-links>a:hover, span.project-card-links>a:focus {
+  color: var(--clr-current-3);
 }
 
 span.more-info-content {

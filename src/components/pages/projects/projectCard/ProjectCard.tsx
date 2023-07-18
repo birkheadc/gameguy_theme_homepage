@@ -36,7 +36,7 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
             <TechnologiesDisplay technologies={project.technologies} />
           </CollapsibleImplementation>
         </div>
-        <span className='project-card-links'><a href={project.site} target='_blank' rel='noopener noreferrer'>Visit</a><a href={project.source} target='_blank' rel='noopener noreferrer'>Source</a></span>
+        <span className='project-card-links'><a href={project.site} target='_blank' rel='noopener noreferrer'>Visit Site</a><a href={project.source} target='_blank' rel='noopener noreferrer'>View Source</a></span>
       </div>
     </div>
   );

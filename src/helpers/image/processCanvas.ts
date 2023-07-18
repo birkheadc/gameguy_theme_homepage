@@ -2,12 +2,11 @@ import { ImageProcessShaderMode } from "../../types/imageProcessShaderMode";
 import hexToRgb from "./hexToRgb";
 
 export default function processCanvas(canvas: HTMLCanvasElement, colors: string[], shaderMode: ImageProcessShaderMode) {
-
+  
   const context = canvas.getContext('2d');
   if (context == null) return;
 
   const imageData: ImageData = context.getImageData(0, 0, canvas.width, canvas.height);
-  const colorRange: { darkest: number, lightest: number } = getColorRange(imageData);
   const data: Uint8ClampedArray = imageData.data;
 
   const rgbColors = colors.map(color => hexToRgb(color));
@@ -55,16 +54,9 @@ export default function processCanvas(canvas: HTMLCanvasElement, colors: string[
     }
     tier = Math.min(tier + ditherDirection, maxTier);
     tier = Math.max(tier, minTier);
-
     data[i] = rgbColors[tier].r;
     data[i+1] = rgbColors[tier].g;
     data[i+2] = rgbColors[tier].b;
-
   }
-
   context.putImageData(imageData, 0, 0);
-}
-
-function getColorRange(imageData: ImageData): { darkest: number, lightest: number } {
-
 }

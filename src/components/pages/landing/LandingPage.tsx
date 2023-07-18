@@ -25,7 +25,7 @@ function LandingPage(props: LandingPageProps): JSX.Element | null {
 
   return (
     <div className='landing-page-wrapper page-wrapper'>
-      <ThemeSelector isOpen={true} requestClose={handleRequestClose} />
+      <ThemeSelector animate={true} isOpen={true} requestClose={handleRequestClose} />
     </div>
   );
 }

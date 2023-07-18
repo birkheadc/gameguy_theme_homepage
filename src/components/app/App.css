@@ -26,3 +26,16 @@ main h1 {
   text-transform: uppercase;
   font-style: italic;
 }
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}

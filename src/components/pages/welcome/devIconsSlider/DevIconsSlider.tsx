@@ -15,11 +15,12 @@ interface IDevIconsSliderProps {
 export default function DevIconsSlider(props: IDevIconsSliderProps): JSX.Element | null {
   return (
     <div className='devicons-slider-wrapper'>
+      {/* <img src={props.devicons.length > 0 ? props.devicons[0].src : ''}></img> */}
       <Carousel rotateIntervalInMs={2500} isControllable={false}>
         {props.devicons.map(
           (icon, index) =>
           <div key={`welcome-page-devicon-${index}`} className='devicon-wrapper'>
-            <ProcessedImage className={''} imageSrc={icon} shaderMode={ImageProcessShaderMode.DARK} pixelateLevel={1.5} />
+            <ProcessedImage className={''} imageSrc={icon} shaderMode={ImageProcessShaderMode.DARK} pixelateLevel={1} />
           </div>
         )}
       </Carousel>

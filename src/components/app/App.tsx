@@ -13,6 +13,7 @@ import WelcomePage from '../pages/welcome/WelcomePage';
 import { IProject } from '../../types/project/project';
 import preload from './preload';
 import { IProjectWithImages } from '../../types/project/projectWithImages';
+import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
 
 interface AppProps {
 
@@ -41,8 +42,6 @@ function App(props: AppProps): JSX.Element | null {
     preload.devicons.loadDevicons(setDevicons);
   }, []);
 
-  React.useEffect(() => { console.log('Projects: ', projects) }, [ projects ]);
-
   const toggleNav = () => {
     // Remove focus from the button after pressing it.
     removeFocusFromActiveElement();
@@ -61,9 +60,10 @@ function App(props: AppProps): JSX.Element | null {
 
   return (
     <>
+      <ScrollToTop />
       <Background />
       <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
-      <ThemeSelector isOpen={showThemeSelector} requestClose={toggleThemeSelector} />
+      <ThemeSelector animate={false} isOpen={showThemeSelector} requestClose={toggleThemeSelector} />
       <NavGame isOpen={showNav} requestClose={toggleNav} grid={defaultGrid.grid} />
 
       <div className='full'>
