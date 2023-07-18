@@ -5,6 +5,7 @@ import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import headerImage from '../../../assets/images/headers/welcome.png';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
 import DevIconsSlider from './devIconsSlider/DevIconsSlider';
+import helpers from '../../../helpers';
 
 interface IWelcomePageProps {
   devicons: HTMLImageElement[],
@@ -17,14 +18,10 @@ interface IWelcomePageProps {
 */
 export default function WelcomePage(props: IWelcomePageProps): JSX.Element | null {
 
-  // const [icons, setIcons] = React.useState<HTMLImageElement[]>([]);
-  const imageRef = React.useRef<HTMLDivElement>(null);
+  const [icons, setIcons] = React.useState<HTMLImageElement[]>([]);
 
-  React.useEffect(() => {
-    if (props.devicons.length > 0) {
-      const div = imageRef.current;
-      div?.appendChild(props.devicons[0]);
-    }
+  React.useEffect(function randomizeIconsOnMount() {
+    setIcons(helpers.algorithm.shuffleArray(props.devicons));
   }, [props.devicons]);
 
   return (
@@ -37,8 +34,7 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
             <p>Hello there! Welcome to the world of CODéMON! My name is <span className='underline'>COLBY BIRKHEAD!</span> People call me the CODéMON PROF!<sup>*</sup></p>
             <div className='welcome-page-images' >
               <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
-              <DevIconsSlider devicons={props.devicons}/>
-              {/* <div ref={imageRef}></div> */}
+              <DevIconsSlider devicons={icons}/>
             </div>
             <p>VISITOR! Your very own CODéMON legend is about to unfold! A world of dreams and adventures with CODéMON awaits! Let's go!</p>
             <button className='welcome-page-start-button' onClick={props.openNav}>Start</button>

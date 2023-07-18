@@ -7,6 +7,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  font-size: 1.5em;
 }
 
 .collapsible-trigger:hover, .collapsible-trigger:focus {

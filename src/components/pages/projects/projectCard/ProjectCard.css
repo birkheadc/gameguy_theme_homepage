@@ -15,7 +15,7 @@ div.project-card-wrapper a {
 
 div.project-card-wrapper h2 {
   font-family: var(--font-h);
-  font-size: 1.3em;
+  font-size: 1.8em;
   text-decoration: underline;
 }
 
@@ -40,21 +40,22 @@ span.project-card-links {
   padding: 20px;
   width: fit-content;
   margin: 0 auto;
-  background-color: var(--clr-current-2);
+  background-color: var(--clr-current-3);
   border: var(--border-sec);
   border-top: none;
   width: 100%;
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-family: var(--font-h);
 }
 
 span.project-card-links>a {
   user-select: none;
+  color: var(--clr-current-0);
   /* text-decoration: none; */
 }
 
 span.project-card-links>a:hover, span.project-card-links>a:focus {
-  color: var(--clr-current-3);
+  color: var(--clr-current-1);
 }
 
 span.more-info-content {
