@@ -1,6 +1,6 @@
 .theme-selector-wrapper {
   position:fixed;
-  background-color: var(--clr-current-3);
+  background-color: white;
   width: min(80%, 600px);
   height: min(80%, 600px);
   margin: auto;
@@ -18,19 +18,25 @@
 div.theme-selector-wrapper>div {
   grid-column: 1 / 1;
   grid-row: 1 / 1;
+  width: 100%;
 }
 
-div.theme-selector-wrapper h2 {
-  margin: 0 auto;
-  width: fit-content;
-  font-size: 3em;
-  text-transform: uppercase;
-  font-style: italic;
+@keyframes theme-selector-fade-in {
+  from { opacity: 0; };
+  to { opacity: 1; };
 }
 
 div.theme-selector-wrapper p {
   margin: 0 auto;
   width: fit-content;
+
+  animation-name: theme-selector-fade-in;
+  animation-direction: forwards;
+  animation-duration: 300ms;
+  animation-delay: 800ms; 
+  animation-fill-mode: backwards;
+
+  user-select: none;
 }
 
 div.theme-buttons-wrapper {
@@ -41,6 +47,12 @@ div.theme-buttons-wrapper {
   display: flex;
   align-items: end;
   pointer-events: none;
+
+  animation-name: theme-selector-fade-in;
+  animation-direction: forwards;
+  animation-duration: 300ms;
+  animation-delay: 800ms; 
+  animation-fill-mode: backwards;
 }
 
 div.theme-buttons-wrapper>button {

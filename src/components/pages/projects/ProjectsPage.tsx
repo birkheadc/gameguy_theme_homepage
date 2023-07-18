@@ -1,15 +1,14 @@
 import * as React from 'react';
 import './ProjectsPage.css';
-import api from '../../../api';
-import { IProject } from '../../../types/project';
 import ProjectCard from './projectCard/ProjectCard';
 import Carousel from '../../shared/carousel/Carousel';
 import headerImage from '../../../assets/images/headers/projects.png';
 import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
+import { IProjectWithImages } from '../../../types/project/projectWithImages';
 
 interface ProjectsPageProps {
-
+  projects: IProjectWithImages[]
 }
 /**
  * 
@@ -18,26 +17,28 @@ interface ProjectsPageProps {
  */
 function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
 
-  const [projects, setProjects] = React.useState<IProject[]>([]);
+  // const [projects, setProjects] = React.useState<IProject[]>([]);
 
-  React.useEffect(function fetchProjectsOnMount() {
-    (async function getAndSetProjects() {
-      await api.projects.getAll()
-        .then(result => setProjects(result.body ?? []));
-    })();
-  }, []);
+  // React.useEffect(function fetchProjectsOnMount() {
+  //   (async function getAndSetProjects() {
+  //     await api.projects.getAll()
+  //       .then(result => setProjects(result.body ?? []));
+  //   })();
+  // }, []);
 
   return (
     <div className='projects-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.DARK} />
+      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
-        <Carousel rotateIntervalInMs={5000} >
-          {projects.map(
-            project =>
-            <ProjectCard key={project.id} project={project} />
-          )}
-        </Carousel>
+        <div className='project-page-carousel-wrapper'>
+          <Carousel isControllable={true} rotateIntervalInMs={5000} >
+            {props.projects.map(
+              project =>
+              <ProjectCard key={project.project.id} project={project} />
+            )}
+          </Carousel>
+        </div>
       </div>
     </div>
   );

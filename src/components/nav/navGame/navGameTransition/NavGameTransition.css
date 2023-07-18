@@ -1,0 +1,16 @@
+div.nav-game-transition-wrapper {
+  position:fixed;
+  border: var(--border-pri);
+  width: min(80%, 800px);
+  height:min(80%, 600px);
+  margin: auto;
+  inset: 0;
+  z-index: 5;
+
+  display: grid;
+  grid-template: auto / auto;
+}
+
+div.nav-game-transition-cell {
+  background-color: var(--clr-current-0);
+}

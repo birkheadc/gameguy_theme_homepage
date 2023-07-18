@@ -2,17 +2,18 @@ div.carousel-wrapper {
   overflow-x: hidden;
   flex-grow: 1;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  border: var(--border-pri);
-  margin-bottom: 1em;
+  width: 100%;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+  /* border: var(--border-pri); */
+  /* margin-bottom: 1em; */
 }
 
-div.carousel-wrapper-inner {
-  width: fit-content;
-  display: flex;
-  flex-direction: row;
-  gap: var(--size-carousel-gap);
+div.carousel-child {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
   transition: var(--transition-carousel);
-  flex-grow: 1;
+  height: 100%;
+  width: 100%;
 }

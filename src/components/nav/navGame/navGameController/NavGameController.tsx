@@ -13,7 +13,8 @@ import helpers from '../../../../helpers';
 import { IDoor } from '../../../../types/door';
 
 interface INavGameControllerProps {
-  grid: IGrid
+  grid: IGrid,
+  isActive: boolean
 }
 
 /**
@@ -53,6 +54,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     const keydownListener = (event: KeyboardEvent) => {
       if (controller.registerKeyDown(event.key)) {
         event.preventDefault();
+        if (props.isActive === false) return;
         setControllerDirection(controller.getCurrentDirection())
       }
     };
@@ -60,6 +62,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     const keyupListener = (event: KeyboardEvent) => {
       if (controller.registerKeyUp(event.key)) {
         event.preventDefault();
+        if (props.isActive === false) return;
         setControllerDirection(controller.getCurrentDirection());
       }
     };
@@ -67,6 +70,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     const spaceListener = (event: KeyboardEvent) => {
       if (event.key === ' ') {
         event.preventDefault();
+        if (props.isActive === false) return;
         interactWithCellInFront();
       }
     }
@@ -79,7 +83,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
       window.removeEventListener('keyup', keyupListener);
       window.removeEventListener('keydown', spaceListener);
     });
-  }, [ truePosition, facingDirection, props.grid]);
+  }, [ truePosition, facingDirection, props.grid, props.isActive]);
 
   React.useEffect(function calculateInitialPosition() {
     const door = getDoorAtLocation(location.pathname, props.grid);
@@ -171,6 +175,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   }, [ path, controllerDirection, props.grid, truePosition, popupText ]);
 
   const handleGridClick = (clickLocation: IVector2 | null) => {
+    if (props.isActive === false) return;
     if (popupText != null) {
       setPopupText(null);
       return;

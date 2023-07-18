@@ -4,8 +4,7 @@ import ProcessedImage from '../../../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../../../types/imageProcessShaderMode';
 
 interface IProjectImageProps {
-  projectId: string,
-  images: string[]
+  images: HTMLImageElement[]
 }
 
 /**
@@ -16,7 +15,7 @@ export default function ProjectImage(props: IProjectImageProps): JSX.Element | n
 
   return (
     <div className='project-image-wrapper'>
-      {props.images.length > 0 && <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={`${URL}/static/images/${props.projectId}${props.images[0]}`} shaderMode={ImageProcessShaderMode.DARK} />}
+      {props.images.length > 0 && <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={props.images[0]} shaderMode={ImageProcessShaderMode.NORMAL} />}
     </div>
   );
 }

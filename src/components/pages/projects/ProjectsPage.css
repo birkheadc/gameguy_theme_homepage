@@ -3,3 +3,8 @@ div.projects-header {
   height: 80px;
   background: var(--img-current-projects);
 }
+
+div.project-page-carousel-wrapper {
+  border: var(--border-pri);
+  margin-bottom: 1em;
+}

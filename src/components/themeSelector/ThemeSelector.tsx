@@ -2,10 +2,12 @@ import * as React from 'react';
 import './ThemeSelector.css';
 import ReactModal from 'react-modal';
 import helpers from '../../helpers';
+import ThemeSelectorTitle from './themeSelectorTitle/ThemeSelectorTitle';
 
 interface ThemeSelectorProps {
   isOpen: boolean,
-  requestClose: () => void
+  requestClose: () => void,
+  animate: boolean
 }
 /**
  * 
@@ -36,9 +38,9 @@ function ThemeSelector(props: ThemeSelectorProps): JSX.Element | null {
   }
 
   return (
-      <ReactModal className={'theme-selector-wrapper'} isOpen={props.isOpen} onRequestClose={props.requestClose}>
+      <ReactModal closeTimeoutMS={100} className={'theme-selector-wrapper'} isOpen={props.isOpen} onRequestClose={props.requestClose}>
         <div>
-          <h2>Game Guy</h2>
+          <ThemeSelectorTitle />
           <p>Choose a <span className='color-0'>c</span><span className='color-1'>o</span><span className='color-2'>l</span><span className='color-3'>o</span><span className='color-4'>r</span> theme.</p>
         </div>
         <div className='theme-buttons-wrapper'>

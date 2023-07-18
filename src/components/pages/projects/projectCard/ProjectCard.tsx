@@ -1,14 +1,15 @@
 import * as React from 'react';
 import './ProjectCard.css'
-import { IProject } from '../../../../types/project';
+import { IProject } from '../../../../types/project/project';
 import { env } from 'process';
 import CollapsibleImplementation from '../../../shared/collapsibleImplementation/CollapsibleImplementation';
 import TechnologiesDisplay from './technologiesDisplay/TechnologiesDisplay';
 import ProjectImage from './projectImage/ProjectImage';
 import { url } from 'inspector';
+import { IProjectWithImages } from '../../../../types/project/projectWithImages';
 
 interface IProjectCardProps {
-  project: IProject,
+  project: IProjectWithImages,
 }
 
 /**
@@ -17,7 +18,8 @@ interface IProjectCardProps {
 */
 export default function ProjectCard(props: IProjectCardProps): JSX.Element | null {
 
-  const project = props.project;
+  const project = props.project.project;
+  const images = props.project.images;
 
   return (
     <div className='project-card-wrapper'>
@@ -26,7 +28,7 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
         <span className='project-card-description'>{project.shortDescriptions.find(desc => desc.language === 'en')?.content}</span>
       </div>
       {/* Todo: image tinting of some kind to keep in line with site theme */}
-      <ProjectImage projectId={project.id} images={project.imageNames} />
+      <ProjectImage images={images} />
       <div>
         <div className='more-info-wrapper' id={getMoreInfoWrapperId(project.id)}>
           <CollapsibleImplementation scrollToElementId={getMoreInfoWrapperId(project.id)} triggerTitle='More Info'>
@@ -34,7 +36,7 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
             <TechnologiesDisplay technologies={project.technologies} />
           </CollapsibleImplementation>
         </div>
-        <span className='project-card-links'><a href={project.site} target='_blank' rel='noopener noreferrer'>Visit</a><a href={project.source} target='_blank' rel='noopener noreferrer'>Source</a></span>
+        <span className='project-card-links'><a href={project.site} target='_blank' rel='noopener noreferrer'>Visit Site</a><a href={project.source} target='_blank' rel='noopener noreferrer'>View Source</a></span>
       </div>
     </div>
   );

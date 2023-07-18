@@ -33,14 +33,14 @@ export default function ProcessedSprite(props: IProcessedSpriteProps): JSX.Eleme
   React.useEffect(() => {
     (async function processAndDrawNewImageToCanvas() {
       if (image == null || canvasRef.current == null) return;
-      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, ImageProcessShaderMode.DARK);
+      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, ImageProcessShaderMode.NORMAL);
     })();
   }, [ image, canvasRef ]);
 
   React.useEffect(function setEventListenerToReprocessImageOnThemeChange() {
     const listener = () => {
       if (image == null || canvasRef.current == null) return;
-      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, ImageProcessShaderMode.DARK);
+      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, ImageProcessShaderMode.NORMAL);
     }
     window.addEventListener('onchangetheme', listener);
     return (() => {

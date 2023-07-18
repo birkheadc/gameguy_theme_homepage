@@ -1,4 +1,4 @@
-import { IDescription } from "./description";
+import { IDescription } from "../description";
 
 export interface IProject {
   id: string,

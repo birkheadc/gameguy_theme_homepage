@@ -5,6 +5,7 @@ import CarouselStatusDisplay from './carouselStatusDisplay/CarouselStatusDisplay
 interface ICarouselProps {
   children: React.ReactElement[],
   rotateIntervalInMs: number,
+  isControllable: boolean,
 }
 
 /**
@@ -52,24 +53,44 @@ export default function Carousel(props: ICarouselProps): JSX.Element | null {
 
   return (
     <div className='carousel-wrapper'>
-      <div className='carousel-wrapper-inner' style={getCarouselWrapperInnerStyle(props.children.length, current)}>
         {React.Children.map(
-          props.children, child =>
-          <div className='carousel-child'>{child}</div>
+          props.children, (child, index) =>
+          <div className='carousel-child' style={calculateCarouselChildStyle(index, current, props.children.length)}>{child}</div>
         )}
-      </div>
-      <CarouselStatusDisplay length={props.children.length} current={current} select={handleSelect} isAutoRotate={isAutoRotate} toggleRotate={handleToggleRotate} />
+      {props.isControllable && <CarouselStatusDisplay length={props.children.length} current={current} select={handleSelect} isAutoRotate={isAutoRotate} toggleRotate={handleToggleRotate} />}
     </div>
   );
 }
 
 // Helpers
 
-function getCarouselWrapperInnerStyle(numChildren: number, current: number): React.CSSProperties {
-  const gapOffsetStyle: string = getComputedStyle(document.documentElement).getPropertyValue('--size-carousel-gap');
-  const gapOffsetPercent: number = parseInt(gapOffsetStyle.substring(0, gapOffsetStyle.length - 1));
-  const offset = (((100 + (gapOffsetPercent * numChildren)) / numChildren) * current);
-  return {
-    transform: `translate(-${offset}%, 0)`
-  }
+// function getCarouselWrapperInnerStyle(numChildren: number, current: number): React.CSSProperties {
+//   const gapOffsetStyle: string = getComputedStyle(document.documentElement).getPropertyValue('--size-carousel-gap');
+//   const gapOffsetPercent: number = parseInt(gapOffsetStyle.substring(0, gapOffsetStyle.length - 1));
+//   const offset = (((100 + (gapOffsetPercent * numChildren)) / numChildren) * current);
+//   return {
+//     // transform: `translate(-${offset}%, 0)`
+//   }
+// }
+
+const rotateOutStyle: React.CSSProperties = {
+  transform: 'translate(-100%, 0%)',
+  opacity: 1
+}
+
+const rotateInStyle: React.CSSProperties = {
+  transform: 'translate(0%, 0%)',
+  opacity: 1
+}
+
+const waitingStyle: React.CSSProperties = {
+  transform: 'translate(100%, 0%)',
+  opacity: 0
+}
+
+function calculateCarouselChildStyle(childIndex: number, current: number, numChildren: number): React.CSSProperties {
+  if (childIndex === current) return rotateInStyle;
+  const rotateOutIndex = current === 0 ? numChildren - 1 : current - 1;
+  if (childIndex === rotateOutIndex) return rotateOutStyle;
+  return waitingStyle;
 }

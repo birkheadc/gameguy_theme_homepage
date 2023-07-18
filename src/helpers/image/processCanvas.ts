@@ -2,7 +2,7 @@ import { ImageProcessShaderMode } from "../../types/imageProcessShaderMode";
 import hexToRgb from "./hexToRgb";
 
 export default function processCanvas(canvas: HTMLCanvasElement, colors: string[], shaderMode: ImageProcessShaderMode) {
-
+  
   const context = canvas.getContext('2d');
   if (context == null) return;
 
@@ -13,6 +13,9 @@ export default function processCanvas(canvas: HTMLCanvasElement, colors: string[
   // DitherUp toggles true/false whenever applying a 'dither-pixel', to roughly estimate checkerboard dithering
   let dither: boolean = true;
   let rowLength = 0;
+
+  const maxTier = shaderMode === ImageProcessShaderMode.DARK ? colors.length - 2 : colors.length - 1;
+  const minTier = shaderMode === ImageProcessShaderMode.LIGHT ? 1 : 0;
 
   for (let i = 0; i < data.length; i += 4) {
     // In order to get a checkerboard effect, if the image width is even, each row must be offset.
@@ -49,14 +52,11 @@ export default function processCanvas(canvas: HTMLCanvasElement, colors: string[
         ditherDirection = -1;
       }
     }
-    tier = Math.min(tier + ditherDirection, rgbColors.length - 1);
-    tier = Math.max(tier, 0);
-
+    tier = Math.min(tier + ditherDirection, maxTier);
+    tier = Math.max(tier, minTier);
     data[i] = rgbColors[tier].r;
     data[i+1] = rgbColors[tier].g;
     data[i+2] = rgbColors[tier].b;
-
   }
-
   context.putImageData(imageData, 0, 0);
 }

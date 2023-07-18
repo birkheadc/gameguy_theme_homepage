@@ -7,7 +7,7 @@ const gridSize = { x: 20, y: 15 };
 const doors: IDoor[] = [
   {
     position: { x: 7, y: 6 },
-    location: '/'
+    location: '/welcome'
   },
   {
     position: { x: 13, y: 6 },

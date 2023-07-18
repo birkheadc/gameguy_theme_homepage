@@ -1,0 +1,20 @@
+div.devicons-slider-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+div.devicon-wrapper {
+  /* background-color: var(--clr-current-3); */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.devicon-wrapper>canvas {
+  width: 80%;
+  height: 80%;
+}
