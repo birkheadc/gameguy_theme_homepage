@@ -36,22 +36,20 @@ span.project-card-links {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 5em;
+  gap: 2em;
   padding: 20px;
-  width: fit-content;
-  margin: 0 auto;
+  width: 100%;
   background-color: var(--clr-current-3);
   border: var(--border-sec);
   border-top: none;
-  width: 100%;
   font-size: 1.2em;
   font-family: var(--font-h);
+
 }
 
 span.project-card-links>a {
   user-select: none;
   color: var(--clr-current-0);
-  /* text-decoration: none; */
 }
 
 span.project-card-links>a:hover, span.project-card-links>a:focus {

@@ -71,7 +71,7 @@ a:hover, a:focus {
 }
 
 @media (max-width: 980px) {
-  html {
+  html {  
     font-size: 2rem;
   }
 }

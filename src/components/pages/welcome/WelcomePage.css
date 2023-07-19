@@ -11,11 +11,15 @@ div.welcome-message {
 div.welcome-message-body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 70%;
+  padding: 30px 0px;
   gap: 30px;
+  font-size: 1.2em;
 }
 
 div.welcome-message p {
-  max-width: max(40vw, 300px);
+  max-width: max(40vw, 600px);
 }
 
 button.welcome-page-start-button {

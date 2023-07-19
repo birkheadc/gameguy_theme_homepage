@@ -19,6 +19,16 @@ export default function NavGame(props: INavGameProps): JSX.Element | null {
 
 const [isActive, setActive] = React.useState<boolean>(false);
 
+React.useEffect(function addScrollListener() {
+  const listener = () => {
+    props.requestClose();
+  }
+  window.addEventListener('scroll', listener);
+  return (() => {
+    window.removeEventListener('scroll', listener);
+  })
+}, []);
+
 React.useEffect(function deactivateOnOpenOrClose() {
   setActive(false);
 }, [ props.isOpen ]);

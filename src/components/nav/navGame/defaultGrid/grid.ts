@@ -13,6 +13,10 @@ const doors: IDoor[] = [
     position: { x: 13, y: 6 },
     location: '/projects'
   },
+  {
+    position: { x: 3, y: 12 },
+    location: '/about'
+  },
 ];
 
 const grid: IGrid = {

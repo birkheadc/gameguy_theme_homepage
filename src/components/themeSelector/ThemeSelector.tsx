@@ -18,6 +18,16 @@ function ThemeSelector(props: ThemeSelectorProps): JSX.Element | null {
 
   const [theme, setTheme] = React.useState<number | null>(null);
 
+  React.useEffect(function addScrollListener() {
+    const listener = () => {
+      props.requestClose();
+    }
+    window.addEventListener('scroll', listener);
+    return (() => {
+      window.removeEventListener('scroll', listener);
+    })
+  }, []);
+
   React.useEffect(function getDocumentThemeOnMount() {
     const theme = helpers.theme.retrieveSiteThemeLocal();
     setTheme(theme);

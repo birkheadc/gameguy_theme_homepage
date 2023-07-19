@@ -14,6 +14,7 @@ import { IProject } from '../../types/project/project';
 import preload from './preload';
 import { IProjectWithImages } from '../../types/project/projectWithImages';
 import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
+import AboutPage from '../pages/about/AboutPage';
 
 interface AppProps {
 
@@ -63,14 +64,15 @@ function App(props: AppProps): JSX.Element | null {
       <ScrollToTop />
       <Background />
       <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
-      <ThemeSelector animate={false} isOpen={showThemeSelector} requestClose={toggleThemeSelector} />
-      <NavGame isOpen={showNav} requestClose={toggleNav} grid={defaultGrid.grid} />
+      <ThemeSelector animate={false} isOpen={showThemeSelector} requestClose={() => setShowThemeSelector(false)} />
+      <NavGame isOpen={showNav} requestClose={() => setShowNav(false)} grid={defaultGrid.grid} />
 
       <div className='full'>
           <main>
             <Routes>
               <Route path='/welcome' element={<WelcomePage devicons={devicons} openNav={toggleNav} />} />
               <Route path='/projects' element={<ProjectsPage projects={projects} />} />
+              <Route path='/about' element={<AboutPage />} />
               <Route path='/' element={<LandingPage />} />
               <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
             </Routes>

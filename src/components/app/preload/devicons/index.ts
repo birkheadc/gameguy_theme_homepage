@@ -73,7 +73,6 @@ function loadDevicons(callback: (images: HTMLImageElement[]) => void) {
     image.src = src;
     image.crossOrigin = 'anonymous';
     image.onload = () => {
-      console.log({width: image.width, height: image.height});
       images.push(image);
       if (images.length >= IMAGE_SOURCES.length) {
         callback(images);

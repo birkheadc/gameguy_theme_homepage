@@ -14,7 +14,7 @@ import { IDoor } from '../../../../types/door';
 
 interface INavGameControllerProps {
   grid: IGrid,
-  isActive: boolean
+  isActive: boolean,
 }
 
 /**
@@ -28,6 +28,9 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
 
   // The direction the player is facing.
   const [facingDirection, setFacingDirection] = React.useState<Direction>(Direction.DOWN);
+
+  // The position to spawn the player in when opening, based on what page the user is viewing. Should only ever be set once.
+  const [spawnPosition, setSpawnPosition] = React.useState<IVector2 | null>(null);
 
   // The current position of the player in pixels in relation to the top left corner of the grid.
   const [truePosition, setTruePosition] = React.useState<IVector2>(props.grid.defaultCell);
@@ -85,10 +88,18 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     });
   }, [ truePosition, facingDirection, props.grid, props.isActive]);
 
-  React.useEffect(function calculateInitialPosition() {
-    const door = getDoorAtLocation(location.pathname, props.grid);
-    setTruePosition({ x: (door?.position.x ?? 0) * CELL_SIZE, y: ((door?.position.y ?? 0) + 1) * CELL_SIZE });
+  React.useEffect(function calculateSpawnPosition() {
+    setSpawnPosition(pos => {
+      if (pos != null) return pos;
+      const door = getDoorAtLocation(location.pathname, props.grid);
+      return { x: (door?.position.x ?? 0) * CELL_SIZE, y: ((door?.position.y ?? 0) + 1) * CELL_SIZE }
+    });
   }, [ location, props.grid ]);
+
+  React.useEffect(function movePlayerToSpawnPosition() {
+    if (spawnPosition == null) return;
+    setTruePosition(spawnPosition);
+  }, [ spawnPosition ]);
 
   React.useEffect(function calculatePathFromDirection() {
     if (controllerDirection == null) return;
@@ -193,7 +204,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
       }
       moveLocation = getTraversableNeighboringPosition(clickLocation, props.grid);
     }
-    setPath((path) => (path.length > 0 || moveLocation == null) ? path : calculatePathBetweenPositions(truePosition, moveLocation, props.grid));
+    setPath((path) => (moveLocation == null) ? path : calculatePathBetweenPositions(truePosition, moveLocation, props.grid));
   }
 
   const interactWithCellInFront = () => {
@@ -204,11 +215,15 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     });
   }
 
+  const handleHudClick = () => {
+    setPopupText(null);
+  }
+
   return (
     <div className='nav-game-wrapper'>
       <NavGamePlayer isMoving={isMoving} direction={facingDirection} />
       <NavGameGrid handleClick={handleGridClick} truePosition={truePosition} grid={props.grid} />
-      <NavGameHud popupText={popupText} />
+      <NavGameHud closePopupText={handleHudClick} popupText={popupText} />
     </div>
   );
 }

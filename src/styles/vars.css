@@ -3,7 +3,7 @@
   --border-sec: solid 2px var(--clr-current-1);
 
   --size-border: 64px;
-  --size-page-block: min(calc(100vw - calc(var(--size-border) * 2) - 50px), 800px);
+  --size-page-block: min(calc(100vw - calc(var(--size-border) * 2) - 50px), 1000px);
 
   --size-carousel-gap: 10%;
   --size-carousel-button: 20px;
