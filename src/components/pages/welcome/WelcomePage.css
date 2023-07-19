@@ -23,20 +23,7 @@ div.welcome-message p {
 }
 
 button.welcome-page-start-button {
-  width: fit-content;
-  border: var(--border-sec);
-  padding: 0.4em 0.6em;
-  margin: 0 auto;
   font-size: 1.5em;
-  font-family: var(--font-h);
-  background-color: var(--clr-current-1);
-  color: var(--clr-current-3);
-}
-
-button.welcome-page-start-button:hover, button.welcome-page-start-button:focus {
-  background-color: var(--clr-current-2);
-  color: var(--clr-current-0);
-  border-color: var(--clr-current-0);
 }
 
 canvas.welcome-page-image {

@@ -1,0 +1,28 @@
+form.contact-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 0px; 
+}
+
+form.contact-form-wrapper>div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+div.inline-label-input-wrapper>label {
+  position: absolute;
+  top: -0.5em;
+  left: 10px;
+  background-color: var(--clr-current-3);
+  padding: 0 5px;
+}
+
+div.inline-label-input-wrapper>input, div.inline-label-input-wrapper>textarea {
+  padding: 0.5em;
+}
+
+div.inline-label-input-wrapper>textarea {
+  height: auto;
+}

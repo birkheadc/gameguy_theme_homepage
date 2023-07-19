@@ -41,8 +41,12 @@ a:hover, a:focus {
 }
 
 .center {
-  margin: 0 auto;
-  width: fit-content;
+  text-align: center;
+}
+
+.justify {
+  text-align: justify;
+  text-align-last: center;
 }
 
 .hidden {
@@ -69,6 +73,30 @@ a:hover, a:focus {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+textarea, input {
+  border: var(--border-sec);
+}
+
+button {
+  width: fit-content;
+  border: var(--border-sec);
+  padding: 0.4em 0.6em;
+  margin: 0 auto;
+  font-family: var(--font-h);
+  background-color: var(--clr-current-1);
+  color: var(--clr-current-3);
+}
+
+button:hover, button:focus {
+  background-color: var(--clr-current-2);
+  color: var(--clr-current-0);
+  border-color: var(--clr-current-0);
+}
+
+.round {
+  border-radius: 50%;
 }
 
 @media (max-width: 980px) {

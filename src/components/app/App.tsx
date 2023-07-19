@@ -15,6 +15,7 @@ import preload from './preload';
 import { IProjectWithImages } from '../../types/project/projectWithImages';
 import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
 import AboutPage from '../pages/about/AboutPage';
+import ContactPage from '../pages/contact/ContactPage';
 
 interface AppProps {
 
@@ -73,6 +74,7 @@ function App(props: AppProps): JSX.Element | null {
               <Route path='/welcome' element={<WelcomePage devicons={devicons} openNav={toggleNav} />} />
               <Route path='/projects' element={<ProjectsPage projects={projects} />} />
               <Route path='/about' element={<AboutPage />} />
+              <Route path='/contact' element={<ContactPage />} />
               <Route path='/' element={<LandingPage />} />
               <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
             </Routes>

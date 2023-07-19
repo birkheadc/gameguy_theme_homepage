@@ -24,6 +24,7 @@ div#nav-bar>button {
   overflow: hidden;
 
   padding: 5px;
+  margin: 0;
   background-color: var(--clr-current-3);
 }
 
