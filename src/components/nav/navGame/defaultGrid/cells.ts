@@ -39,7 +39,7 @@ const cells: ICell[][] = [
   [ treeCell, ...getNCell(13, groundCell), treeCell],
   [ treeCell, ...getNCell(13, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), treeCell],
-  [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), doorCell, ...getNCell(2, groundCell), treeCell],
+  [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), doorCell, groundCell, ...getNCell(3, blockedCell), doorCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(7, groundCell),  treeCell],

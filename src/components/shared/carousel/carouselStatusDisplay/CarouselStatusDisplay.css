@@ -24,13 +24,34 @@ button.carousel-select-button {
   height: var(--size-carousel-button);
   width: var(--size-carousel-button);
   cursor: pointer;
+  padding: 0;
+}
+
+button.carousel-select-button:hover, button.carousel-select-button:focus {
+  background-color: var(--clr-current-2);
+}
+
+button.carousel-select-button.active {
+  pointer-events: none;
+  background-color: var(--clr-current-3);
+}
+
+button.carousel-lock-button {
+  border: none;
+  background-color: var(--clr-current-3);
+  color: var(--clr-current-0);
+  padding: 0;
+}
+
+button.carousel-lock-button:hover, button.carousel-lock-button:focus {
+  color: var(--clr-current-1);
 }
 
 /* button.carousel-select-button.inactive {
   background-color: var(--clr-current-3);
-} */
+}
 
-/* button.carousel-select-button.active {
+button.carousel-select-button.active {
   background-color: var(--clr-current-1);
 } */
 
