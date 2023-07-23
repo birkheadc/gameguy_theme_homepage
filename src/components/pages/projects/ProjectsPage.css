@@ -1,10 +1,4 @@
-div.projects-header {
-  width: 180px;
-  height: 80px;
-  background: var(--img-current-projects);
-}
-
 div.project-page-carousel-wrapper {
   border: var(--border-pri);
-  margin-bottom: 1em;
+  margin-bottom: 5px;
 }

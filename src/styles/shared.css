@@ -57,6 +57,7 @@ a:hover, a:focus {
 .fade {
   opacity: 0.2;
   pointer-events: none;
+  user-select: none;
 }
 
 .hidden {
@@ -78,9 +79,11 @@ a:hover, a:focus {
 }
 
 .page-wrapper {
-  min-height: calc(100svh - 138px);
+  height: calc(100svh - 138px);
   display: flex;
   flex-direction: column;
+
+  overflow-y: scroll;
 }
 
 .page-header {
