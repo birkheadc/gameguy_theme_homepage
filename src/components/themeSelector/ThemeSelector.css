@@ -1,8 +1,8 @@
 .theme-selector-wrapper {
   position:fixed;
   background-color: white;
-  width: min(80%, 600px);
-  height: min(80%, 600px);
+  width: min(95%, 600px);
+  height: min(95%, 600px);
   margin: auto;
   inset: 0;
 
@@ -13,6 +13,7 @@
   place-items: center;
 
   z-index: 2;
+  overflow: hidden;
 }
 
 div.theme-selector-wrapper>div {
@@ -60,6 +61,7 @@ div.theme-buttons-wrapper>button {
   flex: 1;
   cursor: pointer;
   pointer-events: all;
+  padding: 0;
 }
 
 div.theme-buttons-wrapper>button:hover, div.theme-buttons-wrapper>button:focus {
