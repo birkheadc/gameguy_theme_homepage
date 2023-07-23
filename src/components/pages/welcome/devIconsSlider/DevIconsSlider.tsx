@@ -20,7 +20,7 @@ export default function DevIconsSlider(props: IDevIconsSliderProps): JSX.Element
         {props.devicons.map(
           (icon, index) =>
           <div key={`welcome-page-devicon-${index}`} className='devicon-wrapper'>
-            <ProcessedImage className={''} imageSrc={icon} shaderMode={ImageProcessShaderMode.DARK} pixelateLevel={1} />
+            <ProcessedImage className={'devicon-canvas'} imageSrc={icon} shaderMode={ImageProcessShaderMode.DARK} pixelateLevel={1.5} />
           </div>
         )}
       </Carousel>

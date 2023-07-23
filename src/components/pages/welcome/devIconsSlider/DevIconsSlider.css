@@ -14,7 +14,6 @@ div.devicon-wrapper {
   align-items: center;
 }
 
-div.devicon-wrapper>canvas {
-  width: 80%;
-  height: 80%;
+canvas.devicon-canvas {
+  width: 70%;
 }

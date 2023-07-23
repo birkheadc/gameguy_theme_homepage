@@ -8,9 +8,10 @@ import fbIcon from '../../../assets/images/devicons/facebook-original.png';
 import liIcon from '../../../assets/images/devicons/linkedin-original.png';
 import ghIcon from '../../../assets/images/devicons/github-original.png';
 import ContactForm from './contactForm/ContactForm';
+import { Comment } from '../../../types/comment';
+import api from '../../../api';
 
 interface ContactPageProps {
-
 }
 /**
  * 
@@ -18,6 +19,13 @@ interface ContactPageProps {
  * @returns {JSX.Element | null}
  */
 function ContactPage(props: ContactPageProps): JSX.Element | null {
+
+  const handleSubmit = async (comment: Comment) => {
+    const response = await api.comment.postComment(COMMENTS_URL, comment);
+    if (response.status === 200) return true;
+    return false;
+  }
+
   return (
     <div className='contact-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
@@ -39,7 +47,7 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
           <p className='justify'>
             Or just leave a quick comment with the form below. I enjoy the comments, especially when they're kind.
           </p>
-          <ContactForm />
+          <ContactForm submit={handleSubmit} />
         </div>
       </div>
     </div>
@@ -47,3 +55,6 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
 }
 
 export default ContactPage;
+
+// Helpers
+const COMMENTS_URL = 'https://comments.birkheadc.me';

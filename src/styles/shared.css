@@ -44,15 +44,37 @@ a:hover, a:focus {
   text-align: center;
 }
 
+.full-width {
+  width: 100%;
+  display: inline-block;
+}
+
 .justify {
   text-align: justify;
   text-align-last: center;
+}
+
+.fade {
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 .hidden {
   position: absolute;
   opacity: 0;
   pointer-events: none;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.error {
+  color: red;
+}
+
+.accent {
+  color: var(--clr-current-0);
 }
 
 .page-wrapper {
