@@ -47,7 +47,8 @@ div#nav-bar button {
 }
 
 div#nav-bar button:hover, div#nav-bar button:focus {
-  color: var(--clr-current-1);
+  color: var(--clr-current-3);
+  background-color: var(--clr-current-1);
 }
 
 button#toggle-nav-button {
