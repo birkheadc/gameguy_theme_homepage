@@ -1,18 +1,34 @@
 div#nav-bar {
   position: fixed;
   width: 100%;
+  height: var(--size-border);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 20px 40px;
+  justify-content: start;
+  gap: 12px;
+  padding: 6px 64px;
   pointer-events: none;
 }
 
-div#nav-bar>button {
+div#nav-bar-inner-wrapper {
+  width: fit-content;
+  height: fit-content;
+  display: flex; 
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: var(--border-sec);
+  background-color: var(--clr-current-2);
+  padding: 5px;
+  border-radius: 35px;
+}
+
+div#nav-bar button {
   border: solid 1px var(--clr-current-0);
-  border-radius: 5px;
-  width: 50px;
-  height: 50px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   pointer-events: all;
   
   cursor: pointer;
@@ -23,17 +39,15 @@ div#nav-bar>button {
 
   overflow: hidden;
 
-  padding: 5px;
+  padding: 0.2em;
   margin: 0;
   background-color: var(--clr-current-3);
+
+  color: var(--clr-current-0);
 }
 
-div#nav-bar>button>* {
-  transition: transform 300ms;
-}
-
-div#nav-bar>button:hover>*, div#nav-bar>button:focus>* {
-  transform: scale(1.8);
+div#nav-bar button:hover, div#nav-bar button:focus {
+  color: var(--clr-current-1);
 }
 
 button#toggle-nav-button {
@@ -41,9 +55,18 @@ button#toggle-nav-button {
   color: var(--clr-current-1);
 }
 
-button#toggle-theme-selector-button>span {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(to bottom, var(--clr-current-1) 0%, var(--clr-current-3) 50%, var(--clr-current-2) 100%);
+@media (max-width: 980px) {
+  div#nav-bar {
+    padding: 22px 74px;
+  }
+
+  div#nav-bar-inner-wrapper {
+    padding: 10px;
+    border-radius: 50px;
+  }
+
+  div#nav-bar button {
+    width: 60px;
+    height: 60px
+  }
 }
