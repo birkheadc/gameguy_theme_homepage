@@ -1,14 +1,14 @@
 import * as React from 'react';
 import './WelcomePage.css'
-import myPhoto from '../../../assets/images/pictures/me02.png';
 import ProcessedImage from '../../shared/processedImage/ProcessedImage';
-import headerImage from '../../../assets/images/headers/welcome.png';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
 import DevIconsSlider from './devIconsSlider/DevIconsSlider';
 import helpers from '../../../helpers';
 
 interface IWelcomePageProps {
-  devicons: HTMLImageElement[],
+  headerImage: HTMLImageElement,
+  myPhoto: HTMLImageElement,
+  devIcons: HTMLImageElement[],
   openNav: () => void
 }
 
@@ -21,19 +21,19 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
   const [icons, setIcons] = React.useState<HTMLImageElement[]>([]);
 
   React.useEffect(function randomizeIconsOnMount() {
-    setIcons(helpers.algorithm.shuffleArray(props.devicons));
-  }, [props.devicons]);
+    setIcons(helpers.algorithm.shuffleArray(props.devIcons));
+  }, [props.devIcons]);
 
   return (
     <div className='welcome-page-wrapper page-wrapper'>
       <h1 className='hidden'>Welcome</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
         <div className='welcome-message'>
           <div className='welcome-message-body'>
             <p>Hello there! Welcome to the world of CODéMON! My name is <span className='underline'>COLBY BIRKHEAD!</span> People call me the CODéMON PROF!<sup>*</sup></p>
             <div className='welcome-page-images' >
-              <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
+              <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={props.myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
               <DevIconsSlider devicons={icons}/>
             </div>
             <p>VISITOR! Your very own CODéMON legend is about to unfold! A world of dreams and adventures with CODéMON awaits! Let's go!</p>

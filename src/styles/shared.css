@@ -1,4 +1,5 @@
 html {
+  background-color: var(--clr-current-2);
   color: var(--clr-current-1);
   font-family: var(--font-pri);
   font-size: 1.5rem;

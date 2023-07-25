@@ -22,7 +22,7 @@ div.theme-selector-wrapper>div {
   width: 100%;
 }
 
-@keyframes theme-selector-fade-in {
+@keyframes fade-in {
   from { opacity: 0; };
   to { opacity: 1; };
 }
@@ -31,7 +31,7 @@ div.theme-selector-wrapper p {
   margin: 0 auto;
   width: fit-content;
 
-  animation-name: theme-selector-fade-in;
+  animation-name: fade-in;
   animation-direction: forwards;
   animation-duration: 300ms;
   animation-delay: 800ms; 

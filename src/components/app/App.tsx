@@ -15,6 +15,7 @@ import { IProjectWithImages } from '../../types/project/projectWithImages';
 import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
 import AboutPage from '../pages/about/AboutPage';
 import ContactPage from '../pages/contact/ContactPage';
+import { IPreloadedAssets, PreloadedAssets } from '../../types/preloadedAssets/preloadedAssets';
 
 interface AppProps {
 
@@ -26,12 +27,11 @@ interface AppProps {
  */
 function App(props: AppProps): JSX.Element | null {
 
-  const [headerImages, setHeaderImages] = React.useState<{[key: string]: HTMLImageElement}>({});
-  const [projects, setProjects] = React.useState<IProjectWithImages[]>([]);
-  const [devicons, setDevicons] = React.useState<HTMLImageElement[]>([]);
+  const [preloadedAssets, setPreloadedAssets] = React.useState<IPreloadedAssets>(new PreloadedAssets());
 
   const [showNav, setShowNav] = React.useState<boolean>(false);
   const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(false);
+  
   const location = useLocation();
 
   React.useEffect(function closeModalsOnNavigate() {
@@ -40,9 +40,41 @@ function App(props: AppProps): JSX.Element | null {
   }, [ location ]);
 
   React.useEffect(function preloadAssetsOnMount() {
-    preload.projects.loadProjects(setProjects);
-    preload.devicons.loadDevicons(setDevicons);
-    preload.headerImages.loadHeaderImages(setHeaderImages);
+    preload.projects.loadProjects((projects: IProjectWithImages[]) => {
+      setPreloadedAssets(p => {
+        const newPreloadedAssets = {...p};
+        newPreloadedAssets.projectImages = projects;
+        return newPreloadedAssets;
+      });
+    });
+    preload.devicons.loadDevicons((images: HTMLImageElement[]) => {
+      setPreloadedAssets(p => {
+        const newPreloadedAssets = {...p};
+        newPreloadedAssets.devIcons = images;
+        return newPreloadedAssets;
+      });
+    });
+    preload.headerImages.loadHeaderImages((images: {[key: string]: HTMLImageElement}) => {
+      setPreloadedAssets(p => {
+        const newPreloadedAssets = {...p};
+        newPreloadedAssets.headerImages = images;
+        return newPreloadedAssets;
+      });
+    });
+    preload.socialicons.loadSocialicons((images: {[key: string]: HTMLImageElement}) => {
+      setPreloadedAssets(p => {
+        const newPreloadedAssets = {...p};
+        newPreloadedAssets.socialIcons = images;
+        return newPreloadedAssets;
+      });
+    });
+    preload.welcomeImage.loadMyPhoto((image: HTMLImageElement) => {
+      setPreloadedAssets(p => {
+        const newPreloadedAssets = {...p};
+        newPreloadedAssets.myPhoto = image;
+        return newPreloadedAssets;
+      });
+    });
   }, []);
 
   const toggleNav = () => {
@@ -61,8 +93,12 @@ function App(props: AppProps): JSX.Element | null {
     setShowNav(false);
   }
 
+  if (PreloadedAssets.isComplete(preloadedAssets) === false) return (
+    <></>
+  )
+
   return (
-    <>
+    <div className='fade-in'>
       <ScrollToTop />
       <Background />
       <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
@@ -73,17 +109,17 @@ function App(props: AppProps): JSX.Element | null {
           <main>
             {/* <div className='page-wrapper'> */}
               <Routes>
-                <Route path='/welcome' element={<WelcomePage devicons={devicons} openNav={toggleNav} />} />
-                <Route path='/projects' element={<ProjectsPage projects={projects} />} />
-                <Route path='/about' element={<AboutPage />} />
-                <Route path='/contact' element={<ContactPage />} />
+                <Route path='/welcome' element={<WelcomePage myPhoto={preloadedAssets.myPhoto!} headerImage={preloadedAssets.headerImages!['welcome']} devIcons={preloadedAssets.devIcons!} openNav={toggleNav} />} />
+                <Route path='/projects' element={<ProjectsPage headerImage={preloadedAssets.headerImages!['projects']} projects={preloadedAssets.projectImages!} />} />
+                <Route path='/about' element={<AboutPage headerImage={preloadedAssets.headerImages!['about']} />} />
+                <Route path='/contact' element={<ContactPage headerImage={preloadedAssets.headerImages!['contact']} socialIcons={preloadedAssets.socialIcons!} />} />
                 <Route path='/' element={<LandingPage />} />
                 <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
               </Routes>
             {/* </div> */}
           </main>
       </div>
-    </>
+    </div>
   );
 }
 

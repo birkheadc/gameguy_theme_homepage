@@ -2,6 +2,14 @@ div#react-root {
   position: relative;
 }
 
+div.fade-in {
+  animation-name: fade-in;
+  animation-direction: forwards;
+  animation-duration: 300ms;
+  animation-delay: 800ms; 
+  animation-fill-mode: backwards;
+}
+
 div.full {
   min-height: 100svh;
 

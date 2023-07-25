@@ -2,12 +2,12 @@ import * as React from 'react';
 import './ProjectsPage.css';
 import ProjectCard from './projectCard/ProjectCard';
 import Carousel from '../../shared/carousel/Carousel';
-import headerImage from '../../../assets/images/headers/projects.png';
 import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
 import { IProjectWithImages } from '../../../types/project/projectWithImages';
 
 interface ProjectsPageProps {
+  headerImage: HTMLImageElement,
   projects: IProjectWithImages[]
 }
 /**
@@ -29,7 +29,7 @@ function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
   return (
     <div className='projects-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
         <div className='project-page-carousel-wrapper'>
           <Carousel isControllable={true} rotateIntervalInMs={5000} >
