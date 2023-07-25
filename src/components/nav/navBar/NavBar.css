@@ -1,30 +1,22 @@
-div#nav-bar {
-  position: fixed;
-  width: 100%;
-  height: var(--size-border);
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  gap: 12px;
-  padding: 6px 64px;
+nav {
+  position: absolute;
   pointer-events: none;
 }
 
-div#nav-bar-inner-wrapper {
-  width: fit-content;
-  height: fit-content;
+div.nav-bar-inner-wrapper {
   display: flex; 
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  padding: 5px;
   border: var(--border-sec);
   background-color: var(--clr-current-2);
-  padding: 5px;
-  border-radius: 35px;
+  border-radius: 27px;
+  transform: translate(calc(67px + -50%), 80px);
 }
 
-div#nav-bar button {
+nav button {
   border: solid 1px var(--clr-current-0);
   border-radius: 50%;
   width: 40px;
@@ -46,28 +38,18 @@ div#nav-bar button {
   color: var(--clr-current-0);
 }
 
-div#nav-bar button:hover, div#nav-bar button:focus {
+nav button:hover, nav button:focus {
   color: var(--clr-current-3);
   background-color: var(--clr-current-1);
 }
 
-button#toggle-nav-button {
-  background-color: var(--clr-current-3);
-  color: var(--clr-current-1);
-}
-
 @media (max-width: 980px) {
-  div#nav-bar {
-    padding: 22px 74px;
+  nav button {
+    width: 80px;
+    height: 80px;
   }
-
-  div#nav-bar-inner-wrapper {
+  div.nav-bar-inner-wrapper {
     padding: 10px;
-    border-radius: 50px;
-  }
-
-  div#nav-bar button {
-    width: 60px;
-    height: 60px
+    border-radius: 52px;
   }
 }

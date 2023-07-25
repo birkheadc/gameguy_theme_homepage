@@ -1,5 +1,4 @@
 div.project-card-wrapper {
-  width: var(--size-page-block);
   height: 100%;
   display: flex;
   flex-direction: column;

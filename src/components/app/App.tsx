@@ -10,7 +10,6 @@ import { useLocation } from 'react-router-dom';
 import defaultGrid from '../nav/navGame/defaultGrid';
 import NavGame from '../nav/navGame/NavGame';
 import WelcomePage from '../pages/welcome/WelcomePage';
-import { IProject } from '../../types/project/project';
 import preload from './preload';
 import { IProjectWithImages } from '../../types/project/projectWithImages';
 import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
@@ -27,6 +26,7 @@ interface AppProps {
  */
 function App(props: AppProps): JSX.Element | null {
 
+  const [headerImages, setHeaderImages] = React.useState<{[key: string]: HTMLImageElement}>({});
   const [projects, setProjects] = React.useState<IProjectWithImages[]>([]);
   const [devicons, setDevicons] = React.useState<HTMLImageElement[]>([]);
 
@@ -42,6 +42,7 @@ function App(props: AppProps): JSX.Element | null {
   React.useEffect(function preloadAssetsOnMount() {
     preload.projects.loadProjects(setProjects);
     preload.devicons.loadDevicons(setDevicons);
+    preload.headerImages.loadHeaderImages(setHeaderImages);
   }, []);
 
   const toggleNav = () => {
@@ -70,14 +71,16 @@ function App(props: AppProps): JSX.Element | null {
 
       <div className='full'>
           <main>
-            <Routes>
-              <Route path='/welcome' element={<WelcomePage devicons={devicons} openNav={toggleNav} />} />
-              <Route path='/projects' element={<ProjectsPage projects={projects} />} />
-              <Route path='/about' element={<AboutPage />} />
-              <Route path='/contact' element={<ContactPage />} />
-              <Route path='/' element={<LandingPage />} />
-              <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
-            </Routes>
+            {/* <div className='page-wrapper'> */}
+              <Routes>
+                <Route path='/welcome' element={<WelcomePage devicons={devicons} openNav={toggleNav} />} />
+                <Route path='/projects' element={<ProjectsPage projects={projects} />} />
+                <Route path='/about' element={<AboutPage />} />
+                <Route path='/contact' element={<ContactPage />} />
+                <Route path='/' element={<LandingPage />} />
+                <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
+              </Routes>
+            {/* </div> */}
           </main>
       </div>
     </>

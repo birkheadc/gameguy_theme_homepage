@@ -1,7 +1,7 @@
 div.contact-page-block {
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  /* padding: 1em; */
   gap: 1em;
   max-width: 600px;
 }
