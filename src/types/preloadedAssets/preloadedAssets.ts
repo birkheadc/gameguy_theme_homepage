@@ -16,14 +16,13 @@ export class PreloadedAssets implements IPreloadedAssets {
   devIcons: HTMLImageElement[] | null = null;
   socialIcons: { [key: string]: HTMLImageElement; } | null = null;
 
-  static isComplete(a: IPreloadedAssets): boolean {
-    console.log(a);
+  static isComplete(assets: IPreloadedAssets): boolean {
     return (
-      (a.myPhoto != null) &&
-      (a.headerImages != null) &&
-      (a.projectImages != null) &&
-      (a.devIcons != null) &&
-      (a.socialIcons != null)
+      (assets.myPhoto != null) &&
+      (assets.headerImages != null) &&
+      (assets.projectImages != null) &&
+      (assets.devIcons != null) &&
+      (assets.socialIcons != null)
     );
   };
 }

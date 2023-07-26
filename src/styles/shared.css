@@ -80,11 +80,11 @@ a:hover, a:focus {
 }
 
 .page-wrapper {
-  height: calc(100svh - 138px);
+  min-height: calc(100svh - 138px);
   display: flex;
   flex-direction: column;
 
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .page-header {

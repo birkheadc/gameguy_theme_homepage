@@ -16,7 +16,7 @@ div.nav-bar-inner-wrapper {
   transform: translate(calc(67px + -50%), 80px);
 }
 
-nav button {
+.nav-button {
   border: solid 1px var(--clr-current-0);
   border-radius: 50%;
   width: 40px;
@@ -38,13 +38,13 @@ nav button {
   color: var(--clr-current-0);
 }
 
-nav button:hover, nav button:focus {
+.nav-button:hover, .nav-button:focus {
   color: var(--clr-current-3);
   background-color: var(--clr-current-1);
 }
 
 @media (max-width: 980px) {
-  nav button {
+  .nav-button {
     width: 80px;
     height: 80px;
   }
