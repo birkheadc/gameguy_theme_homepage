@@ -54,7 +54,8 @@ export default function Carousel(props: ICarouselProps): JSX.Element | null {
   return (
     <div className='carousel-wrapper'>
         {React.Children.map(
-          props.children, (child, index) =>
+          props.children,
+          (child, index) =>
           <div className='carousel-child' style={calculateCarouselChildStyle(index, current, props.children.length)}>{child}</div>
         )}
       {props.isControllable && <CarouselStatusDisplay length={props.children.length} current={current} select={handleSelect} isAutoRotate={isAutoRotate} toggleRotate={handleToggleRotate} />}

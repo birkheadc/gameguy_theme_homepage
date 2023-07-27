@@ -35,9 +35,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "i18next": "^23.3.0",
     "react": "^18.2.0",
     "react-collapsible": "^2.10.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.0.2",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.13.0"
   }

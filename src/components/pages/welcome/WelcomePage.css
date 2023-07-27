@@ -22,6 +22,7 @@ div.welcome-message p {
 
 button.welcome-page-start-button {
   font-size: 1.5em;
+  text-transform: capitalize;
 }
 
 canvas.welcome-page-image {

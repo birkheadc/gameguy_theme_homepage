@@ -4,6 +4,7 @@ import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
 import DevIconsSlider from './devIconsSlider/DevIconsSlider';
 import helpers from '../../../helpers';
+import { useTranslation } from 'react-i18next';
 
 interface IWelcomePageProps {
   headerImage: HTMLImageElement,
@@ -19,6 +20,7 @@ interface IWelcomePageProps {
 export default function WelcomePage(props: IWelcomePageProps): JSX.Element | null {
 
   const [icons, setIcons] = React.useState<HTMLImageElement[]>([]);
+  const {t} = useTranslation();
 
   React.useEffect(function randomizeIconsOnMount() {
     setIcons(helpers.algorithm.shuffleArray(props.devIcons));
@@ -31,15 +33,15 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
       <div className='page-block'>
         <div className='welcome-message'>
           <div className='welcome-message-body'>
-            <p>Hello there! Welcome to the world of CODéMON! My name is <span className='underline'>COLBY BIRKHEAD!</span> People call me the CODéMON PROF!<sup>*</sup></p>
+            <p>{t('welcomeMessagePart1')} <span className='underline'>COLBY BIRKHEAD!</span> {t('welcomeMessagePart2')}<sup>*</sup></p>
             <div className='welcome-page-images' >
               <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={props.myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
               <DevIconsSlider devicons={icons}/>
             </div>
-            <p>VISITOR! Your very own CODéMON legend is about to unfold! A world of dreams and adventures with CODéMON awaits! Let's go!</p>
-            <button className='welcome-page-start-button' onClick={props.openNav}>Start</button>
+            <p>{t('welcomeMessagePart3')}</p>
+            <button className='welcome-page-start-button' onClick={props.openNav}>{t('start')}</button>
           </div>
-          <p className='disclaimer'><sup>*</sup> No one actually calls me the Codemon Prof, or the anything Prof for that matter.</p>
+          <p className='disclaimer'><sup>* </sup>{t('welcomeFootnote')}</p>
         </div>
       </div>
     </div>

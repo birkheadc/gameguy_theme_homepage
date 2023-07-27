@@ -2,6 +2,7 @@ import * as React from 'react';
 import './LanguageSelector.css'
 import { LanguageIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '../../hooks/useLanguage/useLanguage';
+import { useTranslation } from 'react-i18next';
 
 interface ILanguageSelectorProps {
   languageOptions: { title: string, code: string }[]

@@ -10,6 +10,10 @@
   font-size: 1.5em;
 }
 
+.collapsible-trigger-title {
+  text-transform: capitalize;
+}
+
 .collapsible-trigger:hover, .collapsible-trigger:focus {
   background-color: var(--clr-current-2);
   color: var(--clr-current-1);
