@@ -2,6 +2,7 @@ import * as React from 'react';
 import './ProjectImage.css'
 import ProcessedImage from '../../../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../../../types/imageProcessShaderMode';
+import FadeCarousel from '../../../../shared/fadeCarousel/FadeCarousel';
 
 interface IProjectImageProps {
   images: HTMLImageElement[]
@@ -15,7 +16,12 @@ export default function ProjectImage(props: IProjectImageProps): JSX.Element | n
 
   return (
     <div className='project-image-wrapper'>
-      {props.images.length > 0 && <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={props.images[0]} shaderMode={ImageProcessShaderMode.NORMAL} />}
+      <FadeCarousel lingerTime={2000}>
+        {props.images.map(
+          image =>
+          <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={image} shaderMode={ImageProcessShaderMode.NORMAL} />        )}
+      </FadeCarousel>
+      {/* {props.images.length > 0 && <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={props.images[0]} shaderMode={ImageProcessShaderMode.NORMAL} />} */}
     </div>
   );
 }
