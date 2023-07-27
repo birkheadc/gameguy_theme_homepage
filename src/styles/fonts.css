@@ -7,3 +7,11 @@
   /* --font-h: 'Press Start 2P', cursive; */
   /* --font-h: 'Silkscreen', cursive; */
 }
+
+[data-language="en"] {
+  --size-line-height: 1.2;
+}
+
+[data-language="jp"] {
+  --size-line-height: 1.5;
+}

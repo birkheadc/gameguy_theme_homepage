@@ -18,8 +18,8 @@ export default function ProjectImage(props: IProjectImageProps): JSX.Element | n
     <div className='project-image-wrapper'>
       <FadeCarousel lingerTime={2000}>
         {props.images.map(
-          image =>
-          <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={image} shaderMode={ImageProcessShaderMode.NORMAL} />        )}
+          (image, index) =>
+          <ProcessedImage key={`projcet-card-canvas-${index}`} className='project-card-canvas' pixelateLevel={2} imageSrc={image} shaderMode={ImageProcessShaderMode.NORMAL} />        )}
       </FadeCarousel>
       {/* {props.images.length > 0 && <ProcessedImage className='project-card-canvas' pixelateLevel={2} imageSrc={props.images[0]} shaderMode={ImageProcessShaderMode.NORMAL} />} */}
     </div>

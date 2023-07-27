@@ -2,13 +2,17 @@ html {
   background-color: var(--clr-current-2);
   color: var(--clr-current-1);
   font-family: var(--font-pri);
-  font-size: 1.5rem;
   line-height: 1;
+  font-size: 1.5rem;
+  line-height: var(--size-line-height);
 }
 
 sup {
   vertical-align: super;
   font-size: 0.8em;
+}
+
+p {
 }
 
 a {

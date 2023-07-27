@@ -5,5 +5,5 @@ import algorithm from "./algorithm";
 export default {
   theme,
   image,
-  algorithm
+  algorithm,
 }

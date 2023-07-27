@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './LanguageSelector.css'
 import { LanguageIcon } from '@heroicons/react/24/outline';
+import { useLanguage } from '../../hooks/useLanguage/useLanguage';
 
 interface ILanguageSelectorProps {
   languageOptions: { title: string, code: string }[]
@@ -11,6 +12,8 @@ interface ILanguageSelectorProps {
 * @returns {JSX.Element | null}
 */
 export default function LanguageSelector(props: ILanguageSelectorProps): JSX.Element | null {
+
+  const { language, changeLanguage } = useLanguage();
 
   const [isOpen, setOpen] = React.useState<boolean>(false);
 
@@ -28,7 +31,7 @@ export default function LanguageSelector(props: ILanguageSelectorProps): JSX.Ele
   }
 
   const handleChangeLanguage = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('Change language to: ', event.currentTarget.name);
+    changeLanguage(event.currentTarget.name);
   }
 
   return (

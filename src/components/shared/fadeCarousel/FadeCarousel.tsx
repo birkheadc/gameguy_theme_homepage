@@ -28,7 +28,7 @@ function FadeCarousel(props: FadeCarouselProps): JSX.Element | null {
       {React.Children.map(
         props.children,
         (child, index) =>
-        <div className={`fade-carousel-child-wrapper ${index === current ? 'active' : 'inactive'}`}>
+        <div key={`fade-carousel-child-${index}`} className={`fade-carousel-child-wrapper ${index === current ? 'active' : 'inactive'}`}>
           {child}
         </div>
       )}
