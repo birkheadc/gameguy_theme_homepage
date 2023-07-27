@@ -31,3 +31,7 @@ div.inline-label-input-wrapper>input, div.inline-label-input-wrapper>textarea {
 div.inline-label-input-wrapper>textarea {
   height: auto;
 }
+
+button.contact-form-submit-button {
+  text-transform: capitalize;
+}

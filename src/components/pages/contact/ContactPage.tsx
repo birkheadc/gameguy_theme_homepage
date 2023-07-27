@@ -6,6 +6,7 @@ import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import ContactForm from './contactForm/ContactForm';
 import { Comment } from '../../../types/comment';
 import api from '../../../api';
+import { useTranslation } from 'react-i18next';
 
 interface ContactPageProps {
   headerImage: HTMLImageElement,
@@ -17,6 +18,8 @@ interface ContactPageProps {
  * @returns {JSX.Element | null}
  */
 function ContactPage(props: ContactPageProps): JSX.Element | null {
+
+  const { t } = useTranslation();
 
   const handleSubmit = async (comment: Comment) => {
     const response = await api.comment.postComment(COMMENTS_URL, comment);
@@ -30,11 +33,11 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
       <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block contact-page-block'>
         <p className='justify'>
-          If you'd like to get in touch, feel free to...
+          {t('contactPart1')}
         </p>
-        <p className='center'>Write me an email: <a draggable='false' href={'mailto:birkheadc@gmail.com'} >birkheadc@gmail.com</a></p>
+        <p className='center'>{t('contactPart2')} <a draggable='false' href={'mailto:birkheadc@gmail.com'} >birkheadc@gmail.com</a></p>
         <div className='contact-page-socials-wrapper'>
-          <p className='center'>Connect with me on social media:</p>
+          <p className='center'>{t('contactPart3')}</p>
           <ul className='contact-page-socials-list'>
             <li><a draggable='false' href={'https://www.linkedin.com/in/colby-birkhead'} target='_blank' rel='noreferrer'><ProcessedImage className={'contact-page-social-icon'} imageSrc={props.socialIcons['linkedin']} shaderMode={ImageProcessShaderMode.NORMAL} pixelateLevel={3} /></a></li>
             <li><a className='round' draggable='false' href={'https://github.com/birkheadc'} target='_blank' rel='noreferrer'><ProcessedImage className={'contact-page-social-icon'} imageSrc={props.socialIcons['github']} shaderMode={ImageProcessShaderMode.NORMAL} pixelateLevel={3} /></a></li>
@@ -43,7 +46,7 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
         </div>
         <div className='contact-page-form-wrapper'>
           <p className='justify'>
-            Or just leave a quick comment with the form below. I enjoy the comments, especially when they're kind.
+            {t('contactPart4')}
           </p>
           <ContactForm submit={handleSubmit} />
         </div>

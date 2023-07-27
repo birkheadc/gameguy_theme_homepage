@@ -49,6 +49,7 @@ span.project-card-links {
 span.project-card-links>a {
   user-select: none;
   color: var(--clr-current-0);
+  text-transform: capitalize;
 }
 
 span.project-card-links>a:hover, span.project-card-links>a:focus {
