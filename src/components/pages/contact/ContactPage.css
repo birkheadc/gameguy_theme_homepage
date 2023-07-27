@@ -6,6 +6,10 @@ div.contact-page-block {
   max-width: 600px;
 }
 
+a.email-link {
+  text-decoration: underline;
+}
+
 ul.contact-page-socials-list {
   display: flex;
   flex-direction: row;
@@ -33,7 +37,7 @@ canvas.contact-page-social-icon {
   height: 100%;
 }
 
-ul.contact-page-socials-list a:hover {
+ul.contact-page-socials-list a:hover, ul.contact-page-socials-list a:focus {
   background-color: var(--clr-current-1);
 }
 

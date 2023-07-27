@@ -35,7 +35,7 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
         <p className='justify'>
           {t('contactPart1')}
         </p>
-        <p className='center'>{t('contactPart2')} <a draggable='false' href={'mailto:birkheadc@gmail.com'} >birkheadc@gmail.com</a></p>
+        <p className='center'>{t('contactPart2')} <a draggable='false' className='email-link' href={'mailto:birkheadc@gmail.com'} >birkheadc@gmail.com</a></p>
         <div className='contact-page-socials-wrapper'>
           <p className='center'>{t('contactPart3')}</p>
           <ul className='contact-page-socials-list'>
