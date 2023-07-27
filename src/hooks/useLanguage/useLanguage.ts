@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export function useLanguage() {
   const [language, setLanguage] = React.useState<string>(DEFAULT_LANGUAGE);
+  const { i18n } = useTranslation();
   
   React.useEffect(function getLanguageOnMount() {
     const language = window.localStorage.getItem(LANGUAGE_KEY);
@@ -28,6 +30,10 @@ export function useLanguage() {
       window.removeEventListener('storage', listener);
     })
   }, []);
+
+  React.useEffect(function changeI18NLanguageOnLanguageChange() {
+    i18n.changeLanguage(language);
+  }, [ language ]);
 
   React.useEffect(function setCssAttributeOnLanguageChange() {
     document.documentElement.setAttribute(LANGUAGE_KEY, language);

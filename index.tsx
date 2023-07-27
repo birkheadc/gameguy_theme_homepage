@@ -11,6 +11,8 @@ import './src/styles/shared.css';
 
 import './index.css';
 
+import './src/i18n/i18n';
+
 import App from './src/components/app/App';
 import { BrowserRouter } from 'react-router-dom';
 
