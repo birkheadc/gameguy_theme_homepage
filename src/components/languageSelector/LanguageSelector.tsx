@@ -18,14 +18,35 @@ export default function LanguageSelector(props: ILanguageSelectorProps): JSX.Ele
 
   const [isOpen, setOpen] = React.useState<boolean>(false);
 
-  React.useEffect(function setListenersToCloseSelectorWhenOpen() {
-    if (isOpen) {
-      console.log('Set listeners...');
-    }
-    return (() => {
-      console.log('Remove listeners');
+  React.useEffect(function setMouseListenerToCloseSelector() {
+    const listener = ((event: MouseEvent) => {
+      const clicked = document.elementsFromPoint(event.clientX, event.clientY);
+      let shouldClose = true;
+      clicked.forEach(element => {
+        if (!shouldClose) return;
+        if (element.classList.contains('language-selector-wrapper')) shouldClose = false;
+      });
+      if (shouldClose) {
+        setOpen(false);
+      }
     })
-  }, [isOpen]);
+    window.addEventListener('click', listener);
+    return (() => {
+      window.removeEventListener('click', listener);
+    })
+  }, []);
+
+  React.useEffect(function setKeyListenerToCloseSelector() {
+    const listener = ((event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    });
+    window.addEventListener('keydown', listener);
+    return (() => {
+      window.removeEventListener('keydown', listener);
+    })
+  }, [])
 
   const handleToggleSelector = () => {
     setOpen(i => !i);
@@ -33,6 +54,7 @@ export default function LanguageSelector(props: ILanguageSelectorProps): JSX.Ele
 
   const handleChangeLanguage = (event: React.MouseEvent<HTMLButtonElement>) => {
     changeLanguage(event.currentTarget.name);
+    setOpen(false);
   }
 
   return (
