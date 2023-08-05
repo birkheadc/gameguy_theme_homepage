@@ -2,6 +2,7 @@ import * as React from 'react';
 import './TabbedWindow.css';
 
 export interface TabbedWindowProps {
+  className?: string | undefined,
   tabName: string,
   children: React.ReactNode
 }
@@ -12,7 +13,7 @@ export interface TabbedWindowProps {
  */
 function TabbedWindow(props: TabbedWindowProps): JSX.Element | null {
   return (
-    <div>
+    <div className={props.className}>
       {props.children}
     </div>
   );

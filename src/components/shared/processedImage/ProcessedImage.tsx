@@ -2,13 +2,14 @@ import * as React from 'react';
 import './ProcessedImage.css';
 import helpers from '../../../helpers';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
-import { IVector2 } from '../../../types/vectory2';
+import { ImageProcessShaderEffect } from '../../../types/imageProcessShaderEffect';
 
 interface ProcessedImageProps {
   className: string,
   imageSrc: string | HTMLImageElement,
   shaderMode: ImageProcessShaderMode,
-  pixelateLevel: number
+  pixelateLevel: number,
+  effect?: ImageProcessShaderEffect
 }
 /**
  * 
@@ -34,14 +35,14 @@ function ProcessedImage(props: ProcessedImageProps): JSX.Element | null {
   React.useEffect(() => {
     (async function processAndDrawNewImageToCanvas() {
       if (image == null || canvasRef.current == null) return;
-      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, props.shaderMode);
+      await helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, props.shaderMode, props.effect);
     })();
   }, [ image, canvasRef ]);
 
   React.useEffect(function setEventListenerToReprocessImageOnThemeChange() {
     const listener = () => {
       if (image == null || canvasRef.current == null) return;
-      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, props.shaderMode);
+      helpers.image.processAndDrawImageToCanvas(image, canvasRef.current, helpers.theme.getCurrentThemeColors(), props.pixelateLevel, props.shaderMode, props.effect);
     }
     window.addEventListener('onchangetheme', listener);
     return (() => {

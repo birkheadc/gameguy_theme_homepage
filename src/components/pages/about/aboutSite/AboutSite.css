@@ -1,0 +1,19 @@
+div.about-site-collapsible-trigger {
+  padding: 5px 10px;
+}
+
+div.about-site-features-wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div.about-site-features-wrapper>div {
+  border: var(--border-sec);
+}
+
+canvas.dither-explanation-image {
+  width: 300px;
+  height: 300px;
+}

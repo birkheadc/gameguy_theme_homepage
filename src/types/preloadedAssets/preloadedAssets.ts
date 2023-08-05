@@ -6,7 +6,6 @@ export interface IPreloadedAssets {
   projectImages: IProjectWithImages[] | null,
   devIcons: HTMLImageElement[] | null,
   socialIcons: {[key: string]: HTMLImageElement} | null
-  // isComplete: (preloadedAssets: IPreloadedAssets) => boolean
 }
 
 export class PreloadedAssets implements IPreloadedAssets {

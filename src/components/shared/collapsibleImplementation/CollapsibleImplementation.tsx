@@ -6,6 +6,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 interface CollapsibleImplementationProps {
   triggerTitle: string,
+  triggerClassName: string,
   children: React.ReactNode,
   scrollToElementId: string
 }
@@ -44,7 +45,7 @@ function CollapsibleImplementation(props: CollapsibleImplementationProps): JSX.E
 
   function renderTrigger(): JSX.Element {
     return (
-      <div aria-label={props.triggerTitle} className={'collapsible-trigger ' + (isOpen ? 'collapsible-trigger-open' : '')}>
+      <div aria-label={props.triggerTitle} className={props.triggerClassName + ' collapsible-trigger' + (isOpen ? ' collapsible-trigger-open' : '')}>
         <h3 className='collapsible-trigger-title'>{props.triggerTitle}</h3>
         <span>{ isOpen ? <ChevronUpIcon className='icon' /> : <ChevronDownIcon className='icon' /> }</span>
       </div>

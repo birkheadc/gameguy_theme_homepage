@@ -1,0 +1,46 @@
+div.tabbed-windows-wrapper {
+  border: var(--border-pri);
+}
+
+div.tabbed-windows-tabs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 20px;
+  background-color: var(--clr-current-1);
+  padding: 0 10px;
+}
+
+div.tabbed-windows-tab-wrapper {
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-color: var(--clr-current-1);
+}
+
+button.tabbed-windows-tab-button {
+  background-color: var(--clr-current-2);
+  border: none;
+  margin: 0;
+  min-width: 100px;
+  max-height: 45px;
+  font-size: 1.2em;
+  padding: 0px 20px;
+  text-align: center;
+  transition: padding-bottom 100ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: max-height 100ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+button.tabbed-windows-tab-button.active {
+  padding-bottom: 5px;
+  max-height: 55px;
+  background-color: var(--clr-current-3);
+  color: var(--clr-current-1);
+}
+
+div.tabbed-windows-body {
+}

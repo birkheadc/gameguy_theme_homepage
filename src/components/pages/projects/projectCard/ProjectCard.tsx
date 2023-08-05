@@ -32,7 +32,7 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
       <ProjectImage images={images} />
       <div>
         <div className='more-info-wrapper' id={getMoreInfoWrapperId(project.id)}>
-          <CollapsibleImplementation scrollToElementId={getMoreInfoWrapperId(project.id)} triggerTitle={t('moreInfo')}>
+          <CollapsibleImplementation triggerClassName='project-card-collapsible-trigger' scrollToElementId={getMoreInfoWrapperId(project.id)} triggerTitle={t('moreInfo')}>
             <span className='project-card-description more-info-content'>{project.longDescriptions.find(desc => desc.language === language)?.content}</span>
             <TechnologiesDisplay technologies={project.technologies} />
           </CollapsibleImplementation>

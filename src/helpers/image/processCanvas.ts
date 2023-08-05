@@ -1,7 +1,8 @@
+import { ImageProcessShaderEffect } from "../../types/imageProcessShaderEffect";
 import { ImageProcessShaderMode } from "../../types/imageProcessShaderMode";
 import hexToRgb from "./hexToRgb";
 
-export default function processCanvas(canvas: HTMLCanvasElement, colors: string[], shaderMode: ImageProcessShaderMode) {
+export default function processCanvas(canvas: HTMLCanvasElement, colors: string[], shaderMode: ImageProcessShaderMode, effect: ImageProcessShaderEffect = ImageProcessShaderEffect.DITHER) {
   
   const context = canvas.getContext('2d');
   if (context == null) return;
@@ -45,18 +46,30 @@ export default function processCanvas(canvas: HTMLCanvasElement, colors: string[
         break;
     }
     let ditherDirection: number = 0;
-    if (dither) {
+    if (effect >= ImageProcessShaderEffect.DITHER && dither) {
       if ((average - (tier * tierCutoff)) > (tierCutoff * 0.3)) {
         ditherDirection = 1;
       } else if ((average - (tier * tierCutoff)) < (tierCutoff * -0.3)) {
         ditherDirection = -1;
       }
     }
-    tier = Math.min(tier + ditherDirection, maxTier);
-    tier = Math.max(tier, minTier);
-    data[i] = rgbColors[tier].r;
-    data[i+1] = rgbColors[tier].g;
-    data[i+2] = rgbColors[tier].b;
+    if (effect === ImageProcessShaderEffect.GREYSCALE) {
+      data[i] = average;
+      data[i+1] = average;
+      data[i+2] = average;
+    } else {
+      tier = Math.min(tier + ditherDirection, maxTier);
+      tier = Math.max(tier, minTier);
+      if (effect >= ImageProcessShaderEffect.SHADE) {
+        data[i] = rgbColors[tier].r;
+        data[i+1] = rgbColors[tier].g;
+        data[i+2] = rgbColors[tier].b;
+      } else {
+        data[i] = (tier*50) + 25;
+        data[i+1] = (tier*50) + 25;
+        data[i+2] = (tier*50) + 25;
+      }
+    }
   }
   context.putImageData(imageData, 0, 0);
 }

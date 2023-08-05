@@ -111,7 +111,7 @@ function App(props: AppProps): JSX.Element | null {
               <Routes>
                 <Route path='/welcome' element={<WelcomePage myPhoto={preloadedAssets.myPhoto!} headerImage={preloadedAssets.headerImages!['welcome']} devIcons={preloadedAssets.devIcons!} openNav={toggleNav} />} />
                 <Route path='/projects' element={<ProjectsPage headerImage={preloadedAssets.headerImages!['projects']} projects={preloadedAssets.projectImages!} />} />
-                <Route path='/about' element={<AboutPage headerImage={preloadedAssets.headerImages!['about']} />} />
+                <Route path='/about' element={<AboutPage headerImage={preloadedAssets.headerImages!['about']} images={{ ditherExplanation: preloadedAssets.myPhoto! }} />} />
                 <Route path='/contact' element={<ContactPage headerImage={preloadedAssets.headerImages!['contact']} socialIcons={preloadedAssets.socialIcons!} />} />
                 <Route path='/' element={<LandingPage />} />
                 <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />

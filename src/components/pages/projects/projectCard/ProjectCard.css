@@ -22,6 +22,11 @@ div.project-card-header {
   width: 100%;
 }
 
+div.project-card-collapsible-trigger {
+  padding: 10px 20px;
+  font-size: 1.5em;
+}
+
 span.project-card-description {
   font-size: 0.9em;
 }
