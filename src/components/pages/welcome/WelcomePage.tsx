@@ -29,7 +29,7 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
   return (
     <div className='welcome-page-wrapper page-wrapper'>
       <h1 className='hidden'>Welcome</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <ProcessedImage className='page-header' pixelateLevel={2} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
         <div className='welcome-message'>
           <div className='welcome-message-body'>

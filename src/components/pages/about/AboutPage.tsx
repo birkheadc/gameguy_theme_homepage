@@ -23,7 +23,7 @@ function AboutPage(props: AboutPageProps): JSX.Element | null {
   return (
     <div className='about-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <ProcessedImage className='page-header' pixelateLevel={2} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
         <TabbedWindows className='about-page-tabs'>
           <TabbedWindow className='about-page-tab-window' tabName='This Site'>

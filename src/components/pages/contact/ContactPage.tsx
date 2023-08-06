@@ -30,7 +30,7 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
   return (
     <div className='contact-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <ProcessedImage className='page-header' pixelateLevel={2} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block contact-page-block'>
         <p className='justify'>
           {t('contactPart1')}

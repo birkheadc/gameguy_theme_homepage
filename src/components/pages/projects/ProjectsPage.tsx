@@ -17,19 +17,10 @@ interface ProjectsPageProps {
  */
 function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
 
-  // const [projects, setProjects] = React.useState<IProject[]>([]);
-
-  // React.useEffect(function fetchProjectsOnMount() {
-  //   (async function getAndSetProjects() {
-  //     await api.projects.getAll()
-  //       .then(result => setProjects(result.body ?? []));
-  //   })();
-  // }, []);
-
   return (
     <div className='projects-page-wrapper page-wrapper'>
       <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={1} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <ProcessedImage className='page-header' pixelateLevel={2} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
       <div className='page-block'>
         <div className='project-page-carousel-wrapper'>
           <Carousel isControllable={true} rotateIntervalInMs={5000} >

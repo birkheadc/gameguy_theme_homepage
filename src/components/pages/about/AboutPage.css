@@ -5,3 +5,16 @@ div.about-page-tabs {
 .about-page-tab-window {
   padding: 1em;
 }
+
+div.about-block-wrapper {
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+div.about-block-wrapper>p {
+  width: 100%;
+}

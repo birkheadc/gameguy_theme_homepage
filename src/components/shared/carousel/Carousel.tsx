@@ -21,9 +21,9 @@ export default function Carousel(props: ICarouselProps): JSX.Element | null {
     const listener = () => {
       setAutoRotate(false);
     }
-    window.addEventListener('onopenmoreinfo', listener);
+    window.addEventListener('onopencollapsible', listener);
     return (() => {
-      window.removeEventListener('onopenmoreinfo', listener);
+      window.removeEventListener('onopencollapsible', listener);
     })
   }, []);
 

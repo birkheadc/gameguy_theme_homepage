@@ -12,7 +12,7 @@ interface IAboutMyWorkProps {
 export default function AboutMyWork(props: IAboutMyWorkProps): JSX.Element | null {
   return (
     <div className='about-my-work-wrapper'>
-      ABOUT MY WORK
+      Uncaught exception: "Not yet implemented." (lol)
     </div>
   );
 }

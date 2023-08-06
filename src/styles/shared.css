@@ -56,7 +56,7 @@ a:hover, a:focus {
 
 .justify {
   text-align: justify;
-  text-align-last: center;
+  text-align-last: left;
 }
 
 .fade {
@@ -93,7 +93,7 @@ a:hover, a:focus {
 
 .page-header {
   max-width: min(70%, 600px);
-  max-height: 5em;
+  height: 5em;
   margin: 0.5em auto;
 }
 
@@ -103,7 +103,7 @@ a:hover, a:focus {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 62px;
+  padding: 0 62px 20px 62px;
 }
 
 textarea, input {
