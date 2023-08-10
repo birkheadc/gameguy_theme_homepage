@@ -18,6 +18,13 @@ export const japanese: ITranslation = {
     submit: "送信",
     start: "開始",
     contactFormError: "送信失敗",
-    contactFormSuccess: "ありがとうございます！"
+    contactFormSuccess: "ありがとうございます！",
+    cells: {
+      treeCell: "木だな",
+      hedgeCell: "すごく木に似ている",
+      resumeCell: "Colbyのレジメがある…見てみる？"
+    },
+    yes: "はい",
+    no: "いいえ"
   }
 }

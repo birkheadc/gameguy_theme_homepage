@@ -2,6 +2,8 @@ import { ResourceLanguage } from "i18next"
 
 export default interface ITranslation extends ResourceLanguage {
   translation: {
+    yes: string,
+    no: string,
     submit: string,
     start: string,
     moreInfo: string,
@@ -18,6 +20,11 @@ export default interface ITranslation extends ResourceLanguage {
     contactFormName: string,
     contactFormComment: string,
     contactFormError: string,
-    contactFormSuccess: string
+    contactFormSuccess: string,
+    cells: {
+      treeCell: string,
+      hedgeCell: string,
+      resumeCell: string
+    }
   }
 }

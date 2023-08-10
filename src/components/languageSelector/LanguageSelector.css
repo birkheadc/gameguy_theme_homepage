@@ -38,6 +38,7 @@ button.language-selector-button {
   color: var(--clr-current-1);
   cursor: pointer;
   font-family: var(--font-pri);
+  user-select: none;
 }
 
 button.language-selector-button:hover, button.language-selector-button:focus {

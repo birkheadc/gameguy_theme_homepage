@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './PromptPopup.css'
 import { ICellPrompt, ICellPromptAction, ICellPromptActionType, ICellPromptOption } from '../../../../../../types/cell';
+import { useTranslation } from 'react-i18next';
 
 interface IPromptPopupProps {
   prompt: ICellPrompt,
@@ -12,6 +13,8 @@ interface IPromptPopupProps {
 * @returns {JSX.Element | null}
 */
 export default function PromptPopup(props: IPromptPopupProps): JSX.Element | null {
+
+  const { t } = useTranslation();
 
   const [selected, setSelected] = React.useState<number>(0);
 
@@ -54,6 +57,10 @@ export default function PromptPopup(props: IPromptPopupProps): JSX.Element | nul
     })
   }, [props.prompt, props.close, selected]);
 
+  const handleHoverOption = (index: number) => {
+    setSelected(index);
+  }
+
   const handleClickOption = (action: ICellPromptAction) => {
     switch (action.type) {
       case ICellPromptActionType.CANCEL:
@@ -68,11 +75,11 @@ export default function PromptPopup(props: IPromptPopupProps): JSX.Element | nul
 
   return (
     <div className='prompt-popup-wrapper'>
-      <span className="prompt-text">{props.prompt.text}</span>
+      <span className="prompt-text">{t(props.prompt.text)}</span>
       <div className='prompt-options-wrapper'>
         {props.prompt.options.map(
           (option, index) =>
-          <span className={`prompt-option ${index === selected ? 'selected': 'unselected'}`} key={`prompt-popup-${option.text}`} onClick={() => handleClickOption(option.action)}>{option.text}</span>
+          <button tabIndex={-1} className={`prompt-option ${index === selected ? 'selected': 'unselected'}`} key={`prompt-popup-${option.text}`} onPointerEnter={() => handleHoverOption(index)} onClick={() => handleClickOption(option.action)}>{t(option.text)}</button>
         )}
       </div>
     </div>

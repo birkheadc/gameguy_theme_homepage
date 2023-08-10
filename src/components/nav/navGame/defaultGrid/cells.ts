@@ -1,10 +1,15 @@
 import { ICell, ICellPromptActionType } from "../../../../types/cell";
+import i18next, { t } from "i18next";
 
-
+// const treeCell: ICell = {
+//   isTraversable: false,
+//   isInteractable: true,
+//   interactText: 'Just an ordinary bush. Useful for keeping nosy adventurers on the right path.'
+// };
 const treeCell: ICell = {
   isTraversable: false,
   isInteractable: true,
-  interactText: 'Just an ordinary bush. Useful for keeping nosy adventurers on the right path.'
+  interactText: 'cells.treeCell'
 };
 
 const groundCell: ICell = {
@@ -15,7 +20,7 @@ const groundCell: ICell = {
 const hedgeCell: ICell = {
   isTraversable: false,
   isInteractable: true,
-  interactText: 'Some hedges planted outside a building. Looks awfully like an ordinary bush.'
+  interactText: 'cells.hedgeCell'
 }
 
 const blockedCell: ICell = {
@@ -32,17 +37,17 @@ const resumeCell: ICell = {
   isTraversable: false,
   isInteractable: true,
   prompt: {
-    text: "It's a copy of Colby's resume. Take a look?",
+    text: 'cells.resumeCell',
     options: [
       {
-        text: 'Yes',
+        text: 'yes',
         action: {
           type: ICellPromptActionType.LINK,
           extra: 'https://resume.birkheadc.me/resume_en_swe.pdf'
         }
       },
       {
-        text: 'No',
+        text: 'no',
         action: {
           type: ICellPromptActionType.CANCEL,
         }
@@ -77,11 +82,5 @@ const cells: ICell[][] = [
 function getNCell(n: number, cell: ICell): ICell[] {
   return Array.from({ length: n }, _ => ({...cell}));
 }
-
-// const cells: ICell[][] = Array.from({ length: 20 }, (_, x) => Array.from({ length: 15 }, (_, y) => ({
-//   position: { x, y },
-//   isTraversable: true,
-//   interactText: null
-// })));
 
 export default cells;

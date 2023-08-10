@@ -18,6 +18,13 @@ export const english: ITranslation = {
     submit: "submit",
     start: "start",
     contactFormError: "Sorry, something went wrong :(",
-    contactFormSuccess: "Thanks for your feedback :)"
+    contactFormSuccess: "Thanks for your feedback :)",
+    cells: {
+      treeCell: "Just an ordinary bush. Useful for keeping nosy adventurers on the right path.",
+      hedgeCell: "Some hedges planted outside a building. Looks awfully like an ordinary bush.",
+      resumeCell: "It's a copy of Colby's resume. Take a look?"
+    },
+    yes: "yes",
+    no: "no"
   }
 }

@@ -20,9 +20,29 @@ span.prompt-text {
 }
 
 .prompt-option {
-  /* border: var(--border-sec); */
+  width: fit-content;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-pri);
+  background-color: transparent;
+  color: var(--clr-current-1);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.prompt-option:hover, .prompt-option:focus {
+  background-color: transparent;
+  color: var(--clr-current-1);
 }
 
 .prompt-option.selected {
   color: var(--clr-current-0);
+  background-color: transparent;
+}
+
+.prompt-option.selected::before {
+  content: '\203A';
+  position: absolute;
+  transform: translate(-150%, -5%);
 }
