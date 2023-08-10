@@ -1,0 +1,28 @@
+div.prompt-popup-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.prompt-options-wrapper {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 200px;
+  margin: 0 auto;
+}
+
+span.prompt-text {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.prompt-option {
+  /* border: var(--border-sec); */
+}
+
+.prompt-option.selected {
+  color: var(--clr-current-0);
+}

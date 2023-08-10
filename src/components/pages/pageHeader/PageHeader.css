@@ -1,0 +1,12 @@
+h1.page-header {
+  text-transform: capitalize;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+canvas.page-header {
+  max-width: min(70%, 600px);
+  height: 5em;
+  margin: 0.5em auto;
+}

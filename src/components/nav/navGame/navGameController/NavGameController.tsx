@@ -40,7 +40,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   const [path, setPath] = React.useState<IVector2[]>([]);
 
   // The text to display in the hud, or null if none to be played.
-  const [popupText, setPopupText] = React.useState<string | null>(null);
+  const [interactingCell, setInteractingCell] = React.useState<ICell | null>(null);
 
   // Determines whether the player should play a moving animation or idle animation.
   const [isMoving, setMoving] = React.useState<boolean>(false);
@@ -57,7 +57,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     const keydownListener = (event: KeyboardEvent) => {
       if (controller.registerKeyDown(event.key)) {
         event.preventDefault();
-        if (props.isActive === false) return;
+        if (props.isActive === false || interactingCell != null) return; 
         setControllerDirection(controller.getCurrentDirection())
       }
     };
@@ -65,7 +65,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     const keyupListener = (event: KeyboardEvent) => {
       if (controller.registerKeyUp(event.key)) {
         event.preventDefault();
-        if (props.isActive === false) return;
+        if (props.isActive === false || interactingCell != null) return;
         setControllerDirection(controller.getCurrentDirection());
       }
     };
@@ -73,7 +73,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     const spaceListener = (event: KeyboardEvent) => {
       if (event.key === ' ') {
         event.preventDefault();
-        if (props.isActive === false) return;
+        if (props.isActive === false || interactingCell != null) return;
         interactWithCellInFront();
       }
     }
@@ -86,7 +86,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
       window.removeEventListener('keyup', keyupListener);
       window.removeEventListener('keydown', spaceListener);
     });
-  }, [ truePosition, facingDirection, props.grid, props.isActive]);
+  }, [ truePosition, facingDirection, props.grid, props.isActive, interactingCell]);
 
   React.useEffect(function calculateSpawnPosition() {
     setSpawnPosition(pos => {
@@ -103,7 +103,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
 
   React.useEffect(function calculatePathFromDirection() {
     if (controllerDirection == null) return;
-    if (popupText != null) return;
+    if (interactingCell != null) return;
     setFacingDirection(fd => {
       if (isMoving) return fd;
       return controllerDirection;
@@ -119,7 +119,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
       }
       return path;
     });
-  }, [ controllerDirection, truePosition, popupText, path ]);
+  }, [ controllerDirection, truePosition, interactingCell, path ]);
 
   React.useEffect(function addListenerToMoveTowardsFirstPositionOnPath() {
     if (path.length < 1) return;
@@ -169,7 +169,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   }, [ truePosition ])
 
   React.useEffect(function updateIsMoving() {
-    if (popupText != null) {
+    if (interactingCell != null) {
       setMoving(false);
       return;
     }
@@ -183,19 +183,19 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
         setMoving(nextCell != null && nextCell.isTraversable === true);
       }
     }
-  }, [ path, controllerDirection, props.grid, truePosition, popupText ]);
+  }, [ path, controllerDirection, props.grid, truePosition, interactingCell ]);
 
   const handleGridClick = (clickLocation: IVector2 | null) => {
     if (props.isActive === false) return;
-    if (popupText != null) {
-      setPopupText(null);
+    if (interactingCell != null) {
+      // setInteractingCell(null);
       return;
     }
     if (clickLocation == null) return;
     const cell = getCellAtPosition(clickLocation, props.grid);
     if (cell && arePositionsNeighboringOrSame(truePosition, clickLocation)) {
       setFacingDirection(calculateDirectionToPosition({ x: Math.floor(truePosition.x / CELL_SIZE), y: Math.floor(truePosition.y / CELL_SIZE)}, { x: Math.floor(clickLocation.x / CELL_SIZE), y: Math.floor(clickLocation.y / CELL_SIZE)}));
-      setPopupText(cell.interactText);
+      setInteractingCell(cell.isInteractable ? cell : null);
     }
     let moveLocation: IVector2 | null = clickLocation;
     if (getCellAtPosition(clickLocation, props.grid)?.isTraversable === false) {
@@ -208,22 +208,23 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
   }
 
   const interactWithCellInFront = () => {
-    setPopupText(text => {
-      if (text != null) return null;
-      const cell = getCellAtPosition(calculatePositionInDirection(truePosition, facingDirection), props.grid);
-      return cell?.interactText ?? null;
-    });
+    const cell = getCellAtPosition(calculatePositionInDirection(truePosition, facingDirection), props.grid);
+    if (cell?.isInteractable === true) setInteractingCell(cell);
   }
 
   const handleHudClick = () => {
-    setPopupText(null);
+    // setInteractingCell(null);
+  }
+
+  const handleClosePopupText = () => {
+    setInteractingCell(null);
   }
 
   return (
     <div className='nav-game-wrapper'>
       <NavGamePlayer isMoving={isMoving} direction={facingDirection} />
-      <NavGameGrid handleClick={handleGridClick} truePosition={truePosition} grid={props.grid} />
-      <NavGameHud closePopupText={handleHudClick} popupText={popupText} />
+      <NavGameGrid handleClick={handleGridClick} truePosition={truePosition} grid={props.grid} canMove={interactingCell == null} />
+      <NavGameHud closePopupText={handleClosePopupText} cell={interactingCell} />
     </div>
   );
 }

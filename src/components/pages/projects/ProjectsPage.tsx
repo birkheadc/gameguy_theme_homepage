@@ -5,6 +5,7 @@ import Carousel from '../../shared/carousel/Carousel';
 import ProcessedImage from '../../shared/processedImage/ProcessedImage';
 import { ImageProcessShaderMode } from '../../../types/imageProcessShaderMode';
 import { IProjectWithImages } from '../../../types/project/projectWithImages';
+import PageHeader from '../pageHeader/PageHeader';
 
 interface ProjectsPageProps {
   headerImage: HTMLImageElement,
@@ -19,8 +20,7 @@ function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
 
   return (
     <div className='projects-page-wrapper page-wrapper'>
-      <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={2} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <PageHeader pageName={'projects'} headerImage={props.headerImage} />
       <div className='page-block'>
         <div className='project-page-carousel-wrapper'>
           <Carousel isControllable={true} rotateIntervalInMs={5000} >

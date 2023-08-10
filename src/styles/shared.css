@@ -87,14 +87,6 @@ a:hover, a:focus {
   min-height: calc(100svh - 138px);
   display: flex;
   flex-direction: column;
-
-  /* overflow-y: scroll; */
-}
-
-.page-header {
-  max-width: min(70%, 600px);
-  height: 5em;
-  margin: 0.5em auto;
 }
 
 .page-block {

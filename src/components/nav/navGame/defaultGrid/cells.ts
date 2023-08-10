@@ -1,33 +1,59 @@
-import { ICell } from "../../../../types/cell";
+import { ICell, ICellPromptActionType } from "../../../../types/cell";
+
 
 const treeCell: ICell = {
   isTraversable: false,
+  isInteractable: true,
   interactText: 'Just an ordinary bush. Useful for keeping nosy adventurers on the right path.'
 };
 
 const groundCell: ICell = {
   isTraversable: true,
-  interactText: null
+  isInteractable: false,
 };
 
 const hedgeCell: ICell = {
   isTraversable: false,
+  isInteractable: true,
   interactText: 'Some hedges planted outside a building. Looks awfully like an ordinary bush.'
 }
 
 const blockedCell: ICell = {
   isTraversable: false,
-  interactText: null
+  isInteractable: false
 }
 
 const doorCell: ICell = {
   isTraversable: true,
-  interactText: null
+  isInteractable: false
+}
+
+const resumeCell: ICell = {
+  isTraversable: false,
+  isInteractable: true,
+  prompt: {
+    text: "It's a copy of Colby's resume. Take a look?",
+    options: [
+      {
+        text: 'Yes',
+        action: {
+          type: ICellPromptActionType.LINK,
+          extra: 'https://resume.birkheadc.me/resume_en_swe.pdf'
+        }
+      },
+      {
+        text: 'No',
+        action: {
+          type: ICellPromptActionType.CANCEL,
+        }
+      }
+    ]
+  }
 }
 
 const cells: ICell[][] = [
   getNCell(15, treeCell),
-  [ treeCell, ...getNCell(13, groundCell), treeCell],
+  [ treeCell, resumeCell, ...getNCell(12, groundCell), treeCell],
   [ treeCell, ...getNCell(8, groundCell), ...getNCell(3, blockedCell), hedgeCell, groundCell, treeCell], 
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), doorCell, groundCell,  treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), hedgeCell, groundCell,  treeCell],

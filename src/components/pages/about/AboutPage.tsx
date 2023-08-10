@@ -7,6 +7,7 @@ import TabbedWindow from '../../shared/tabbedWindows/tabbedWindow/TabbedWindow';
 import AboutSite from './aboutSite/AboutSite';
 import AboutMe from './aboutMe/AboutMe';
 import AboutMyWork from './aboutMyWork/AboutMyWork';
+import PageHeader from '../pageHeader/PageHeader';
 
 interface AboutPageProps {
   headerImage: HTMLImageElement,
@@ -22,8 +23,7 @@ interface AboutPageProps {
 function AboutPage(props: AboutPageProps): JSX.Element | null {
   return (
     <div className='about-page-wrapper page-wrapper'>
-      <h1 className='hidden'>Projects</h1>
-      <ProcessedImage className='page-header' pixelateLevel={2} imageSrc={props.headerImage} shaderMode={ImageProcessShaderMode.NORMAL} />
+      <PageHeader pageName={'about'} headerImage={props.headerImage} />
       <div className='page-block'>
         <TabbedWindows className='about-page-tabs'>
           <TabbedWindow className='about-page-tab-window' tabName='This Site'>

@@ -10,6 +10,7 @@ interface INavGameGridProps {
   truePosition: IVector2,
   grid: IGrid,
   handleClick: (location: IVector2 | null) => void,
+  canMove: boolean
 }
 
 /**
@@ -22,14 +23,17 @@ export default function NavGameGrid(props: INavGameGridProps): JSX.Element | nul
 
   React.useEffect(function addClickListener() {
     const listener = (event: PointerEvent) => {
-      const clickedPosition = calculateClickedPosition(event);
-      props.handleClick(clickedPosition);
+      if (props.canMove === true) {
+        const clickedPosition = calculateClickedPosition(event);
+        props.handleClick(clickedPosition);
+        event.stopPropagation();
+      }
     };
     wrapperRef.current?.addEventListener('pointerdown', listener);
     return (() => {
       wrapperRef.current?.removeEventListener('pointerdown', listener);
     });
-  }, [ props.handleClick, wrapperRef ]);
+  }, [ props.handleClick, wrapperRef, props.canMove ]);
 
   return (
     <div className='nav-game-grid-wrapper'>
