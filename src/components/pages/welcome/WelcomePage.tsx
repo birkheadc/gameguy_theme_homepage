@@ -33,15 +33,15 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
       <div className='page-block'>
         <div className='welcome-message'>
           <div className='welcome-message-body'>
-            <p>{t('welcomeMessagePart1')} <span className='underline'>COLBY BIRKHEAD!</span> {t('welcomeMessagePart2')}<sup>*</sup></p>
+            <p>{t('welcomePage.parts.0')} <span className='underline'>COLBY BIRKHEAD!</span> {t('welcomePage.parts.1')}<sup>*</sup></p>
             <div className='welcome-page-images' >
               <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={props.myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
               <DevIconsSlider devicons={icons}/>
             </div>
-            <p>{t('welcomeMessagePart3')}</p>
+            <p>{t('welcomePage.parts.2')}</p>
             <button className='welcome-page-start-button' onClick={props.openNav}>{t('start')}</button>
           </div>
-          <p className='disclaimer'><sup>* </sup>{t('welcomeFootnote')}</p>
+          <p className='disclaimer'><sup>* </sup>{t('welcomePage.footnote')}</p>
         </div>
       </div>
     </div>

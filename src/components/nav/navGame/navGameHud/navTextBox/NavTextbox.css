@@ -2,7 +2,7 @@ div.nav-textbox-wrapper {
   z-index: 4;
   border: var(--border-pri);
   width: 90%;
-  height: min(4em, 40%);
+  height: fit-content;
   background-color: var(--clr-current-3);
   margin: 1rem;
   padding: 0.5em;

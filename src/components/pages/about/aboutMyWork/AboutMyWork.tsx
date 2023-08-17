@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './AboutMyWork.css'
+import { useTranslation } from 'react-i18next';
 
 interface IAboutMyWorkProps {
 
@@ -10,9 +11,17 @@ interface IAboutMyWorkProps {
 * @returns {JSX.Element | null}
 */
 export default function AboutMyWork(props: IAboutMyWorkProps): JSX.Element | null {
+
+  const { t } = useTranslation();
+
   return (
     <div className='about-my-work-wrapper'>
-      Uncaught exception: "Not yet implemented." (lol)
+      <div className="about-block-wrapper">
+        {(t('aboutPage.myWork.parts', { returnObjects: true }) as Array<string>).map(
+            part =>
+            <p key={part}>{part}</p>
+          )}
+      </div>
     </div>
   );
 }

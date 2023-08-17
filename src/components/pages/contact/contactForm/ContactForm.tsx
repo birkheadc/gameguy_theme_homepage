@@ -36,15 +36,15 @@ function ContactForm(props: ContactFormProps): JSX.Element | null {
   return (
     <div className='contact-form-wrapper'>
       <WorkingOverlay isVisible={status === 'working'} />
-      { status === 'fail' && <span className='error center full-width'>{t('contactFormError')}</span> }
-      { status === 'success' && <span className='accent center full-width'>{t('contactFormSuccess')}</span> }
+      { status === 'fail' && <span className='error center full-width'>{t('contactPage.formError')}</span> }
+      { status === 'success' && <span className='accent center full-width'>{t('contactPage.formSuccess')}</span> }
       <form className={'contact-form' + ((status === 'working' || status === 'success') ? ' fade': '')} onSubmit={handleSubmit}>
         <div className='inline-label-input-wrapper'>
-          <label htmlFor='contact-name'>{t('contactFormName')}</label>
+          <label htmlFor='contact-name'>{t('contactPage.formName')}</label>
           <input name='name' id='contact-name' type='text' onChange={handleChange} value={comment.name}></input>
         </div>
         <div className='inline-label-input-wrapper'>
-          <label htmlFor='contact-body'>{t('contactFormComment')}</label>
+          <label htmlFor='contact-body'>{t('contactPage.formComment')}</label>
           <textarea name='body' id='contact-body' rows={4} onChange={handleChange} value={comment.body} ></textarea>
         </div>
         <div>

@@ -32,12 +32,12 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
       <ProjectImage images={images} />
       <div>
         <div className='more-info-wrapper'>
-          <CollapsibleImplementation triggerClassName='project-card-collapsible-trigger' id={getMoreInfoWrapperId(project.id)} triggerTitle={t('moreInfo')}>
+          <CollapsibleImplementation triggerClassName='project-card-collapsible-trigger' id={getMoreInfoWrapperId(project.id)} triggerTitle={t('projectsPage.moreInfo')}>
             <span className='project-card-description more-info-content'>{project.longDescriptions.find(desc => desc.language === language)?.content}</span>
             <TechnologiesDisplay technologies={project.technologies} />
           </CollapsibleImplementation>
         </div>
-        <span className='project-card-links'><a href={project.site} target='_blank' rel='noopener noreferrer'>{t('visitSite')}</a><a href={project.source} target='_blank' rel='noopener noreferrer'>{t('viewSource')}</a></span>
+        <span className='project-card-links'><a href={project.site} target='_blank' rel='noopener noreferrer'>{t('projectsPage.visitSite')}</a><a href={project.source} target='_blank' rel='noopener noreferrer'>{t('projectsPage.viewSource')}</a></span>
       </div>
     </div>
   );

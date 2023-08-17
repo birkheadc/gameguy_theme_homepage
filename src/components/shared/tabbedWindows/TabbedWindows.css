@@ -20,6 +20,7 @@ div.tabbed-windows-tab-wrapper {
   flex-direction: column;
   justify-content: end;
   background-color: var(--clr-current-1);
+  text-transform: capitalize;
 }
 
 button.tabbed-windows-tab-button {

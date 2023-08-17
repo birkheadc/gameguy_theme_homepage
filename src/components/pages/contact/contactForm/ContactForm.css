@@ -25,7 +25,7 @@ div.inline-label-input-wrapper>label {
 }
 
 div.inline-label-input-wrapper>input, div.inline-label-input-wrapper>textarea {
-  padding: 0.5em;
+  padding: 1em;
 }
 
 div.inline-label-input-wrapper>textarea {
