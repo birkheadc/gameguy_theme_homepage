@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './AboutMe.css'
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 interface IAboutMeProps {
 
@@ -21,6 +22,7 @@ export default function AboutMe(props: IAboutMeProps): JSX.Element | null {
           part =>
           <p key={part}>{part}</p>
         )}
+        <p>{t('aboutPage.me.callToAction.part1')} <a href='https://resume.birkheadc.me/resume_en_swe.pdf' target='_blank' rel='noreferrer'>{t('aboutPage.me.callToAction.here')}</a>{t('aboutPage.me.callToAction.part2')} <Link to={'/contact'}>{t('aboutPage.me.callToAction.contactMe')}</Link>{t('aboutPage.me.callToAction.period')}</p>
       </div>
     </div>
   );
