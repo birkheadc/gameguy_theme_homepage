@@ -93,16 +93,31 @@ export const english: ITranslation = {
         title: "me",
         parts: [
           "My name is Colby Birkhead. I'm an American expat.",
-          "I studied Linguistics at Nagoya University in Japan, and now own and run a small business with my wife on a coastal island in South Korea.",
           "I like working with computers, games of all kinds, and reading.",
-          "To be continued..."
-        ]
+          "After high school, I somehow encountered Japanese culture, and became enthralled by it. This lead to studying the language, and eventually applying for and earning a scholarship to live and study in Nagoya, Japan for five years.",
+          "I met my wife there, and after graduating with a Bachelor of Arts in Linguistics, I moved to South Korea, where we opened a small business and started a family together.",
+          "In my free time, I've gotten back into coding. Now I'm looking to sell the business and move into software development full-time."
+        ],
+        callToAction: {
+          part1: "So if you like what you see, check out my resume",
+          here: "here",
+          part2: ", or",
+          contactMe: "contact me",
+          period: "."
+        }
       },
       myWork: {
         title: "my work",
         parts: [
-          "Uncaught exception: 'Not yet implemented.' (lol)"
-        ]
+          "Most of my life, I've been drawn by programming and programming-adjacent activities.",
+          "I tinkered with BASIC on my VTech laptop when I was a kid, and spent more time in map-editors and campaign editors than actually playing games growing up.",
+          "I studied PERL, Python, and web technologies (HTML, CSS, JavaScript, PHP) in high school.",
+          "After university, I tried out Unreal Engine, then Unity in my free time. Unity lead me to writing C#, which rekindled my joy for programming.",
+          "Now, my focus is mainly on web applications, with the occasional vacation in game development. I've also created a few applications to help run my business.",
+        ],
+        final: "You can check out some of my proudest work",
+        here: "here",
+        period: "."
       }
     }
   }

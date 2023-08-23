@@ -1,11 +1,5 @@
 import { ICell, ICellPromptActionType } from "../../../../types/cell";
-import i18next, { t } from "i18next";
 
-// const treeCell: ICell = {
-//   isTraversable: false,
-//   isInteractable: true,
-//   interactText: 'Just an ordinary bush. Useful for keeping nosy adventurers on the right path.'
-// };
 const treeCell: ICell = {
   isTraversable: false,
   isInteractable: true,
@@ -63,18 +57,18 @@ const cells: ICell[][] = [
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), doorCell, groundCell,  treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), hedgeCell, groundCell,  treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), hedgeCell, groundCell,  treeCell],
-  [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), hedgeCell, groundCell,  treeCell],
+  [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), hedgeCell, resumeCell,  treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), doorCell, ...getNCell(2, groundCell), ...getNCell(3, blockedCell), hedgeCell, treeCell,  treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(7, groundCell),  treeCell],
   [ treeCell, ...getNCell(13, groundCell), treeCell],
-  [ treeCell, ...getNCell(13, groundCell), treeCell],
+  [ treeCell, ...getNCell(4, groundCell), resumeCell, ...getNCell(8, groundCell), treeCell],
   [ treeCell, ...getNCell(13, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), doorCell, groundCell, ...getNCell(3, blockedCell), doorCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, ...getNCell(3, blockedCell), hedgeCell, ...getNCell(2, groundCell), treeCell],
-  [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, ...getNCell(7, groundCell),  treeCell],
-  [ treeCell, ...getNCell(13, groundCell), treeCell],
+  [ treeCell, ...getNCell(2, groundCell),  ...getNCell(3, blockedCell), hedgeCell, groundCell, resumeCell, ...getNCell(5, groundCell),  treeCell],
+  [ treeCell, ...getNCell(10, groundCell), resumeCell, ...getNCell(2, groundCell), treeCell],
   [ treeCell, ...getNCell(13, groundCell), treeCell],  
   getNCell(15, treeCell),
 ]

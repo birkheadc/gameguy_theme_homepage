@@ -44,11 +44,21 @@ export default interface ITranslation extends ResourceLanguage {
       },
       me: {
         title: string,
-        parts: string[]
+        parts: string[],
+        callToAction: {
+          part1: string,
+          here: string,
+          part2: string,
+          contactMe: string,
+          period: string
+        }
       },
       myWork: {
         title: string,
-        parts: string[]
+        parts: string[],
+        final: string,
+        here: string,
+        period: string
       },
 
     }
