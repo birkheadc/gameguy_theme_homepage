@@ -110,7 +110,7 @@ export const english: ITranslation = {
         title: "my work",
         parts: [
           "Most of my life, I've been drawn by programming and programming-adjacent activities.",
-          "I tinkered with BASIC on my VTech laptop when I was a kid, and spent more time in map-editors and campaign editors than actually playing games growing up.",
+          "I tinkered with BASIC on my VTech laptop when I was a kid, and spent more time in map and campaign editors than actually playing games growing up.",
           "I studied PERL, Python, and web technologies (HTML, CSS, JavaScript, PHP) in high school.",
           "After university, I tried out Unreal Engine, then Unity in my free time. Unity lead me to writing C#, which rekindled my joy for programming.",
           "Now, my focus is mainly on web applications, with the occasional vacation in game development. I've also created a few applications to help run my business.",

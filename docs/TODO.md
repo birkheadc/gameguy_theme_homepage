@@ -1,4 +1,5 @@
 # Todo
+  - Fix Voice of Japanese translation site-wide, go for more casual language
   - Translate about page content
     - My Work section is still untranslated.
   - Add a map in the center / near spawn in nav game that allows the user to just click to auto-path to a door/thing
