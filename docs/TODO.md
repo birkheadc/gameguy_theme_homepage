@@ -1,6 +1,10 @@
 # Todo
-  - Finish about page content
   - Translate about page content
+    - My Work section is still untranslated.
   - Add a map in the center / near spawn in nav game that allows the user to just click to auto-path to a door/thing
     - There can be a copy of the resume "tacked" to the board, for just opening in a new tab.
     - Create and add this board to the texture pack
+  - Rewrite resume
+    - Write a few resumes for different careers, different languages
+    - Update resumes site to host and link to these resumes, then update homepage to link to resume home page
+  - Fix Japanese version of contact page, needs a bit of work
