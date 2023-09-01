@@ -32,12 +32,12 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
     <div className='contact-page-wrapper page-wrapper'>
       <PageHeader pageName={'contact'} headerImage={props.headerImage} />
       <div className='page-block contact-page-block'>
-        <p className='justify'>
+        <p className='center'>
           {t('contactPage.parts.0')}
         </p>
-        <p className='center'>{t('contactPage.parts.1')} <a draggable='false' className='email-link' href={'mailto:birkheadc@gmail.com'} >birkheadc@gmail.com</a></p>
+        <p className='center'><a draggable='false' className='email-link' href={'mailto:birkheadc@gmail.com'} >birkheadc@gmail.com</a></p>
         <div className='contact-page-socials-wrapper'>
-          <p className='center'>{t('contactPage.parts.2')}</p>
+          <p className='center'></p>
           <ul className='contact-page-socials-list'>
             <li><a draggable='false' href={'https://www.linkedin.com/in/colby-birkhead'} target='_blank' rel='noreferrer'><ProcessedImage className={'contact-page-social-icon'} imageSrc={props.socialIcons['linkedin']} shaderMode={ImageProcessShaderMode.NORMAL} pixelateLevel={3} /></a></li>
             <li><a className='round' draggable='false' href={'https://github.com/birkheadc'} target='_blank' rel='noreferrer'><ProcessedImage className={'contact-page-social-icon'} imageSrc={props.socialIcons['github']} shaderMode={ImageProcessShaderMode.NORMAL} pixelateLevel={3} /></a></li>

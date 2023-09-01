@@ -21,7 +21,7 @@ export const english: ITranslation = {
     },
     contactPage: {
       parts: [
-        "If you'd like to get in touch, feel free to...",
+        "If you'd like to get in touch, feel free to contact me!",
         "Write me an email:",
         "Connect with me on social media:",
         "Or just leave a quick comment with the form below. I enjoy the comments, especially when they're kind.",

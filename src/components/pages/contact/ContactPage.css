@@ -10,20 +10,27 @@ a.email-link {
   text-decoration: underline;
 }
 
+div.contact-page-socials-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: 0 auto;
+}
+
 ul.contact-page-socials-list {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  padding: 0px 10px;
   width: fit-content;
   margin: 0 auto;
 }
 
 ul.contact-page-socials-list li {
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
 }
 
 ul.contact-page-socials-list a {
