@@ -1,3 +1,4 @@
+import aws from '../../../../assets/images/devicons/amazonwebservices-original.png';
 import angularjs from '../../../../assets/images/devicons/angularjs-plain.png';
 import babel from '../../../../assets/images/devicons/babel-original.png';
 import bash from '../../../../assets/images/devicons/bash-original.png';
@@ -32,6 +33,7 @@ import webpack from '../../../../assets/images/devicons/webpack-original.png';
 import wordpress from '../../../../assets/images/devicons/wordpress-plain.png';
 
 const IMAGE_SOURCES: string[] = [
+  aws,
   angularjs,
   babel,
   bash,
