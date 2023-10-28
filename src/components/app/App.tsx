@@ -43,7 +43,8 @@ function App(props: AppProps): JSX.Element | null {
     preload.projects.loadProjects((projects: IProjectWithImages[]) => {
       setPreloadedAssets(p => {
         const newPreloadedAssets = {...p};
-        newPreloadedAssets.projectImages = projects;
+        const sortedProjects = projects.sort((a, b) => b.project.favoriteLevel - a.project.favoriteLevel);
+        newPreloadedAssets.projectImages = sortedProjects;
         return newPreloadedAssets;
       });
     });
