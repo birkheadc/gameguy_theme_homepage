@@ -35,7 +35,7 @@ export default function WelcomePage(props: IWelcomePageProps): JSX.Element | nul
           <div className='welcome-message-body'>
             <p>{t('welcomePage.parts.0')} <span className='underline'>COLBY BIRKHEAD!</span> {t('welcomePage.parts.1')}<sup>*</sup></p>
             <div className='welcome-page-images' >
-              <ProcessedImage className='welcome-page-image' pixelateLevel={1} imageSrc={props.myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
+              <ProcessedImage className='welcome-page-image' pixelateLevel={3} imageSrc={props.myPhoto} shaderMode={ImageProcessShaderMode.NORMAL} />
               <DevIconsSlider devicons={icons}/>
             </div>
             <p>{t('welcomePage.parts.2')}</p>

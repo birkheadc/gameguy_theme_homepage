@@ -14,10 +14,14 @@ div.welcome-message-body {
   justify-content: center;
   gap: 30px;
   font-size: 1.2em;
+
+  width: min(90vw, 600px);
+
+  margin: 0 auto;
 }
 
 div.welcome-message p {
-  max-width: max(40vw, 600px);
+  width: 100%;
 }
 
 button.welcome-page-start-button {
@@ -46,6 +50,9 @@ div.welcome-page-images>* {
 }
 
 @media (max-width: 980px) {
+  div.welcome-message-body {
+    width: fit-content;
+  }
   div.welcome-page-images {
     width: 100%;
   }
