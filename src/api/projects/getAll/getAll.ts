@@ -7,7 +7,7 @@ export default async function getAll(): Promise<IApiResult<IProject[]>> {
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
-  }, 8000);
+  }, 2000);
   return new Promise((resolve, reject) => {
     fetch(url, {
       signal: controller.signal,
@@ -18,10 +18,13 @@ export default async function getAll(): Promise<IApiResult<IProject[]>> {
         resolve(new ApiResult<IProject[]>(status, data));
       }).catch(reason => {
         console.log(`Error: ${reason}`);
-        return new ApiResult<IProject[]>(503, null);
+        resolve(new ApiResult<IProject[]>(503, null));
       }).finally(() => {
         clearTimeout(timeout);
       });
-    })
+    }).catch(reason => {
+      console.log(`Error: ${reason}`);
+      resolve(new ApiResult<IProject[]>(404, null));
+    });
   });
 }

@@ -9,7 +9,7 @@ import PageHeader from '../pageHeader/PageHeader';
 
 interface ProjectsPageProps {
   headerImage: HTMLImageElement,
-  projects: IProjectWithImages[]
+  projects: IProjectWithImages[] | null
 }
 /**
  * 
@@ -22,14 +22,14 @@ function ProjectsPage(props: ProjectsPageProps): JSX.Element | null {
     <div className='projects-page-wrapper page-wrapper'>
       <PageHeader pageName={'projects'} headerImage={props.headerImage} />
       <div className='page-block'>
-        <div className='project-page-carousel-wrapper'>
+        {props.projects && props.projects.length > 0 && <div className='project-page-carousel-wrapper'>
           <Carousel isControllable={true} rotateIntervalInMs={5000} >
             {props.projects.map(
               project =>
               <ProjectCard key={project.project.id} project={project} />
             )}
           </Carousel>
-        </div>
+        </div>}
       </div>
     </div>
   );

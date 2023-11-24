@@ -9,6 +9,9 @@ function loadProjects(callback: (projects: IProjectWithImages[]) => void) {
     .then(result => {
       const projectsWithImages: IProjectWithImages[] = [];
       const projects: IProject[] = result.body ?? [];
+      if (projects.length < 1) {
+        callback([]);
+      }
       const numProjects = projects.length;
       const projectsCallback = (projectWithImages: IProjectWithImages) => {
         projectsWithImages.push(projectWithImages);
@@ -32,6 +35,8 @@ function loadProjects(callback: (projects: IProjectWithImages[]) => void) {
           }
         });
       });
+    }).catch(reason => {
+      console.log(`Error: ${reason}`);
     });
 }
 
