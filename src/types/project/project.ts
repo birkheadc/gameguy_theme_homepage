@@ -3,7 +3,7 @@ import { IDescription } from "../description";
 
 export interface IProject {
   id: string,
-  name: string,
+  title: string,
   descriptions: {
     shortDescriptions: IDescription[],
     longDescriptions: IDescription[],

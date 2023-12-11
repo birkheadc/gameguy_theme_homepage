@@ -26,7 +26,7 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
   return (
     <div className='project-card-wrapper'>
       <div className='project-card-header'>
-        <h2>{project.name}</h2>
+        <h2>{project.title}</h2>
         <span className='project-card-description'>{project.descriptions.shortDescriptions.find(desc => desc.language === language)?.content}</span>
       </div>
       <ProjectImage images={images} />
