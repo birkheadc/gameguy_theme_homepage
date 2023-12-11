@@ -21,11 +21,14 @@ function loadProjects(callback: (projects: IProjectWithImages[]) => void) {
       }
       projects.forEach(project => {
         const images: HTMLImageElement[] = [];
-        const numImages = project.imageNames.length;
+        const numImages = project.imageUrls.length;
+        if (numImages === 0) {
+          projectsCallback({ project, images });
+        }
 
-        project.imageNames.forEach(imageName => {
+        project.imageUrls.forEach(url => {
           const image: HTMLImageElement = new Image();
-          image.src = `${URL}/static/images/${project.id}${imageName}`;
+          image.src = url;
           image.crossOrigin = 'anonymous';
           image.onload = () => {
             images.push(image);

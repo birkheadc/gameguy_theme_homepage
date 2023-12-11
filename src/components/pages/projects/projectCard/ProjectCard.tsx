@@ -27,13 +27,13 @@ export default function ProjectCard(props: IProjectCardProps): JSX.Element | nul
     <div className='project-card-wrapper'>
       <div className='project-card-header'>
         <h2>{project.name}</h2>
-        <span className='project-card-description'>{project.shortDescriptions.find(desc => desc.language === language)?.content}</span>
+        <span className='project-card-description'>{project.descriptions.shortDescriptions.find(desc => desc.language === language)?.content}</span>
       </div>
       <ProjectImage images={images} />
       <div>
         <div className='more-info-wrapper'>
           <CollapsibleImplementation triggerClassName='project-card-collapsible-trigger' id={getMoreInfoWrapperId(project.id)} triggerTitle={t('projectsPage.moreInfo')}>
-            <span className='project-card-description more-info-content'>{project.longDescriptions.find(desc => desc.language === language)?.content}</span>
+            <span className='project-card-description more-info-content'>{project.descriptions.longDescriptions.find(desc => desc.language === language)?.content}</span>
             <TechnologiesDisplay technologies={project.technologies} />
           </CollapsibleImplementation>
         </div>
