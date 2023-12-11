@@ -107,7 +107,8 @@ function App(props: AppProps): JSX.Element | null {
           <main>
             {PreloadedAssets.isComplete(preloadedAssets) === false ? 
               <Routes>
-                <Route path='*' element={<LoadingPage />} />
+                <Route path='/*' element={<LoadingPage />}></Route>
+                <Route path='*' element={<LandingPage />} />
               </Routes>
               :
               <Routes>

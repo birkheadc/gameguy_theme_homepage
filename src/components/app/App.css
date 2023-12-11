@@ -5,7 +5,7 @@ div#react-root {
 div.fade-in {
   animation-name: fade-in;
   animation-direction: forwards;
-  animation-duration: 300ms;
+  animation-duration: 1000ms;
   animation-delay: 800ms; 
   animation-fill-mode: backwards;
 }

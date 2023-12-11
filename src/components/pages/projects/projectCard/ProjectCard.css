@@ -31,8 +31,13 @@ span.project-card-description {
   font-size: 0.9em;
 }
 
+div.more-info-outer-wrapper {
+  width: 100%;
+}
+
 div.more-info-wrapper {
   border: var(--border-sec);
+  width: 100%;
 }
 
 span.project-card-links {
