@@ -16,6 +16,7 @@ import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
 import AboutPage from '../pages/about/AboutPage';
 import ContactPage from '../pages/contact/ContactPage';
 import { IPreloadedAssets, PreloadedAssets } from '../../types/preloadedAssets/preloadedAssets';
+import LoadingPage from '../pages/loading/LoadingPage';
 
 interface AppProps {
 
@@ -94,10 +95,6 @@ function App(props: AppProps): JSX.Element | null {
     setShowNav(false);
   }
 
-  if (PreloadedAssets.isComplete(preloadedAssets) === false) return (
-    <></>
-  )
-
   return (
     <div className='fade-in'>
       <ScrollToTop />
@@ -108,7 +105,11 @@ function App(props: AppProps): JSX.Element | null {
 
       <div className='full'>
           <main>
-            {/* <div className='page-wrapper'> */}
+            {PreloadedAssets.isComplete(preloadedAssets) === false ? 
+              <Routes>
+                <Route path='*' element={<LoadingPage />} />
+              </Routes>
+              :
               <Routes>
                 <Route path='/welcome' element={<WelcomePage myPhoto={preloadedAssets.myPhoto!} headerImage={preloadedAssets.headerImages!['welcome']} devIcons={preloadedAssets.devIcons!} openNav={toggleNav} />} />
                 <Route path='/projects' element={<ProjectsPage headerImage={preloadedAssets.headerImages!['projects']} projects={preloadedAssets.projectImages!} />} />
@@ -117,7 +118,7 @@ function App(props: AppProps): JSX.Element | null {
                 <Route path='/' element={<LandingPage />} />
                 <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
               </Routes>
-            {/* </div> */}
+            }
           </main>
       </div>
     </div>
