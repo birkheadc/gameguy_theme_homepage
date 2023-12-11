@@ -7,7 +7,7 @@ export default async function getAll(): Promise<IApiResult<IProject[]>> {
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
-  }, 2000);
+  }, 8000);
   return new Promise((resolve, reject) => {
     fetch(url, {
       signal: controller.signal,
