@@ -316,6 +316,9 @@ function getDoorAtPosition(position: IVector2, grid: IGrid): IDoor | undefined {
   return door;
 }
 
-function getDoorAtLocation(location: string, grid: IGrid): IDoor | undefined {
-  return grid.doors.find(d => d.location === location);
+function getDoorAtLocation(location: string, grid: IGrid): IDoor {
+  const _location = location.endsWith('/') ? location.substr(0, location.length - 1) : location;
+  console.log(`Get Door at Location: ${_location}`);
+  const door = grid.doors.find(d => d.location === _location);
+  return door || grid.doors[0];
 }
