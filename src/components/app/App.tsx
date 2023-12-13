@@ -29,6 +29,7 @@ interface AppProps {
 function App(props: AppProps): JSX.Element | null {
 
   const [preloadedAssets, setPreloadedAssets] = React.useState<IPreloadedAssets>(new PreloadedAssets());
+  const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const [showNav, setShowNav] = React.useState<boolean>(false);
   const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(false);
@@ -79,6 +80,10 @@ function App(props: AppProps): JSX.Element | null {
     });
   }, []);
 
+  React.useEffect(function checkIfDoneLoading() {
+    setLoading(!PreloadedAssets.isComplete(preloadedAssets));
+  }, [ preloadedAssets ]);
+
   const toggleNav = () => {
     // Remove focus from the button after pressing it.
     removeFocusFromActiveElement();
@@ -105,9 +110,8 @@ function App(props: AppProps): JSX.Element | null {
 
       <div className='full'>
           <main>
-            {PreloadedAssets.isComplete(preloadedAssets) === false ? 
+            {isLoading ? 
               <Routes>
-                <Route path='/*' element={<LoadingPage />}></Route>
                 <Route path='*' element={<LandingPage />} />
               </Routes>
               :
