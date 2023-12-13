@@ -8,7 +8,8 @@ import ThemeSelector from '../../themeSelector/ThemeSelector';
 import { useNavigate } from 'react-router-dom';
 
 interface LandingPageProps {
-
+  isLoading: boolean,
+  openThemeSelector: () => void
 }
 /**
  * 
@@ -19,13 +20,15 @@ function LandingPage(props: LandingPageProps): JSX.Element | null {
 
   const navigate = useNavigate();
 
-  const handleRequestClose = () => {
-    navigate('/welcome');
-  };
+  React.useEffect(function navigateToWelcomeWhenDoneLoading() {
+    if (props.isLoading === false) {
+      navigate('/welcome');
+    }
+  }, [ props.isLoading ]);
 
   return (
     <div className='landing-page-wrapper page-wrapper'>
-      <ThemeSelector animate={true} isOpen={true} requestClose={handleRequestClose} />
+      <h1>Loading...</h1>
     </div>
   );
 }

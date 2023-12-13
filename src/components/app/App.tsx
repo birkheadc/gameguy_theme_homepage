@@ -16,7 +16,6 @@ import ScrollToTop from '../shared/scrollToTop/ScrollToTop';
 import AboutPage from '../pages/about/AboutPage';
 import ContactPage from '../pages/contact/ContactPage';
 import { IPreloadedAssets, PreloadedAssets } from '../../types/preloadedAssets/preloadedAssets';
-import LoadingPage from '../pages/loading/LoadingPage';
 
 interface AppProps {
 
@@ -32,13 +31,13 @@ function App(props: AppProps): JSX.Element | null {
   const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const [showNav, setShowNav] = React.useState<boolean>(false);
-  const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(false);
+  const [showThemeSelector, setShowThemeSelector] = React.useState<boolean>(true);
   
   const location = useLocation();
 
   React.useEffect(function closeModalsOnNavigate() {
     setShowNav(false);
-    setShowThemeSelector(false);
+    // setShowThemeSelector(false);
   }, [ location ]);
 
   React.useEffect(function preloadAssetsOnMount() {
@@ -104,7 +103,7 @@ function App(props: AppProps): JSX.Element | null {
     <div className='fade-in'>
       <ScrollToTop />
       <Background />
-      <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />
+      {!isLoading && <NavBar toggleNav={toggleNav} toggleThemeSelector={toggleThemeSelector} />}
       <ThemeSelector animate={false} isOpen={showThemeSelector} requestClose={() => setShowThemeSelector(false)} />
       <NavGame isOpen={showNav} requestClose={() => setShowNav(false)} grid={defaultGrid.grid} />
 
@@ -112,7 +111,7 @@ function App(props: AppProps): JSX.Element | null {
           <main>
             {isLoading ? 
               <Routes>
-                <Route path='*' element={<LandingPage />} />
+                <Route path='*' element={<LandingPage isLoading={isLoading} openThemeSelector={() => setShowThemeSelector(true)} />} />
               </Routes>
               :
               <Routes>
@@ -120,7 +119,7 @@ function App(props: AppProps): JSX.Element | null {
                 <Route path='/projects' element={<ProjectsPage headerImage={preloadedAssets.headerImages!['projects']} projects={preloadedAssets.projectImages!} />} />
                 <Route path='/about' element={<AboutPage headerImage={preloadedAssets.headerImages!['about']} images={{ ditherExplanation: preloadedAssets.myPhoto! }} />} />
                 <Route path='/contact' element={<ContactPage headerImage={preloadedAssets.headerImages!['contact']} socialIcons={preloadedAssets.socialIcons!} />} />
-                <Route path='/' element={<LandingPage />} />
+                <Route path='/' element={<LandingPage isLoading={isLoading} openThemeSelector={() => setShowThemeSelector(true)} />} />
                 <Route path='*' element={<Navigate replace={true} to={{ pathname: '/' }} />} />
               </Routes>
             }
