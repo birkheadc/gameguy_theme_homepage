@@ -58,4 +58,4 @@ function ContactPage(props: ContactPageProps): JSX.Element | null {
 export default ContactPage;
 
 // Helpers
-const COMMENTS_URL = 'https://comments.birkheadc.me';
+const COMMENTS_URL = 'https://z9pm6ln48k.execute-api.ap-southeast-2.amazonaws.com/prod/comments';

@@ -4,7 +4,7 @@ import hexToRgb from "./hexToRgb";
 
 export default function processCanvas(canvas: HTMLCanvasElement, colors: string[], shaderMode: ImageProcessShaderMode, effect: ImageProcessShaderEffect = ImageProcessShaderEffect.DITHER) {
   
-  const context = canvas.getContext('2d');
+  const context = canvas.getContext('2d', { willReadFrequently: true });
   if (context == null) return;
 
   const imageData: ImageData = context.getImageData(0, 0, canvas.width, canvas.height);
