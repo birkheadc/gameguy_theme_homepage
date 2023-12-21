@@ -8,8 +8,8 @@ export const japanese: ITranslation = {
     no: "いいえ",
     projectsPage: {
       moreInfo: "詳細情報",
-      visitSite: "サイト",
-      viewSource: "ソースコード",
+      visitSite: "Site",
+      viewSource: "Source Code",
     },
     welcomePage: {
       parts: [
