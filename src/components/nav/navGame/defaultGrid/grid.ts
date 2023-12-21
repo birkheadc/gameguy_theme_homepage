@@ -7,19 +7,23 @@ const gridSize = { x: 20, y: 15 };
 const doors: IDoor[] = [
   {
     position: { x: 7, y: 6 },
-    location: '/welcome'
+    location: '/welcome',
+    name: 'home'
   },
   {
     position: { x: 13, y: 6 },
-    location: '/projects'
+    location: '/projects',
+    name: 'projects'
   },
   {
     position: { x: 3, y: 12 },
-    location: '/about'
+    location: '/about',
+    name: 'about'
   },
   {
     position: { x : 13, y: 11 },
-    location: '/contact'
+    location: '/contact',
+    name: 'contact'
   }
 ];
 

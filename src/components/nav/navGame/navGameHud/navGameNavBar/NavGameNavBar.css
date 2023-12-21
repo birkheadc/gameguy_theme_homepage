@@ -1,0 +1,40 @@
+div.nav-game-nav-bar-wrapper {
+  background-color: var(--clr-current-3);
+  width: 100%;
+
+  z-index: 0;
+}
+
+div.nav-game-nav-bar-wrapper>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+}
+
+
+
+.nav-game-nav-bar-button {
+  background-color: var(--clr-current-3);
+  border: none;
+  color: var(--clr-current-0);
+  padding: 0;
+  font-family: var(--font-pri);
+  text-transform: capitalize;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-game-nav-bar-button:hover, button.nav-game-nav-bar-button:focus {
+  color: var(--clr-current-1);
+  background-color: var(--clr-current-3);
+  text-decoration: underline;
+}
+
+.nav-game-nav-bar-button::before {
+  content: '\203A';
+  padding-right: 10px;
+  display: inline-block;
+  text-decoration: none;
+}

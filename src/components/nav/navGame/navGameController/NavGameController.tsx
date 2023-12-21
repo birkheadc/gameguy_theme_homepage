@@ -187,10 +187,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
 
   const handleGridClick = (clickLocation: IVector2 | null) => {
     if (props.isActive === false) return;
-    if (interactingCell != null) {
-      // setInteractingCell(null);
-      return;
-    }
+    if (interactingCell != null) return;
     if (clickLocation == null) return;
     const cell = getCellAtPosition(clickLocation, props.grid);
     if (cell && arePositionsNeighboringOrSame(truePosition, clickLocation)) {
@@ -207,13 +204,14 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     setPath((path) => (moveLocation == null) ? path : calculatePathBetweenPositions(truePosition, moveLocation, props.grid));
   }
 
+  const handleMoveToDoor = (door: IDoor) => {
+    const virtualClickPosition: IVector2 = { x: door.position.x * CELL_SIZE, y: door.position.y * CELL_SIZE };
+    handleGridClick(virtualClickPosition);
+  }
+
   const interactWithCellInFront = () => {
     const cell = getCellAtPosition(calculatePositionInDirection(truePosition, facingDirection), props.grid);
     if (cell?.isInteractable === true) setInteractingCell(cell);
-  }
-
-  const handleHudClick = () => {
-    // setInteractingCell(null);
   }
 
   const handleClosePopupText = () => {
@@ -224,7 +222,7 @@ export default function NavGameController(props: INavGameControllerProps): JSX.E
     <div className='nav-game-wrapper'>
       <NavGamePlayer isMoving={isMoving} direction={facingDirection} />
       <NavGameGrid handleClick={handleGridClick} truePosition={truePosition} grid={props.grid} canMove={interactingCell == null} />
-      <NavGameHud closePopupText={handleClosePopupText} cell={interactingCell} />
+      <NavGameHud closePopupText={handleClosePopupText} cell={interactingCell} doors={props.grid.doors} handleClick={handleMoveToDoor} />
     </div>
   );
 }
