@@ -2,8 +2,6 @@ import api from "../../../../api";
 import { IProject } from "../../../../types/project/project";
 import { IProjectWithImages } from "../../../../types/project/projectWithImages";
 
-const URL = process.env.PROJECTS_URL;
-
 function loadProjects(callback: (projects: IProjectWithImages[]) => void) {
   api.projects.getAll()
     .then(result => {

@@ -37,7 +37,7 @@ const resumeCell: ICell = {
         text: 'yes',
         action: {
           type: ICellPromptActionType.LINK,
-          extra: 'https://resume.birkheadc.me/resume_en_swe.pdf'
+          extra: process.env.RESUME_URL
         }
       },
       {

@@ -25,7 +25,3 @@ export default function ProjectImage(props: IProjectImageProps): JSX.Element | n
     </div>
   );
 }
-
-// Helpers
-
-const URL = process.env.PROJECTS_URL;

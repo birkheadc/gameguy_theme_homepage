@@ -21,7 +21,7 @@ export default function NavGameNavBar(props: INavGameNavBarProps): JSX.Element |
             <button className='nav-game-nav-bar-button' onClick={() => props.handleClick(door)}>{door.name}</button>
           </li>
         )}
-        <li><a className='nav-game-nav-bar-button' href='https://resume.birkheadc.me/resume_en_swe.pdf' target='_blank' rel='noreferrer'>resume</a></li>
+        <li><a className='nav-game-nav-bar-button' href={process.env.RESUME_URL} target='_blank' rel='noreferrer'>resume</a></li>
       </ul>
     </div>
   );
